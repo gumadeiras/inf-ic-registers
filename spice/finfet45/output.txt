@@ -1,0 +1,191 @@
+ ****** HSPICE -- H-2013.03-SP1 64-BIT (May 29 2013) RHEL64 ******              
+  Copyright (C) 2013 Synopsys, Inc. All Rights Reserved.                        
+  Unpublished-rights reserved under US copyright laws.
+  This program is protected by law and is subject to the
+  terms and conditions of the license agreement from Synopsys.
+  Use of this program is your acceptance to be bound by the
+  license agreement. HSPICE is the trademark of Synopsys, Inc.
+  Input File: 45nm_FinFET.sp                                                    
+  Command line options: 45nm_FinFET.sp
+ lic:  
+ lic: FLEXlm: v10.9.8 
+ lic: USER:   gustavo.santana      HOSTNAME: ufrgs-server-10 
+ lic: HOSTID: d4bed9a939dc         PID:      19351 
+ lic: Using FLEXlm license file: 
+ lic: 27010@ufrgs-server-01.inf.ufrgs.br 
+ lic: Checkout 1 hspice 
+ lic: License/Maintenance for hspice will expire on 08-jun-2017/2017.03 
+ lic: 1(in_use)/50(total) FLOATING license(s) on SERVER 27010@ufrgs-server-01.inf.ufrgs.br 
+ lic:   
+ (45nm_FinFET.sp:90)
+ **warning** unknown command ".echo" is ignored
+ Warning: Pd = 0 is less than W.
+
+ Warning: Ps = 0 is less than W.
+
+ Warning: Pd = 0 is less than W.
+
+ Warning: Ps = 0 is less than W.
+
+ Warning: Pd = 0 is less than W.
+
+ Warning: Ps = 0 is less than W.
+
+ Warning: Pd = 0 is less than W.
+
+ Warning: Ps = 0 is less than W.
+
+  
+      
+ *****************************************************************
+ ******  option summary
+ ******
+ runlvl  = 3         bypass  = 2         
+  Opening plot unit= 15
+ file=45nm_FinFET.pa0
+
+ ******  
+ 
+
+  ******  dc transfer curves tnom=  25.000 temp=  25.000 *****
+x
+
+        volt    voltage    
+                    nd     
+    0.          999.9412m  
+  100.00000m    996.2283m  
+  200.00000m    943.2228m  
+  300.00000m    781.4844m  
+  400.00000m    470.5475m  
+  500.00000m    139.7390m  
+  600.00000m     80.1300m  
+  700.00000m     38.1108m  
+  800.00000m      9.4118m  
+  900.00000m    967.4953u  
+    1.00000      29.7060u  
+y
+ ****** HSPICE -- H-2013.03-SP1 64-BIT (May 29 2013) RHEL64 ******              
+ ******  
+ 
+
+  ******  operating point information tnom=  25.000 temp=  25.000 *****
+ ***** operating point status is all       simulation time is     0.     
+    node    =voltage      node    =voltage      node    =voltage
+
+ +0:nd      = 996.2283m 0:nvdd    =   1.0000  0:vg1     = 100.0000m
+ +1:nvgb1   = 136.1336m 1:nvgf1   = 136.1336m 2:n1      =   1.0000 
+ +2:pvgb1   =  75.9606m 2:pvgf1   =  75.9606m
+
+
+ **** voltage sources
+
+ subckt                         x2        
+ element  0:vfg      0:vvdd     2:vvdd    
+  volts    100.0000m    1.0000     1.0000 
+  current  4.462e-21 -573.9162n    0.     
+  power   -4.462e-22  573.9162n    0.     
+
+     total voltage source power dissipation=  573.9162n       watts
+
+
+
+ **** voltage-controlled voltage sources
+
+
+ subckt     x1         x1         x2         x2      
+ element  1:en1      1:en2      2:ep1      2:ep2     
+  volts    -36.1336m  -36.1336m   24.0394m   24.0394m
+  current -2.231e-21 -2.231e-21    0.         0.     
+
+
+
+
+
+ **** mosfets
+
+
+ subckt   x1         x1         x2         x2        
+ element  1:mn1      1:mn2      2:mp1      2:mp2     
+ model    1:nmos1    1:nmos2    2:pmos1    2:pmos2   
+ region       Cutoff     Cutoff     Linear     Linear
+  id       286.9581n  286.9581n -286.9581n -286.9581n
+  ibs        0.         0.         0.         0.     
+  ibd        0.         0.         0.         0.     
+  vgs      136.1336m  136.1336m -924.0394m -924.0394m
+  vds      996.2283m  996.2283m   -3.7717m   -3.7717m
+  ves        0.         0.         0.         0.     
+  vps        0.         0.        -1.0000    -1.0000 
+  vbs        0.         0.        -1.0000    -1.0000 
+  vth      272.6548m  272.6548m -252.9661m -252.9661m
+  vdsat     42.3809m   42.3809m -536.4405m -536.4405m
+  beta       0.         0.         0.         0.     
+  gam eff    0.         0.         0.         0.     
+  gm         8.1364u    8.1364u   79.5916n   79.5916n
+  gds      561.5096n  561.5096n   75.9377u   75.9377u
+  gmb        0.         0.         0.         0.     
+  cdtot     37.4280a   37.4280a  199.6193a  199.6193a
+  cgtot     75.4543a   75.4543a  145.7409a  145.7409a
+  cstot     38.0549a   38.0549a  126.5753a  126.5753a
+  cbtot      0.         0.         0.         0.     
+  cgs       38.0552a   38.0552a -2.372e-19 -2.372e-19
+  cgd       37.3991a   37.3991a  145.9782a  145.9782a
+
+
+
+
+          ***** job concluded
+ ****** HSPICE -- H-2013.03-SP1 64-BIT (May 29 2013) RHEL64 ******              
+ ******  
+ 
+
+  ******  job statistics summary tnom=  25.000 temp=  25.000 *****
+  
+  
+ ******  Machine Information  ******
+ CPU:
+ model name	: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
+ cpu MHz	: 2261.058
+  
+ OS:
+ Linux version 2.6.18-348.1.1.el5 (mockbuild@x86-010.build.bos.redhat.com) (gcc version 4.1.2 20080704 (Red Hat 4.1.2-54)) #1 SMP Fri Dec 14 05:25:59 EST 2012
+
+
+  ******  HSPICE Threads Information  ******
+
+  Command Line Threads Count :     1
+  Available CPU Count        :    16
+  Actual Threads Count       :     1
+
+
+  ******  Circuit Statistics  ******
+  # nodes       =      17 # elements   =      11
+  # resistors   =       0 # capacitors =       0 # inductors   =       0
+  # mutual_inds =       0 # vccs       =       0 # vcvs        =       4
+  # cccs        =       0 # ccvs       =       0 # volt_srcs   =       3
+  # curr_srcs   =       0 # diodes     =       0 # bjts        =       0
+  # jfets       =       0 # mosfets    =       4 # U elements  =       0
+  # T elements  =       0 # W elements =       0 # B elements  =       0
+  # S elements  =       0 # P elements =       0 # va device   =       0
+  # vector_srcs =       0 # N elements =       0
+
+
+  ******  Runtime Statistics (seconds)  ******
+
+  analysis           time    # points   tot. iter  conv.iter
+  op point           0.00           1           7
+  dc sweep           0.02          11          43
+  readin             0.02
+  errchk             0.05
+  setup              0.00
+  output             0.00
+
+
+           peak memory used        175.62 megabytes
+           total cpu time            0.10 seconds
+           total elapsed time        0.31 seconds
+           job started at     11:00:31 03/13/2017
+           job ended   at     11:00:32 03/13/2017
+
+
+ lic: Release hspice token(s) 
+ lic: total license checkout elapse time:        0.21(s)

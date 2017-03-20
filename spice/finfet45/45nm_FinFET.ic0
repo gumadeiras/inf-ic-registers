@@ -1,0 +1,30 @@
+* "simulator" "HSPICE" 
+* "version" "H-2013.03-SP1 64-BIT"
+* "format" "HSP"
+* "rundate" "13:30:39 03/14/2017 "
+* "netlist" "45nm_FinFET.sp "
+* "runtitle" ""
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ nd = 996.2283m       
++ nvdd =   1.0000        
++ vdd =   1.0000        
++ vdrive = 999.8786m       
++ vg1 = 100.0000m       
++ vin =   0.            
++ vout =   1.2525m       
++ x1.nvgb1 = 136.1336m       
++ x1.nvgf1 = 136.1336m       
++ x2.n1 =   1.0000        
++ x2.pvgb1 =  75.9606m       
++ x2.pvgf1 =  75.9606m       
++ xinvt.xpmos0.n1 =   1.0000        
++ xinvt.xpmos0.pvgb1 = 975.9530m       
++ xinvt.xpmos0.pvgf1 =   0.            
++ xinvt.xnmos0.nvgb1 =   1.6894m       
++ xinvt.xnmos0.nvgf1 =   2.5050m       
+***   END: Saved Operating Point ***                     

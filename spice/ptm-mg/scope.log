@@ -1,0 +1,934 @@
+wm geometry .sigmgr 472x220+351+436
+wm geometry .sigmgr 472x220+419+194
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 openonly
+# PF:1
+pf:read PF:1 v(a) v(b) v(w) v(y) v(z)
+# WF:1:1 WF:1:2 WF:1:3 WF:1:4 WF:1:5
+Graph addsignal {WF:1:1 WF:1:2 WF:1:3 WF:1:4 WF:1:5} -region {new new new new new} -yview {real(y) real(y) real(y) real(y) real(y)} -xview {real(x) real(x) real(x) real(x) real(x)} -tracehi {2 2 2 2 2}
+# Signal0 Signal1 Signal2 Signal3 Signal4
+wm geometry .sigmgr 472x220+411+186
+wm geometry .sigmgr 472x220+469+182
+wm geometry .sigmgr 472x220+502+179
+wm geometry .sigmgr 472x220+544+177
+wm geometry .sigmgr 472x220+586+177
+wm geometry .sigmgr 472x220+636+177
+wm geometry .sigmgr 472x220+690+177
+wm geometry .sigmgr 472x220+744+177
+wm geometry .sigmgr 472x220+778+177
+wm geometry .sigmgr 472x220+787+177
+wm geometry .sigmgr 472x220+796+177
+wm geometry .sigmgr 472x220+797+177
+wm geometry .sigmgr 472x220+798+177
+wm geometry .sigmgr 472x220+801+177
+wm geometry .sigmgr 472x220+805+177
+wm geometry .sigmgr 472x220+811+177
+wm geometry .sigmgr 472x220+818+177
+wm geometry .sigmgr 472x220+828+176
+wm geometry .sigmgr 472x220+848+174
+wm geometry .sigmgr 472x220+857+172
+wm geometry .sigmgr 472x220+870+170
+wm geometry .sigmgr 472x220+884+168
+wm geometry .sigmgr 472x220+907+168
+wm geometry .sigmgr 472x220+921+167
+wm geometry .sigmgr 472x220+927+167
+wm geometry .sigmgr 472x220+928+167
+wm geometry .sigmgr 472x220+929+167
+Mdi:FullSize
+wm geometry .sigmgr._PF:1 288x349+830+516
+wm geometry .sigmgr._PF:1 288x349+837+516
+wm geometry .sigmgr._PF:1 288x349+858+516
+wm geometry .sigmgr._PF:1 288x349+890+516
+wm geometry .sigmgr._PF:1 288x349+928+516
+wm geometry .sigmgr._PF:1 288x349+968+516
+wm geometry .sigmgr._PF:1 288x349+1004+516
+wm geometry .sigmgr._PF:1 288x349+1036+516
+wm geometry .sigmgr._PF:1 288x349+1060+516
+wm geometry .sigmgr._PF:1 288x349+1080+516
+wm geometry .sigmgr._PF:1 288x349+1097+516
+wm geometry .sigmgr._PF:1 288x349+1104+516
+wm geometry .sigmgr._PF:1 288x349+1111+514
+wm geometry .sigmgr._PF:1 288x349+1119+514
+wm geometry .sigmgr._PF:1 288x349+1126+512
+wm geometry .sigmgr._PF:1 288x349+1135+509
+wm geometry .sigmgr._PF:1 288x349+1140+508
+wm geometry .sigmgr._PF:1 288x349+1143+507
+Graph:DSel
+Graph:Select Graph0
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:2
+Graph:DSel
+Graph:Select Graph0
+GrXY:NewGraph
+# Graph1
+pf:read PF:2 v(aa) v(bb) v(w) v(l)
+# WF:2:3 WF:2:4 WF:2:5 WF:2:6
+Graph addsignal {WF:2:3 WF:2:4 WF:2:5 WF:2:6} -region {new new new new} -yview {real(y) real(y) real(y) real(y)} -xview {real(x) real(x) real(x) real(x)} -tracehi {2 2 2 2}
+# Signal0 Signal1 Signal2 Signal3
+Mdi:FullSize
+Mdi:ArrangeIcons
+wm geometry . 900x785+-9+76
+Mdi:ArrangeIcons
+wm geometry . 900x785+-9+81
+Mdi:ArrangeIcons
+wm geometry . 900x785+-52+86
+Mdi:ArrangeIcons
+wm geometry . 900x785+-104+96
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+-170+103
+Mdi:ArrangeIcons
+wm geometry . 900x785+-254+112
+Mdi:ArrangeIcons
+wm geometry . 900x785+-342+117
+Mdi:ArrangeIcons
+wm geometry . 900x785+-446+124
+Mdi:ArrangeIcons
+wm geometry . 900x785+-552+134
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+148
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+166
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+176
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+186
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+191
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+196
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+197
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+229
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+230
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+231
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+232
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+237
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+239
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+240
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+241
+Mdi:ArrangeIcons
+wm geometry . 900x785+-599+245
+Mdi:ArrangeIcons
+wm geometry . 838x963+0+27
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal3 add
+# Signal3
+Graph sigconfig Signal3 -region 0 -rgnindex 1
+Graph itemselect Signal3 add
+# Signal3
+Graph sigconfig {Signal3 Signal0 Signal1 Signal2} -regswap {0 1 2 3}
+Graph:DSel
+Graph:DSel
+Graph:DSel
+Graph:DSel
+Graph:Select Graph1
+Graph:DSel
+Graph:DSel
+Graph:DSel
+Graph itemselect Signal1 add
+# Signal1
+GrMeas:AtX Graph1 Signal1 {} xyrangeVisible
+# M:0
+Graph:DSel
+GrMeas:Select Graph1 M:0 0 1
+GrMeas:MovePoint Graph1 M:0 0 6.085870785094n 0.048272946939897
+GrMeas:MovePoint Graph1 M:0 0 6.093442331489n 0.27577730888643
+GrMeas:MovePoint Graph1 M:0 0 6.1376351621319n 0.70008001971899
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:3
+Graph:DSel
+GrMeas:Select Graph1 M:1 0 1
+GrMeas:MovePoint Graph1 M:1 0 6.0758695329885n 0.075704439868772
+GrMeas:MovePoint Graph1 M:1 0 4.0931489467563n -0.031771751880984
+GrMeas:MovePoint Graph1 M:1 0 6.08030609195n 0.15719144308404
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+GrMeas:AtX Graph1 Signal5 {} xyrangeVisible
+# M:2
+Graph:DSel
+GrMeas:Select Graph1 M:2 0 1
+GrMeas:MovePoint Graph1 M:2 0 6.0925113777049n 0.46798725799767
+Graph:DSel
+Graph itemselect Signal6 add
+# Signal6
+Graph sigconfig Signal6 -region 1 -rgnindex 1
+Graph:DSel
+GrMeas:Select Graph1 M:2 0 1
+GrMeas:MovePoint Graph1 M:2 0 6.09354521805n 0.34489147849395
+GrMeas:MovePoint Graph1 M:2 0 6.0952737122754n 0.15220584372193
+Graph:DSel
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.92295405967631 -0.13143416159765} {2.91886n 11.8993n}}
+Graph:DSel
+Graph:DSel
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.9518734665626 -0.31481965882575} {5.687441128n 7.021176577n}}
+Graph:DSel
+Graph:DSel
+GrMeas:Threshold Graph1 Signal6 0.425 either xyrangeAll
+# M:3
+GrMeas:Threshold Graph1 Signal6 0.425 either xyrangeAll
+# M:4
+GrMeas:ShowResult Graph1 M:4 5
+GrMeas:ShowResult Graph1 M:4 3
+GrMeas:Threshold Graph1 Signal5 0.425 either xyrangeAll
+# M:5
+Graph:DSel
+Graph:Select Graph1
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.59505850166447 0.2471639108888} {5.9728587933n 6.3329673647n}}
+Graph:DSel
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.4993868772635 0.33525199341036} {6.05948021721n 6.17862725071n}}
+Graph:DSel
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.45950585016645 0.36762599670518} {6.0790814864n 6.13487608605n}}
+Graph:DSel
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.44688243361258 0.37262031904316} {6.07835542838n 6.11546291244n}}
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0)} -range {all all all all} -zoomed {0 0 0 0}
+Graph:DSel
+Graph:DSel
+Graph:Select Graph1
+Graph axisconfig {AxisY(1,0) AxisX(0)} -range {{0.89700229400355 -0.20689400365003} {6.11982n 24.6143n}}
+Graph:DSel
+GrMeas:Select Graph1 M:5 0
+GrMeas:MoveYLevel Graph1 M:5 0 0.44341212159652
+# M:6
+Graph:DSel
+GrMeas:Select Graph1 M:6 2
+GrMeas:MoveText Graph1 M:6 2 264 18
+Graph:DSel
+GrMeas:Select Graph1 M:2 0 1
+GrMeas:MovePoint Graph1 M:2 0 16.030887583769n -0.028592946060901
+GrMeas:DelMfromMenu Graph1 M:6
+GrMeas:DelMfromMenu Graph1 M:4
+GrMeas:DelMfromMenu Graph1 M:3
+GrMeas:DelMfromMenu Graph1 M:1
+GrMeas:DelMfromMenu Graph1 M:2
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph itemselect Signal5 add
+# Signal5
+GrMeas:AtX Graph1 Signal5 {} xyrangeVisible
+# M:7
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 1
+GrMeas:MovePoint Graph1 M:7 0 8.0361106493181n -0.058742493052712
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 2
+GrMeas:MovePoint Graph1 M:7 0 15.338737351907n 272.22821456972n
+GrMeas:Risetime Graph1 Signal5 {0.1 0.5 0.9} default default xyrangeAll
+# M:8
+GrMeas:Falltime Graph1 Signal5 {0.1 0.5 0.9} default default xyrangeAll
+# M:9
+Graph:DSel
+GrMeas:Select Graph1 M:9 6
+GrMeas:HideResult Graph1 M:9 6
+GrMeas:ShowResult Graph1 M:9 7
+GrMeas:Select Graph1 M:9 7 1
+Graph:DSel
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph:DSel
+Graph:DSel
+GrMeas:DelMfromMenu Graph1 M:8
+GrMeas:DelMfromMenu Graph1 M:9
+Graph:DSel
+Graph itemselect Signal4 add
+# Signal4
+GrMeas:AtX Graph1 Signal4 {} xyrangeVisible
+# M:10
+Graph:DSel
+GrMeas:Select Graph1 M:10 0 1
+GrMeas:MovePoint Graph1 M:10 0 8.0416588353875n -0.038064446216318
+GrMeas:MovePoint Graph1 M:10 0 10.099999687235n -0.019781327097601
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 1
+GrMeas:MovePoint Graph1 M:7 0 16.039104036696n 0.086604506357494
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph:DSel
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 1
+GrMeas:MovePoint Graph1 M:7 0 14.108291868687n 0.006185025035024
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph:DSel
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 1
+GrMeas:MovePoint Graph1 M:7 0 16.04080991849n 0.35173219240659
+GrMeas:MovePoint Graph1 M:7 0 8.0389959955133n 0.068836443020743
+GrMeas:MovePoint Graph1 M:7 0 14.090820600001n 0.74673043163939
+GrMeas:MovePoint Graph1 M:7 0 16.04080991849n 0.35173219240659
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph:DSel
+Graph:DSel
+GrMeas:Select Graph1 M:7 0 1
+GrMeas:MovePoint Graph1 M:7 0 6.0936860934951n 0.32812565055196
+GrMeas:MovePoint Graph1 M:7 0 14.095576446489n 0.22052554314578
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:10
+pf:read PF:10 v(aaa) v(aa)
+# WF:10:1 WF:10:5
+Graph addsignal {WF:10:1 WF:10:5} -region {new new} -yview {real(y) real(y)} -xview {real(x) real(x)} -tracehi {2 2}
+# Signal12 Signal13
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal13 add
+# Signal13
+GrMeas:AtX Graph1 Signal13 {} xyrangeVisible
+# M:13
+Graph:DSel
+GrMeas:Select Graph1 M:13 0 1
+GrMeas:MovePoint Graph1 M:13 0 6.0949447014044n 0.45416169093637
+GrMeas:MovePoint Graph1 M:13 0 8.0453844595185n 0.3387596032457
+Graph:DSel
+Graph itemselect Signal8 add
+# Signal8
+Graph:DSel
+Graph itemselect Signal10 add
+# Signal10
+Graph sigconfig {Signal10 Signal8} -region {0 0} -rgnindex {0 1}
+Graph:DSel
+Graph itemselect Signal8 add
+# Signal8
+Graph:DSel
+Graph itemselect Signal10 add
+# Signal10
+Graph:DSel
+Graph itemselect Signal8 add
+# Signal8
+Graph:DSel
+Graph axisconfig {AxisY(0,0) AxisX(0)} -range {{0.96658134895217 -0.15138100275007} {7.247410416n 10.83367685n}}
+Graph:DSel
+GrMeas:Select Graph1 M:11 0 1
+GrMeas:MovePoint Graph1 M:11 0 8.0403089637067n -0.043163788870196
+GrMeas:MovePoint Graph1 M:11 0 10.00431256243n 0.85001039207426
+Graph:DSel
+Graph:Select Graph1
+Graph:DSel
+pf:read PF:10 v(vdd!)
+# WF:10:6
+Graph addsignal WF:10:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal14
+Graph:DSel
+Graph:Select Graph1
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0) AxisY(3,0) AxisY(4,0) AxisY(5,0)} -range {all all all all all all all} -zoomed {0 0 0 0 0 0 0}
+Graph:DSel
+Graph itemselect Signal12 add
+# Signal12
+Graph sigconfig Signal12 -region 1 -rgnindex 1
+Graph itemselect Signal12 add
+# Signal12
+Graph sigconfig {Signal12 Signal9} -region {1 1} -rgnindex {0 1}
+Graph:DSel
+Graph itemselect Signal9 add
+# Signal9
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:17
+Graph:Select Graph1
+Graph:DSel
+Graph itemselect Signal21 add
+# Signal21
+Graph itemselect Signal21 add
+# Signal21
+Graph itemselect Signal21 rem
+Graph delsignal Signal21
+Graph:DSel
+Graph itemselect Signal17 add
+# Signal17
+Graph:DSel
+Graph itemselect Signal18 add
+# Signal18
+Graph itemselect Signal18 add
+# Signal18
+GrXY:NewGraph
+# Graph2
+pf:read PF:17 v(a)
+# WF:17:7
+Graph addsignal WF:17:7 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:17 v(aa)
+# WF:17:1
+Graph addsignal WF:17:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+Graph:DSel
+Graph:Select Graph2
+Mdi:ArrangeIcons
+wm geometry . 1680x964+0+27
+Mdi:FullSize
+Mdi:ArrangeIcons
+wm geometry . 900x785+197+99
+Mdi:ArrangeIcons
+wm geometry . 900x785+-9+139
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+-107+157
+Mdi:ArrangeIcons
+wm geometry . 900x785+-177+175
+Mdi:ArrangeIcons
+wm geometry . 900x785+-245+193
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+197
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+229
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+243
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+257
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+259
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+268
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+270
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+271
+Mdi:ArrangeIcons
+wm geometry . 900x785+-249+272
+Mdi:ArrangeIcons
+wm geometry . 838x963+0+27
+Graph:DSel
+pf:read PF:17 v(aaa)
+# WF:17:2
+Graph addsignal WF:17:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:17 v(aaaa)
+# WF:17:8
+Graph addsignal WF:17:8 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+GrXY:NewGraph
+# Graph3
+pf:read PF:17 v(b)
+# WF:17:9
+Graph addsignal WF:17:9 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+Mdi:FullSize
+pf:read PF:17 v(bb)
+# WF:17:3
+Graph addsignal WF:17:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+pf:read PF:17 v(c)
+# WF:17:10
+Graph addsignal WF:17:10 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:17 v(cc)
+# WF:17:11
+Graph addsignal WF:17:11 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+pf:read PF:17 v(d)
+# WF:17:12
+Graph addsignal WF:17:12 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal4
+pf:read PF:17 v(dd)
+# WF:17:13
+Graph addsignal WF:17:13 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal5
+pf:read PF:17 v(e)
+# WF:17:14
+Graph addsignal WF:17:14 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal6
+GrXY:NewGraph
+# Graph4
+pf:read PF:17 v(w)
+# WF:17:6
+Graph addsignal WF:17:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:17 v(l)
+# WF:17:4
+Graph addsignal WF:17:4 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+Mdi:FullSize
+Graph:DSel
+Graph:Select Graph4
+Graph:DSel
+pf:read PF:17 v(aa)
+# WF:17:1
+Graph addsignal WF:17:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:17 v(bb)
+# WF:17:3
+Graph addsignal WF:17:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+Graph:Select Graph4
+Graph:DSel
+Graph itemselect Signal0 add
+# Signal0
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:18
+pf:read PF:18 v(a)
+# WF:18:5
+Graph addsignal WF:18:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal8
+Graph:DSel
+Graph:Select Graph4
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:19
+Graph:Select Graph4
+Graph:DSel
+Graph itemselect Signal11 add
+# Signal11
+Graph itemselect Signal11 add
+# Signal11
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:20
+GrXY:NewGraph
+# Graph5
+pf:read PF:20 v(a)
+# WF:20:1
+Graph addsignal WF:20:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:20 v(aa)
+# WF:20:2
+Graph addsignal WF:20:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+Mdi:FullSize
+Graph:DSel
+Graph:Select Graph5
+Graph:DSel
+Graph:DSel
+Graph:DSel
+pf:read PF:20 v(b)
+# WF:20:6
+Graph addsignal WF:20:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:20 v(bb)
+# WF:20:3
+Graph addsignal WF:20:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+Graph:DSel
+Graph:Select Graph5
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:21
+Graph:DSel
+Graph:Select Graph5
+wm geometry .sigmgr 472x220+927+165
+wm geometry .sigmgr 472x220+926+164
+wm geometry .sigmgr 472x220+924+164
+wm geometry .sigmgr 472x220+923+163
+wm geometry .sigmgr 472x220+921+162
+wm geometry .sigmgr 472x220+920+161
+wm geometry .sigmgr 472x220+918+160
+wm geometry .sigmgr 472x220+917+160
+wm geometry .sigmgr 472x220+915+159
+wm geometry .sigmgr 472x220+914+159
+wm geometry .sigmgr 472x220+913+159
+wm geometry .sigmgr 472x220+912+158
+wm geometry .sigmgr 472x220+910+158
+wm geometry .sigmgr 472x220+909+158
+wm geometry .sigmgr 472x220+907+156
+wm geometry .sigmgr 472x220+906+156
+wm geometry .sigmgr 472x220+904+156
+wm geometry .sigmgr 472x220+903+156
+wm geometry .sigmgr 472x220+900+156
+wm geometry .sigmgr 472x220+898+156
+wm geometry .sigmgr 472x220+895+156
+wm geometry .sigmgr 472x220+894+156
+wm geometry .sigmgr 472x220+890+156
+wm geometry .sigmgr 472x220+889+156
+wm geometry .sigmgr 472x220+886+157
+wm geometry .sigmgr 472x220+885+157
+wm geometry .sigmgr 472x220+883+158
+wm geometry .sigmgr 472x220+881+159
+wm geometry .sigmgr 472x220+878+161
+wm geometry .sigmgr 472x220+877+161
+wm geometry .sigmgr 472x220+875+162
+wm geometry .sigmgr 472x220+874+162
+wm geometry .sigmgr 472x220+873+163
+wm geometry .sigmgr 472x220+870+163
+wm geometry .sigmgr 472x220+869+164
+wm geometry .sigmgr 472x220+868+164
+wm geometry .sigmgr 472x220+866+166
+wm geometry .sigmgr 472x220+865+166
+wm geometry .sigmgr 472x220+864+167
+wm geometry .sigmgr 472x220+862+167
+wm geometry .sigmgr 472x220+860+168
+wm geometry .sigmgr 472x220+859+168
+wm geometry .sigmgr 472x220+858+168
+wm geometry .sigmgr 472x220+857+168
+wm geometry .sigmgr 472x220+855+169
+wm geometry .sigmgr 472x220+854+169
+wm geometry .sigmgr 472x220+853+169
+wm geometry .sigmgr 472x220+850+171
+wm geometry .sigmgr 472x220+849+171
+wm geometry .sigmgr 472x220+847+172
+wm geometry .sigmgr 472x220+845+172
+wm geometry .sigmgr 472x220+844+172
+wm geometry .sigmgr 472x220+843+173
+wm geometry .sigmgr 472x220+842+173
+wm geometry .sigmgr 472x220+841+174
+wm geometry .sigmgr 472x220+840+174
+wm geometry .sigmgr 472x220+838+176
+wm geometry .sigmgr 472x220+837+176
+wm geometry .sigmgr 472x220+835+176
+wm geometry .sigmgr 472x220+834+176
+wm geometry .sigmgr 472x220+833+176
+wm geometry .sigmgr 472x220+832+175
+wm geometry .sigmgr 472x220+831+175
+wm geometry .sigmgr 472x220+831+174
+wm geometry .sigmgr._PF:1 288x349+1138+506
+wm geometry .sigmgr._PF:1 288x349+1135+504
+wm geometry .sigmgr._PF:1 288x349+1129+502
+wm geometry .sigmgr._PF:1 288x349+1125+499
+wm geometry .sigmgr._PF:1 288x349+1121+496
+wm geometry .sigmgr._PF:1 288x349+1117+493
+wm geometry .sigmgr._PF:1 288x349+1114+488
+wm geometry .sigmgr._PF:1 288x349+1113+486
+wm geometry .sigmgr._PF:1 288x349+1111+484
+wm geometry .sigmgr._PF:1 288x349+1110+483
+wm geometry .sigmgr._PF:1 288x349+1106+479
+wm geometry .sigmgr._PF:1 288x349+1102+474
+wm geometry .sigmgr._PF:1 288x349+1099+470
+wm geometry .sigmgr._PF:1 288x349+1096+465
+wm geometry .sigmgr._PF:1 288x349+1094+463
+wm geometry .sigmgr._PF:1 288x349+1092+460
+wm geometry .sigmgr._PF:1 288x349+1090+457
+wm geometry .sigmgr._PF:1 288x349+1088+454
+wm geometry .sigmgr._PF:1 288x349+1085+452
+wm geometry .sigmgr._PF:1 288x349+1084+449
+wm geometry .sigmgr._PF:1 288x349+1082+445
+wm geometry .sigmgr._PF:1 288x349+1081+444
+wm geometry .sigmgr._PF:1 288x349+1080+442
+wm geometry .sigmgr._PF:1 288x349+1077+439
+wm geometry .sigmgr._PF:1 288x349+1076+437
+wm geometry .sigmgr._PF:1 288x349+1075+435
+wm geometry .sigmgr._PF:1 288x349+1072+433
+wm geometry .sigmgr._PF:1 288x349+1070+432
+wm geometry .sigmgr._PF:1 288x349+1068+430
+wm geometry .sigmgr._PF:1 288x349+1066+429
+wm geometry .sigmgr._PF:1 288x349+1064+429
+wm geometry .sigmgr._PF:1 288x349+1063+429
+wm geometry .sigmgr._PF:1 288x349+1062+429
+wm geometry .sigmgr._PF:1 288x349+1059+429
+wm geometry .sigmgr._PF:1 288x349+1058+429
+wm geometry .sigmgr._PF:1 288x349+1056+429
+wm geometry .sigmgr._PF:1 288x349+1053+429
+wm geometry .sigmgr._PF:1 288x349+1052+429
+wm geometry .sigmgr._PF:1 288x349+1049+429
+wm geometry .sigmgr._PF:1 288x349+1048+429
+wm geometry .sigmgr._PF:1 288x349+1046+429
+wm geometry .sigmgr._PF:1 288x349+1043+429
+wm geometry .sigmgr._PF:1 288x349+1039+429
+wm geometry .sigmgr._PF:1 288x349+1038+429
+wm geometry .sigmgr._PF:1 288x349+1036+429
+wm geometry .sigmgr._PF:1 288x349+1034+429
+wm geometry .sigmgr._PF:1 288x349+1032+429
+wm geometry .sigmgr._PF:1 288x349+1029+429
+wm geometry .sigmgr._PF:1 288x349+1026+429
+wm geometry .sigmgr._PF:1 288x349+1022+429
+wm geometry .sigmgr._PF:1 288x349+1017+429
+wm geometry .sigmgr._PF:1 288x349+1013+429
+wm geometry .sigmgr._PF:1 288x349+1011+429
+wm geometry .sigmgr._PF:1 288x349+1008+429
+wm geometry .sigmgr._PF:1 288x349+1007+429
+wm geometry .sigmgr._PF:1 288x349+1005+430
+wm geometry .sigmgr._PF:1 288x349+1003+433
+wm geometry .sigmgr._PF:1 288x349+998+438
+wm geometry .sigmgr._PF:1 288x349+996+442
+wm geometry .sigmgr._PF:1 288x349+993+448
+wm geometry .sigmgr._PF:1 288x349+991+455
+wm geometry .sigmgr._PF:1 288x349+987+462
+wm geometry .sigmgr._PF:1 288x349+984+473
+wm geometry .sigmgr._PF:1 288x349+982+479
+wm geometry .sigmgr._PF:1 288x349+980+489
+wm geometry .sigmgr._PF:1 288x349+979+494
+wm geometry .sigmgr._PF:1 288x349+977+497
+wm geometry .sigmgr._PF:1 288x349+975+501
+wm geometry .sigmgr._PF:1 288x349+975+502
+wm geometry .sigmgr._PF:1 288x349+974+507
+wm geometry .sigmgr._PF:1 288x349+974+510
+wm geometry .sigmgr._PF:1 288x349+974+512
+wm geometry .sigmgr._PF:1 288x349+974+516
+wm geometry .sigmgr._PF:1 288x349+974+518
+wm geometry .sigmgr._PF:1 288x349+974+521
+wm geometry .sigmgr._PF:1 288x349+973+524
+wm geometry .sigmgr._PF:1 288x349+972+527
+wm geometry .sigmgr._PF:1 288x349+972+530
+wm geometry .sigmgr._PF:1 288x349+969+535
+wm geometry .sigmgr._PF:1 288x349+968+537
+wm geometry .sigmgr._PF:1 288x349+968+538
+wm geometry .sigmgr._PF:1 288x349+968+541
+wm geometry .sigmgr._PF:1 288x349+965+545
+wm geometry .sigmgr._PF:1 288x349+964+548
+wm geometry .sigmgr._PF:1 288x349+963+552
+wm geometry .sigmgr._PF:1 288x349+963+555
+wm geometry .sigmgr._PF:1 288x349+962+558
+wm geometry .sigmgr._PF:1 288x349+960+565
+wm geometry .sigmgr._PF:1 288x349+958+570
+wm geometry .sigmgr._PF:1 288x349+957+576
+wm geometry .sigmgr._PF:1 288x349+955+578
+wm geometry .sigmgr._PF:1 288x349+954+581
+wm geometry .sigmgr._PF:1 288x349+953+583
+wm geometry .sigmgr._PF:1 288x349+953+584
+wm geometry .sigmgr._PF:1 288x349+953+586
+wm geometry .sigmgr._PF:1 288x349+952+591
+wm geometry .sigmgr._PF:1 288x349+949+596
+wm geometry .sigmgr._PF:1 288x349+948+598
+wm geometry .sigmgr._PF:1 288x349+948+600
+wm geometry .sigmgr._PF:1 288x349+951+597
+wm geometry .sigmgr._PF:1 288x349+955+589
+wm geometry .sigmgr._PF:1 288x349+960+572
+wm geometry .sigmgr._PF:1 288x349+963+552
+wm geometry .sigmgr._PF:1 288x349+963+533
+wm geometry .sigmgr._PF:1 288x349+965+519
+wm geometry .sigmgr._PF:1 288x349+965+506
+wm geometry .sigmgr._PF:1 288x349+965+496
+wm geometry .sigmgr._PF:1 288x349+965+486
+wm geometry .sigmgr._PF:1 288x349+964+478
+wm geometry .sigmgr._PF:1 288x349+961+470
+wm geometry .sigmgr._PF:1 288x349+958+466
+wm geometry .sigmgr._PF:1 288x349+957+463
+wm geometry .sigmgr._PF:1 288x349+956+460
+wm geometry .sigmgr._PF:1 288x349+953+454
+wm geometry .sigmgr._PF:1 288x349+951+449
+wm geometry .sigmgr._PF:1 288x349+950+447
+wm geometry .sigmgr._PF:1 288x349+948+443
+wm geometry .sigmgr._PF:1 288x349+948+442
+wm geometry .sigmgr._PF:1 288x349+947+440
+wm geometry .sigmgr._PF:1 288x349+947+438
+wm geometry .sigmgr._PF:1 288x349+946+437
+wm geometry .sigmgr._PF:1 288x349+946+434
+wm geometry .sigmgr._PF:1 288x349+945+432
+wm geometry .sigmgr._PF:1 288x349+943+430
+wm geometry .sigmgr._PF:1 288x349+942+429
+wm geometry .sigmgr._PF:1 288x349+941+426
+wm geometry .sigmgr._PF:1 288x349+940+423
+wm geometry .sigmgr._PF:1 288x349+939+423
+wm geometry .sigmgr._PF:1 288x349+938+423
+wm geometry .sigmgr._PF:1 288x349+936+423
+wm geometry .sigmgr._PF:1 288x349+934+423
+wm geometry .sigmgr._PF:1 288x349+932+423
+wm geometry .sigmgr._PF:1 288x349+931+423
+wm geometry .sigmgr._PF:1 288x349+929+423
+wm geometry .sigmgr._PF:1 288x349+928+423
+wm geometry .sigmgr._PF:1 288x349+927+423
+wm geometry .sigmgr._PF:1 288x349+926+423
+wm geometry .sigmgr._PF:1 288x349+924+423
+wm geometry .sigmgr._PF:1 288x349+922+423
+wm geometry .sigmgr._PF:1 288x349+921+423
+wm geometry .sigmgr._PF:1 288x349+919+423
+wm geometry .sigmgr._PF:1 288x349+918+423
+wm geometry .sigmgr._PF:1 288x349+917+423
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:22
+pf:read PF:22 i(vin0)
+# WF:22:5
+Graph addsignal WF:22:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal12
+pf:read PF:22 i(vin1)
+# WF:22:6
+Graph addsignal WF:22:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal13
+pf:read PF:22 i(vvdd)
+# WF:22:7
+Graph addsignal WF:22:7 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal14
+Graph:Select Graph5
+Graph:DSel
+Graph itemselect Signal14 add
+# Signal14
+Graph itemselect Signal14 rem
+Graph itemselect Signal14 add
+# Signal14
+Graph itemselect Signal13 add
+# Signal13
+Graph itemselect Signal12 add
+# Signal12
+Graph itemselect Signal12 add
+# Signal12
+Graph itemselect Signal14 rem
+# Signal12
+Graph delsignal Signal14
+Graph itemselect Signal13 rem
+# Signal12
+Graph delsignal Signal13
+Graph itemselect Signal12 rem
+Graph delsignal Signal12
+Graph:DSel
+Graph:DSel
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-1.0 1.0 } {-30n 90n } {0.74 0.98 } {-0.575 1.525 } {-0.8 1.6 }}
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-2.2 2.2 } {-125n 175n } {0.55 1.15 } {-2.5 3.5 } {-2.5 3.5 }}
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-6.0 6.0 } {-400n 400n } {0.15 1.55 } {-6.5 7.5 } {-6.5 7.5 }}
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-2.55 2.4 } {-204n 192n } {0.5775 1.155 } {-2.3025 2.895 } {-2.3025 2.895 }}
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-1.02 0.96 } {-135n 30n } {0.731 0.962 } {-1.02 0.96 } {-1.02 0.96 }}
+Graph axisconfig {AxisY(0,0) AxisX(0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {{-0.675 0.15 } {-84n -18n } {0.799 0.898 } {-0.675 0.15 } {-0.675 0.15 }}
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0) AxisY(3,0)} -range {all all all all all} -zoomed {0 0 0 0 0}
+Graph axisconfig AxisY(1,0) -scale linear -rang all
+Graph axisconfig AxisY(1,0) -range {0.86 0.74 exact}
+Graph axisconfig AxisY(1,0) -range {0.92 0.8 exact}
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:22
+pf:read PF:22 v(w)
+# WF:22:8
+Graph addsignal WF:22:8 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal15
+Graph:DSel
+Graph:Select Graph5
+Graph:DSel
+ScopeSigMgr:Unload 0
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 openonly
+# PF:23
+ScopeSigMgr:Unload 0
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 openonly
+# PF:24
+GrXY:NewGraph
+# Graph6
+pf:read PF:24 v(a)
+# WF:24:1
+Graph addsignal WF:24:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:24 v(aa)
+# WF:24:2
+Graph addsignal WF:24:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+pf:read PF:24 v(bb)
+# WF:24:3
+Graph addsignal WF:24:3 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal2
+pf:read PF:24 v(l)
+# WF:24:4
+Graph addsignal WF:24:4 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal3
+pf:read PF:24 v(w)
+# WF:24:5
+Graph addsignal WF:24:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal4
+Mdi:FullSize
+Mdi:ArrangeIcons
+wm geometry . 1680x964+0+27
+Mdi:ArrangeIcons
+wm geometry . 900x785+242+103
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+144
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+146
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+151
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+153
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+157
+Mdi:ArrangeIcons
+wm geometry . 900x785+-302+159
+Mdi:ArrangeIcons
+wm geometry . 900x785+0+27
+Mdi:ArrangeIcons
+wm geometry . 838x963+0+27
+wm geometry .sigmgr._PF:24 288x349+831+519
+wm geometry .sigmgr._PF:24 288x349+831+520
+wm geometry .sigmgr._PF:24 288x349+847+520
+wm geometry .sigmgr._PF:24 288x349+854+520
+wm geometry .sigmgr._PF:24 288x349+862+520
+wm geometry .sigmgr._PF:24 288x349+871+520
+wm geometry .sigmgr._PF:24 288x349+877+520
+wm geometry .sigmgr._PF:24 288x349+881+520
+wm geometry .sigmgr._PF:24 288x349+883+519
+wm geometry .sigmgr._PF:24 288x349+886+517
+wm geometry .sigmgr._PF:24 288x349+893+511
+wm geometry .sigmgr 472x220+831+176
+wm geometry .sigmgr 472x220+847+176
+wm geometry .sigmgr 472x220+852+176
+wm geometry .sigmgr 472x220+856+176
+wm geometry .sigmgr 472x220+859+176
+wm geometry .sigmgr 472x220+863+176
+Graph:DSel
+Graph:Select Graph6
+Graph:DSel
+Graph:DSel
+Graph itemselect Signal4 add
+# Signal4
+Graph sigconfig Signal4 -region 2 -rgnindex 1
+Graph:DSel
+Graph itemselect Signal2 add
+# Signal2
+Graph itemselect Signal2 add
+# Signal2
+Graph sigconfig Signal2 -width 2
+Graph:DSel
+Graph:DSel
+Graph itemselect Signal4 add
+# Signal4
+Graph itemselect Signal4 add
+# Signal4
+Graph sigconfig {Signal4 Signal3} -regswap {3 4}
+Graph:DSel
+Graph:DSel
+pf:read PF:24 1TPOWRD(power)
+# WF:24:6
+Graph addsignal WF:24:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal5
+Graph:Select Graph6
+Graph:DSel
+Graph itemselect Signal5 add
+# Signal5
+Graph delsignal selected
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:25
+pf:read PF:25 v(a0)
+# WF:25:5
+Graph addsignal WF:25:5 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal10
+pf:read PF:25 v(a00)
+# WF:25:6
+Graph addsignal WF:25:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal11
+Graph:DSel
+Graph:Select Graph6
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:26
+pf:read PF:26 v(a01)
+# WF:26:6
+Graph addsignal WF:26:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal17
+Graph:DSel
+Graph:Select Graph6
+Graph axisconfig {AxisY(5,0) AxisX(0)} -range {{0.0046772938209554 -142.52319408913u} {7.44113n 3.71271n}}
+Graph axisconfig {AxisX(0) AxisY(0,0) AxisY(1,0) AxisY(2,0) AxisY(3,0) AxisY(4,0) AxisY(5,0)} -range {all all all all all all all} -zoomed {0 0 0 0 0 0 0}
+Graph:DSel
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:27
+Graph:DSel
+Graph:Select Graph6
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:28
+Graph:DSel
+Graph:Select Graph6
+Graph:DSel
+ScopeSigMgr:loadpffile /home/inf01185/gustavo.santana/spice/ptm-mg/inv-16nm.tr0 1 replace
+# PF:29
+pf:read PF:29 v(a00)
+# WF:29:6
+Graph addsignal WF:29:6 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal35
