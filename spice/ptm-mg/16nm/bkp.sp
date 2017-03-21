@@ -4,11 +4,12 @@
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
+.PARAM vdd=0.85
 .OPTION POST=2
 .GLOBAL gnd! vdd!
 
 ****************************************************
-************** INV
+************** INVERTER
 ****************************************************
 .SUBCKT inv vi vo
 Mn0 vo vi gnd! gnd! nfet
@@ -92,15 +93,15 @@ Mp1 out0 nclk ndata vdd! pfet
 ************** REGISTER (TSPC)
 ****************************************************
 .SUBCKT regtspc data out clk
-*FIRST STAGE
+* FIRST STAGE
 Mp0 pnode0 data vdd! vdd! pfet
 Mp1 out0 clk pnode0 vdd! pfet
 Mn0 out0 data gnd! gnd! nfet
-*SECOND STAGE
+* SECOND STAGE
 Mp2 out1 clk vdd! vdd! pfet
 Mn1 out1 out0 nnode0 gnd! nfet
 Mn2 nnode0 clk gnd! gnd! nfet
-*THIRD STAGE
+* THIRD STAGE
 Mp3 out2 out1 vdd! vdd! pfet
 Mn3 out2 clk nnode1 gnd! nfet
 Mn4 nnode1 out1 gnd! gnd! nfet

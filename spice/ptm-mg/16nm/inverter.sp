@@ -34,7 +34,7 @@ XINV0 B C inv
 XBUF1 C D buf
 
 * CAPACITOR
-C0 D gnd! 2fF
+C0 D gnd! 1fF
 
 ****************************************************
 ************** SUPPLY
@@ -50,7 +50,7 @@ VIN0 A 0 0 pulse 0 vdd 0 50p 50p 2n 4n
 
 * .DC VIN0 0 0.85 0.01 
 
-.tran 10p 50n 
+.tran 10p 50n sweep 
 
 
 ****************************************************

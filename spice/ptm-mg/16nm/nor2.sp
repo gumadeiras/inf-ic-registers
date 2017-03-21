@@ -47,7 +47,7 @@ XNOR2 AA BB F nor2
 XBUF2 F FF buf
 
 * CAPS
-C0 FF gnd! 2fF
+C0 FF gnd! 1fF
 
 ****************************************************
 ************** SUPPLY
@@ -69,16 +69,16 @@ VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 ************** MEASUREMENTS
 ****************************************************
 .meas tran tphl_nor2 trig v(aa1) td=10n val='vdd/2' cross=1
-+             targ v(l)  td=10n val='vdd/2' cross=1
++                    targ v(l)  td=10n val='vdd/2' cross=1
 
 .meas tran tplh_nor2 trig v(aa1) td=8n val='vdd/2' cross=1
-+             targ v(l) td=8n val='vdd/2' cross=1
++                    targ v(l) td=8n val='vdd/2' cross=1
 
 .meas tran trise_nor2 trig v(l) td=8n val='vdd*0.1' cross=1
-+              targ v(l) td=8n val='vdd*0.9' cross=1
++                     targ v(l) td=8n val='vdd*0.9' cross=1
 
 .meas tran tfall_nor2 trig v(l) td=10n val='vdd*0.9' cross=1
-+              targ v(l) td=10n val='vdd*0.1' cross=1
++                     targ v(l) td=10n val='vdd*0.1' cross=1
 
 .meas tran avgpower AVG power from=1n to=60n
 
