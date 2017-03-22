@@ -4,7 +4,8 @@
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
-.PARAM vdd=0.85
+.PARAM vd=0.85
+.PARAM var=2
 .OPTION POST=2
 .GLOBAL gnd! vdd!
 
@@ -50,25 +51,23 @@ VIN0 A 0 0 pulse 0 vdd 0 50p 50p 2n 4n
 
 * .DC VIN0 0 0.85 0.01 
 
-* .param cicle
-.tran 10p 50n sweep cicle 2 10 2 
+.tran 10p 100n sweep var 2 20 1
 
 ****************************************************
 ************** MEASUREMENTS
 ****************************************************
-.meas tran trise_inv trig v(C)val='vdd*0.1' rise=2
-+                    targ v(C) val='vdd*0.9' rise=2
+.meas tran trise_inv trig v(C) val='vd*0.1' rise='var'
++                    targ v(C) val='vd*0.9' rise='var'
 
-.meas tran tfall_inv trig v(C) val='vdd*0.9' fall=2
-+                    targ v(C) val='vdd*0.1' fall=2
+.meas tran tfall_inv trig v(C) val='vd*0.9' fall='var'
++                    targ v(C) val='vd*0.1' fall='var'
 
-.meas tran tphl_inv trig v(B) val='vdd/2' td=5n cross=1
-+                   targ v(C) val='vdd/2' td=5n cross=1
+.meas tran tphl_inv trig v(B) val='vd/2' cross='var'
++                   targ v(C) val='vd/2' cross='var'
 
-.meas tran tplh_inv trig v(B) val='vdd/2' td=5n cross=2
-+                   targ v(C) val='vdd/2' td=5n cross=2
+.meas tran tplh_inv trig v(B) val='vd/2' cross='var'
++                   targ v(C) val='vd/2' cross='var'
 
 .meas tran avgpower AVG power from=1n to=50n
-
 
 .END

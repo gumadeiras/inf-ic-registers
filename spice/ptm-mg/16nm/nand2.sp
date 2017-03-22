@@ -4,7 +4,8 @@
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
-.PARAM vdd=0.85
+.PARAM vd=0.85
+.PARAM var=2
 .OPTION POST=2
 .GLOBAL gnd! vdd!
 
@@ -59,28 +60,44 @@ Vgnd gnd! 0 0v
 ****************************************************
 ************** STIMULUS - use alter to change
 ****************************************************
-VINA A 0 dc=0v
+VINA A 0 dc=0.85v
 VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 
-.tran 10p 50n 
-
+.tran 10p 100n sweep var 2 20 1
 
 ****************************************************
 ************** MEASUREMENTS
 ****************************************************
-.meas tran trise_nand2 trig v(w) td=16n val='vdd*0.1' cross=1
-+ 		 	           targ v(w) td=16n val='vdd*0.9' cross=1
+.meas tran trise_nand2 trig v(F) val='vd*0.1' rise='var'
++                      targ v(F) val='vd*0.9' rise='var'
 
-.meas tran tfall_nand2 trig v(w) td=14n val='vdd*0.9' cross=1
-+ 			           targ v(w) td=14n val='vdd*0.1' cross=1
+.meas tran tfall_nand2 trig v(F) val='vd*0.9' fall='var'
++                      targ v(F) val='vd*0.1' fall='var'
 
-.meas tran tphl_nand2 trig v(aa0) td=14n val='vdd/2' cross=1
-+                     targ v(w)  td=14n val='vdd/2' cross=1
+.meas tran tphl_nand2 trig v(BB) val='vd/2' rise='var'
++                     targ v(F) val='vd/2' fall='var'
 
-.meas tran tplh_nand2 trig v(aa0) td=16n val='vdd/2' cross=1
-+                     targ v(w) td=16n val='vdd/2' cross=1
+.meas tran tplh_nand2 trig v(BB) val='vd/2' rise='var'
++                     targ v(F) val='vd/2' fall='var'
 
 .meas tran avgpower AVG power from=1n to=50n
 
+.alter case2: change inputs
+VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+VIN1 B 0 dc=0.85v
+
+.meas tran trise_nand2 trig v(F) val='vd*0.1' rise='var'
++                      targ v(F) val='vd*0.9' rise='var'
+
+.meas tran tfall_nand2 trig v(F) val='vd*0.9' fall='var'
++                      targ v(F) val='vd*0.1' fall='var'
+
+.meas tran tphl_nand2 trig v(AA) val='vd/2' rise='var'
++                     targ v(F) val='vd/2' fall='var'
+
+.meas tran tplh_nand2 trig v(AA) val='vd/2' rise='var'
++                     targ v(F) val='vd/2' fall='var'
+
+.meas tran avgpower AVG power from=1n to=50n
 
 .END
