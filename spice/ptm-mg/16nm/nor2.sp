@@ -1,10 +1,11 @@
-* finfet testbench
+* NOR2 - case1: A low B pulse
 
 .lib '../modelfiles/models' ptm16lstp
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
-.PARAM vdd=0.85
+.PARAM vd=0.85
+.PARAM var=2
 .OPTION POST=2
 .GLOBAL gnd! vdd!
 
@@ -59,28 +60,65 @@ Vgnd gnd! 0 0v
 ****************************************************
 ************** STIMULUS - use alter to change
 ****************************************************
-VINA A 0 dc=0.85v
+VINA A 0 dc=0v
 VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 
-.tran 10p 60n 
-
+.tran 10p 100n sweep var 2 15 1
 
 ****************************************************
 ************** MEASUREMENTS
 ****************************************************
-.meas tran tphl_nor2 trig v(aa1) td=10n val='vdd/2' cross=1
-+                    targ v(l)  td=10n val='vdd/2' cross=1
+.meas tran trise_nor2 trig v(F) val='vd*0.1' rise='var'
++                     targ v(F) val='vd*0.9' rise='var'
 
-.meas tran tplh_nor2 trig v(aa1) td=8n val='vdd/2' cross=1
-+                    targ v(l) td=8n val='vdd/2' cross=1
+.meas tran tfall_nor2 trig v(F) val='vd*0.9' fall='var'
++                     targ v(F) val='vd*0.1' fall='var'
 
-.meas tran trise_nor2 trig v(l) td=8n val='vdd*0.1' cross=1
-+                     targ v(l) td=8n val='vdd*0.9' cross=1
+.meas tran tphl_nor2 trig v(BB) val='vd/2' rise='var'
++                    targ v(F) val='vd/2' fall='var'
 
-.meas tran tfall_nor2 trig v(l) td=10n val='vdd*0.9' cross=1
-+                     targ v(l) td=10n val='vdd*0.1' cross=1
+.meas tran tplh_nor2 trig v(BB) val='vd/2' rise='var'
++                    targ v(F) val='vd/2' fall='var'
 
-.meas tran avgpower AVG power from=1n to=60n
+.meas tran avgpower AVG power from=1n to=100n
+
+
+.alter case2: A pulse B low
+VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+VIN1 B 0 dc=0v
+
+.meas tran trise_nor2 trig v(F) val='vd*0.1' rise='var'
++                     targ v(F) val='vd*0.9' rise='var'
+
+.meas tran tfall_nor2 trig v(F) val='vd*0.9' fall='var'
++                     targ v(F) val='vd*0.1' fall='var'
+
+.meas tran tphl_nor2 trig v(AA) val='vd/2' rise='var'
++                    targ v(F) val='vd/2' fall='var'
+
+.meas tran tplh_nor2 trig v(AA) val='vd/2' rise='var'
++                    targ v(F) val='vd/2' fall='var'
+
+.meas tran avgpower AVG power from=1n to=100n
+
+
+.alter case3: A pulse B pulse
+VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+VIN1 B 0 0 pulse 0 0.85 0 50p 50p 6n 12n
+
+.meas tran trise_nor2 trig v(F) val='vd*0.1' rise='var'
++                     targ v(F) val='vd*0.9' rise='var'
+
+.meas tran tfall_nor2 trig v(F) val='vd*0.9' fall='var'
++                     targ v(F) val='vd*0.1' fall='var'
+
+* .meas tran tphl_nor2 trig v(AA) val='vd/2' rise='var'
+* +                    targ v(F) val='vd/2' fall='var'
+
+* .meas tran tplh_nor2 trig v(AA) val='vd/2' rise='var'
+* +                    targ v(F) val='vd/2' fall='var'
+
+.meas tran avgpower AVG power from=1n to=100n
 
 
 .END

@@ -1,4 +1,4 @@
-* finfet testbench
+* NAND2 - case1: A high B pulse
 
 .lib '../modelfiles/models' ptm16lstp
 .include '../modelfiles/lstp/16nfet.pm'
@@ -63,7 +63,7 @@ Vgnd gnd! 0 0v
 VINA A 0 dc=0.85v
 VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 
-.tran 10p 100n sweep var 2 20 1
+.tran 10p 100n sweep var 2 15 1
 
 ****************************************************
 ************** MEASUREMENTS
@@ -80,9 +80,10 @@ VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 .meas tran tplh_nand2 trig v(BB) val='vd/2' rise='var'
 +                     targ v(F) val='vd/2' fall='var'
 
-.meas tran avgpower AVG power from=1n to=50n
+.meas tran avgpower AVG power from=1n to=100n
 
-.alter case2: change inputs
+
+.alter case2: A pulse B high
 VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 VIN1 B 0 dc=0.85v
 
@@ -98,6 +99,25 @@ VIN1 B 0 dc=0.85v
 .meas tran tplh_nand2 trig v(AA) val='vd/2' rise='var'
 +                     targ v(F) val='vd/2' fall='var'
 
-.meas tran avgpower AVG power from=1n to=50n
+.meas tran avgpower AVG power from=1n to=100n
+
+
+.alter case3: A pulse B pulse
+VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+VIN1 B 0 0 pulse 0 0.85 0 50p 50p 6n 12n
+
+.meas tran trise_nand2 trig v(F) val='vd*0.1' rise='var'
++                      targ v(F) val='vd*0.9' rise='var'
+
+.meas tran tfall_nand2 trig v(F) val='vd*0.9' fall='var'
++                      targ v(F) val='vd*0.1' fall='var'
+
+* .meas tran tphl_nand2 trig v(AA) val='vd/2' rise='var'
+* +                     targ v(F) val='vd/2' fall='var'
+
+* .meas tran tplh_nand2 trig v(AA) val='vd/2' rise='var'
+* +                     targ v(F) val='vd/2' fall='var'
+
+.meas tran avgpower AVG power from=1n to=100n
 
 .END

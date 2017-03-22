@@ -4,11 +4,9 @@
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
-.PARAM vd=0.85
-.PARAM var=2
+.PARAM vdd=0.85
 .OPTION POST=2
 .GLOBAL gnd! vdd!
-
 
 ****************************************************
 ************** INVERTER
@@ -16,8 +14,7 @@
 .SUBCKT inv vi vo
 Mn0 vo vi gnd! gnd! nfet
 Mp0 vo vi vdd! vdd! pfet
-.ENDS
-
+.ENDS 
 
 ****************************************************
 ************** BUFFER
@@ -27,15 +24,34 @@ XINV0 vi _vo inv
 XINV1 _vo vo inv
 .ENDS
 
+***************************************************
+************** REGISTER (MUX BASED)
+****************************************************
+.SUBCKT regmux data out clk
+XINV0 clk nclk inv
+XINV1 data ndata inv
+XINV2 out0 out inv
+XINV3 out keeper inv
+* CLK = 0
+Mn0 out0 nclk keeper gnd! nfet
+Mp0 out0 clk keeper vdd! pfet
+* CLK = 1
+Mn1 out0 clk ndata gnd! nfet
+Mp1 out0 nclk ndata vdd! pfet
+.ENDS
+
 ****************************************************
 ************** INSTANCES
 ****************************************************
-XBUF0 A B buf
-XINV0 B C inv
-XBUF1 C D buf
+XBUF0 datain data0 buf
 
-* CAPACITOR
-C0 D gnd! 1fF
+XREG0 data0 rdata0 CLK regmux
+
+XBUF1 rdata0 E buf
+
+* CAPS
+C0 E gnd! 1fF
+
 
 ****************************************************
 ************** SUPPLY
@@ -47,27 +63,15 @@ Vgnd gnd! 0 0v
 ****************************************************
 ************** STIMULUS
 ****************************************************
-VIN0 A 0 0 pulse 0 vdd 0 50p 50p 2n 4n 
+VIN0 CLK 0 0 pulse 0 0.85 0 50p 50p 2n 4n 
+VIN1 datain 0 0 pulse 0 0.85 3n 50p 50p 4n 8n 
 
-* .DC VIN0 0 0.85 0.01 
+* .DC VIN 0 1.8 0.01 
 
-.tran 10p 100n sweep var 2 15 1
+.tran 10p 40n 
 
-****************************************************
-************** MEASUREMENTS
-****************************************************
-.meas tran trise_inv trig v(C) val='vd*0.1' rise='var'
-+                    targ v(C) val='vd*0.9' rise='var'
+.meas tran avgpower AVG power from=1n to=60n
 
-.meas tran tfall_inv trig v(C) val='vd*0.9' fall='var'
-+                    targ v(C) val='vd*0.1' fall='var'
 
-.meas tran tphl_inv trig v(B) val='vd/2' cross='var'
-+                   targ v(C) val='vd/2' cross='var'
-
-.meas tran tplh_inv trig v(B) val='vd/2' cross='var'
-+                   targ v(C) val='vd/2' cross='var'
-
-.meas tran avgpower AVG power from=1n to=100n
 
 .END
