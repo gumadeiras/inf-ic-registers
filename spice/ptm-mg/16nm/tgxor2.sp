@@ -27,17 +27,12 @@ XINV1 _vo vo inv
 ****************************************************
 ************** XOR2
 ****************************************************
-.SUBCKT xor2 in0 in1 out
-XINV0 in0 nin0 inv
-XINV1 in1 nin1 inv
-Mn00 out nin0 nnode0 gnd! nfet
-Mn10 nnode0 nin1 gnd! gnd! nfet
-Mn01 out in0 nnode1 gnd! nfet
-Mn11 nnode1 in1 gnd! gnd! nfet
-Mp00 pnode0 nin0 vdd! vdd! pfet
-Mp10 out in1 pnode0 vdd! pfet
-Mp01 pnode1 in0 vdd! vdd! pfet
-Mp11 out nin1 pnode1 vdd! pfet
+.SUBCKT tgxor2 in0 in1 out
+XINV0 in1 nin1 inv
+Mn0 out nin1 in0 gnd! nfet
+Mp0 out in1 in0 vdd! pfet
+Mn1 out in0 nin1 gnd! nfet
+Mp1 out in0 in1 vdd! pfet
 .ENDS
 
 ****************************************************
@@ -46,7 +41,7 @@ Mp11 out nin1 pnode1 vdd! pfet
 XBUF0 A AA buf
 XBUF1 B BB buf
 
-XXOR2 AA BB W xor2
+XTGXOR2 AA BB W tgxor2
 
 XBUF2 W WW buf
 
@@ -63,7 +58,7 @@ Vgnd gnd! 0 0v
 ****************************************************
 ************** STIMULUS
 ****************************************************
-VIN0 A 0 0 pulse 0 0.85 0 50p 50p 2n 4n 
+VIN0 A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 VIN1 B 0 0 pulse 0 0.85 0 50p 50p 6n 12n
 
 * .DC VIN 0 1.8 0.01 
@@ -80,7 +75,7 @@ VIN1 B 0 0 pulse 0 0.85 0 50p 50p 6n 12n
 .meas tran tplh_inv trig v(aa) td=8n val='vdd/2' cross=1
 +                   targ v(w) td=8n val='vdd/2' cross=1
 
-.meas tran trise_inv trig v(w) val='vdd*0.1' rise=2
+.meas tran trise_inv trig v(w) val=0.085 rise=2
 +                    targ v(w) val='vdd*0.9' rise=2
 
 .meas tran tfall_inv trig v(w) val='vdd*0.9' fall=2

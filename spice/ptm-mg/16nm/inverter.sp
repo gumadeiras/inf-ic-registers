@@ -15,7 +15,7 @@
 .SUBCKT inv vi vo
 Mn0 vo vi gnd! gnd! nfet
 Mp0 vo vi vdd! vdd! pfet
-.ENDS 
+.ENDS
 
 
 ****************************************************
@@ -50,8 +50,8 @@ VIN0 A 0 0 pulse 0 vdd 0 50p 50p 2n 4n
 
 * .DC VIN0 0 0.85 0.01 
 
-.tran 10p 50n sweep 
-
+* .param cicle
+.tran 10p 50n sweep cicle 2 10 2 
 
 ****************************************************
 ************** MEASUREMENTS
