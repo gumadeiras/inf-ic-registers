@@ -1,0 +1,33 @@
+* SNM Spice Sim.
+*
+* Author: Felipe Todeschini Bortolon
+* Date  : 07/08/16
+
+simulator lang=spectre
+simulator lang=spice
+***************************
+* Models
+***************************
+.include "/home/felipe.bortolon/research/set/branches/bortolon/cfg/st65_typ.scs"
+.include "/soft64/design-kits/stm/65nm-cmos065_536/CORE65GPSVT_5.1/physical/CORE65GPSVT.spi"
+
+***************************
+* Cells under evaluation
+***************************
+X0 vdd vdd vdd VN0 OUT1 gnd gnd vdd vdd HS65_GS_NAND4X4
+X1 gnd gnd gnd VN0 OUT2 gnd gnd vdd vdd HS65_GS_NOR4X4
+
+***************************
+* Sources
+***************************
+vdd vdd 0 dc 0.25
+VN0 VN0 0
+
+***************************
+* Simulation environment
+***************************
+.temp 25
+.print dc v(OUT1) v(OUT2)
+.dc  VN0 0 0.25 0.00025
+.end
+

@@ -1,5 +1,7 @@
 * finfet testbench
 
+simulator lang=spice
+
 .lib '../modelfiles/models' ptm16lstp
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
@@ -69,5 +71,12 @@ VIN0 A 0 0 pulse 0 vdd 0 50p 50p 2n 4n
 +                   targ v(C) val='vd/2' cross='var'
 
 .meas tran avgpower AVG power from=1n to=100n
+
+
+.alter case2: 7nm
+
+.lib '../modelfiles/models' ptm7lstp
+.include '../modelfiles/lstp/7nfet.pm'
+.include '../modelfiles/lstp/7pfet.pm'
 
 .END

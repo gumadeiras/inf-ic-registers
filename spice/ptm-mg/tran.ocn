@@ -1,0 +1,161 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+; design("./design/netlist")
+design("./16nm/tran/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./tran.txt" "w")
+
+; desVar("vdd" 0.85)
+; halfVdd = evalstring(desVar("vdd"))/2.0
+analysis('tran ?stop 30n)
+run()
+
+selectResults('tran)
+
+;------------------------------------------------
+; calculate rise and fall times
+;------------------------------------------------
+; invtr=riseTime(v("outINV") 2n t 6n t 10 90)
+; invtf=riseTime(v("outINV") 2n t 6n t 90 10)
+invtr0 = cross(v("outINV") 0.085 2 'rising)
+invtr1 = cross(v("outINV") 0.765 2 'rising)
+invtr  = invtr1-invtr0
+
+invtf0 = cross(v("outINV") 0.765 2 'falling)
+invtf1 = cross(v("outINV") 0.085 2 'falling)
+invtf  = invtf1-invtf0
+
+; nandtr=riseTime(v("outNAND") 2n t 5n t 10 90)
+; nandtf=riseTime(v("outNAND") 2n t 5n t 90 10)
+nandtr0 = cross(v("outNAND") 0.085 2 'rising)
+nandtr1 = cross(v("outNAND") 0.765 2 'rising)
+nandtr  = nandtr1-nandtr0
+
+nandtf0 = cross(v("outNAND") 0.765 2 'falling)
+nandtf1 = cross(v("outNAND") 0.085 2 'falling)
+nandtf  = nandtf1-nandtf0
+
+; nortr=riseTime(v("outNOR") 2n t 5n t 10 90)
+; nortf=riseTime(v("outNOR") 2n t 5n t 90 10)
+nortr0 = cross(v("outNOR") 0.085 2 'rising)
+nortr1 = cross(v("outNOR") 0.765 2 'rising)
+nortr  = nortr1-nortr0
+
+nortf0 = cross(v("outNOR") 0.765 2 'falling)
+nortf1 = cross(v("outNOR") 0.085 2 'falling)
+nortf  = nortf1-nortf0
+
+; xortr=riseTime(v("outXOR") 2n t 5n t 10 90)
+; xortf=riseTime(v("outXOR") 2n t 5n t 90 10)
+xortr0 = cross(v("outXOR") 0.085 2 'rising)
+xortr1 = cross(v("outXOR") 0.765 2 'rising)
+xortr  = xortr1-xortr0
+
+xortf0 = cross(v("outXOR") 0.765 2 'falling)
+xortf1 = cross(v("outXOR") 0.085 2 'falling)
+xortf  = xortf1-xortf0
+
+; tgxortr=riseTime(v("outTGXOR") 2n t 5n t 10 90)
+; tgxortf=riseTime(v("outTGXOR") 2n t 5n t 90 10)
+tgxortr0 = cross(v("outTGXOR") 0.085 2 'rising)
+tgxortr1 = cross(v("outTGXOR") 0.765 2 'rising)
+tgxortr  = tgxortr1-tgxortr0
+
+tgxortf0 = cross(v("outTGXOR") 0.765 2 'falling)
+tgxortf1 = cross(v("outTGXOR") 0.085 2 'falling)
+tgxortf  = tgxortf1-tgxortf0
+;------------------------------------------------
+; calculate propagation delay
+;------------------------------------------------
+invtplh=delay(v("outBUF0") 0.425 1 'falling v("outINV") 0.425 1 'rising)
+invtphl=delay(v("outBUF0") 0.425 1 'rising v("outINV") 0.425 1 'falling)
+
+nandtplh=delay(v("outBUF1") 0.425 1 'falling v("outNAND") 0.425 1 'rising)
+nandtphl=delay(v("outBUF1") 0.425 1 'rising v("outNAND") 0.425 1 'falling)
+
+nortplh=delay(v("outBUF2") 0.425 1 'falling v("outNOR") 0.425 1 'rising)
+nortphl=delay(v("outBUF2") 0.425 1 'rising v("outNOR") 0.425 1 'falling)
+
+xortplh=delay(v("outBUF3") 0.425 1 'falling v("outXOR") 0.425 1 'rising)
+xortphl=delay(v("outBUF3") 0.425 1 'rising v("outXOR") 0.425 1 'falling)
+
+tgxortplh=delay(v("outBUF4") 0.425 1 'falling v("outTGXOR") 0.425 1 'rising)
+tgxortphl=delay(v("outBUF4") 0.425 1 'rising v("outTGXOR") 0.425 1 'falling)
+
+;------------------------------------------------
+; print results to the output file
+;------------------------------------------------
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           INVERTER          -#\n")
+fprintf(of "#-------------------------------#\n")
+fprintf(of "rise = %.6e\n" invtr)
+fprintf(of "fall = %.6e\n" invtf)
+fprintf(of "Tphl = %10.6e\n" invtphl)
+fprintf(of "Tplh = %10.6e\n" invtplh)
+fprintf(of "Tp   = %10.6e\n" (invtphl+invtplh)/2)
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           NAND2             -#\n")
+fprintf(of "#-------------------------------#\n")
+fprintf(of "rise = %.6e\n" nandtr)
+fprintf(of "fall = %.6e\n" nandtf)
+fprintf(of "Tphl = %10.6e\n" nandtphl)
+fprintf(of "Tplh = %10.6e\n" nandtplh)
+fprintf(of "Tp   = %10.6e\n" (nandtphl+nandtplh)/2)
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           NOR2              -#\n")
+fprintf(of "#-------------------------------#\n")
+fprintf(of "rise = %.6e\n" nortr)
+fprintf(of "fall = %.6e\n" nortf)
+fprintf(of "Tphl = %10.6e\n" nortphl)
+fprintf(of "Tplh = %10.6e\n" nortplh)
+fprintf(of "Tp   = %10.6e\n" (nortphl+nortplh)/2)
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           XOR2              -#\n")
+fprintf(of "#-------------------------------#\n")
+fprintf(of "rise = %.6e\n" xortr)
+fprintf(of "fall = %.6e\n" xortf)
+fprintf(of "Tphl = %10.6e\n" xortphl)
+fprintf(of "Tplh = %10.6e\n" xortplh)
+fprintf(of "Tp   = %10.6e\n" (xortphl+xortplh)/2)
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           TG XOR2           -#\n")
+fprintf(of "#-------------------------------#\n")
+fprintf(of "rise = %.6e\n" tgxortr)
+fprintf(of "fall = %.6e\n" tgxortf)
+fprintf(of "Tphl = %10.6e\n" tgxortphl)
+fprintf(of "Tplh = %10.6e\n" tgxortplh)
+fprintf(of "Tp   = %10.6e\n" (tgxortphl+tgxortplh)/2)
+
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "#-   NOISE MARGIN  G1 - G2     -#\n")
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "NMH = %10.6f\n" nmh_12)
+; fprintf(of "NML = %10.6f\n" nml_12)
+
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "#-   NOISE MARGIN  G2 - G1     -#\n")
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "NMH = %10.6f\n" nmh_21)
+; fprintf(of "NML = %10.6f\n" nml_21)
+
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "#-        NOISE MARGIN         -#\n")
+; fprintf(of "#-------------------------------#\n")
+; fprintf(of "Min(NMH) = %10.6f\n" nmh)
+; fprintf(of "Min(NML) = %10.6f\n" nml)
+; fprintf(of "SNM = %10.6f\n" snm)
+
+close(of)
+
+; end of file

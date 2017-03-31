@@ -1,10 +1,12 @@
 * finfet testbench
 
+simulator lang=spice
+
 .lib '../modelfiles/models' ptm16lstp
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'
 
-.PARAM vdd=0.85
+.PARAM vd=0.85
 .OPTION POST=2
 .GLOBAL gnd! vdd!
 

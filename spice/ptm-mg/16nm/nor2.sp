@@ -1,5 +1,7 @@
 * NOR2 - case1: A low B pulse
 
+simulator lang=spice
+
 .lib '../modelfiles/models' ptm16lstp
 .include '../modelfiles/lstp/16nfet.pm'
 .include '../modelfiles/lstp/16pfet.pm'

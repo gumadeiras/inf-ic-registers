@@ -1,5 +1,6 @@
 * finfet testbench
 
+simulator lang=spectre
 simulator lang=spice
 
 .lib '../../modelfiles/models' ptm16lstp

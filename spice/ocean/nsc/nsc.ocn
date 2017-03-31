@@ -1,0 +1,119 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+; design("./design/netlist")
+design("../../ptm-mg/16nm/netlist")
+resultsDir(".")
+
+; open output port for writing out results to a file
+fp = outfile("./output.txt" "w")
+
+analysis('dc ?saveOppoint t ?oppoint "rawfile")
+run
+
+ ; Determine static noise margin using the minus one point strategy
+selectResults('dc)
+gvtc1 = deriv(v("B"))
+gvtc2 = deriv(v("C"))
+
+;------------------------------------------------
+; determine input/output margins for gate 1
+;------------------------------------------------
+; verifies both positive and negative gains
+vil1 = cross(gvtc1 -1 1 'either)
+vih1 = cross(gvtc1 -1 2 'either)
+if( vil1 == nil (vil1 = cross(gvtc1 1 1 'either)))
+if( vih1 == nil (vih1 = cross(gvtc1 1 2 'either)))
+
+; considerating gate unateness, sometimes voh and vol must be swapped
+voh1 = value(v("B") vil1)
+vol1 = value(v("B") vih1)
+if( voh1 < vol1 then
+    aux = voh1
+    voh1 = vol1
+    vol1 = aux
+)
+
+;------------------------------------------------
+; determine input/output margins for gate 2
+;--------------'----------------------------------
+; verifies both positive and negative gains
+vil2 = cross(gvtc2 -1 1 'either)
+vih2 = cross(gvtc2 -1 2 'either)
+if( vil2 == nil (vil2 = cross(gvtc2 1 1 'either)))
+if( vih2 == nil (vih2 = cross(gvtc2 1 2 'either)))
+
+; considerating gate unateness, sometimes voh and vol must be swapped
+voh2 = value(v("C") vil2)
+vol2 = value(v("C") vih2)
+if( voh2 < vol2 then
+    aux = voh2
+    voh2 = vol2
+    vol2 = aux
+)
+
+;------------------------------------------------
+; calculate noise margin
+;------------------------------------------------
+
+; gate 1 - gate 2
+nmh_12 = voh1 - vih2
+nml_12 = vil2 - vol1
+if( nmh_12 < nml_12 snm_12=nmh_12 snm_12=nml_12 )
+
+; gate 2 - gate 1
+nmh_21 = voh2 - vih1
+nml_21 = vil1 - vol2
+if( nmh_21 < nml_21 snm_21=nmh_21 snm_21=nml_21 )
+
+; gets the smallest from both
+if( nmh_21 < nmh_12 nmh=nmh_21 nmh=nmh_12 )
+if( nml_21 < nml_12 nml=nml_21 nml=nml_12 )
+if( nmh < nml snm=nmh snm=nml )
+
+;------------------------------------------------
+; print results to the output file
+;------------------------------------------------
+
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "#-           GATE 1            -#\n")
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "VIL 1 = %10.6f\n" vil1)
+fprintf(fp "VIH 1 = %10.6f\n" vih1)
+fprintf(fp "VOL 1 = %10.6f\n" vol1)
+fprintf(fp "VOH 1 = %10.6f\n\n" voh1)
+
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "#-           GATE 2            -#\n")
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "VIL 2 = %10.6f\n" vil2)
+fprintf(fp "VIH 2 = %10.6f\n" vih2)
+fprintf(fp "VOL 2 = %10.6f\n" vol2)
+fprintf(fp "VOH 2 = %10.6f\n\n" voh2)
+
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "#-   NOISE MARGIN  G1 - G2     -#\n")
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "NMH = %10.6f\n" nmh_12)
+fprintf(fp "NML = %10.6f\n" nml_12)
+
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "#-   NOISE MARGIN  G2 - G1     -#\n")
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "NMH = %10.6f\n" nmh_21)
+fprintf(fp "NML = %10.6f\n" nml_21)
+
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "#-        NOISE MARGIN         -#\n")
+fprintf(fp "#-------------------------------#\n")
+fprintf(fp "Min(NMH) = %10.6f\n" nmh)
+fprintf(fp "Min(NML) = %10.6f\n" nml)
+fprintf(fp "SNM = %10.6f\n" snm)
+
+close(fp)
+
+; end of file
