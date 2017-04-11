@@ -1,9 +1,11 @@
 ; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
 
 ; set correct license for checkout
 envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
 
 ; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
 simulator('spectre)
 ; design("./design/netlist")
 design("./16nm/tran/netlist")
@@ -13,10 +15,16 @@ of = outfile("./tran.txt" "w")
 
 ; desVar("vdd" 0.85)
 ; halfVdd = evalstring(desVar("vdd"))/2.0
-analysis('tran ?stop 30n)
+analysis('tran ?stop 20n)
 run()
 
 selectResults('tran)
+
+; delay(?wf1 v("/D1" ?result "tran") ?value1 0.5 ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 0.5 ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+; o de cima esta errado, certo:
+; halfVdd = evalstring(desVar("simVdd"))/2.0
+; delay(?wf1 v("/D1" ?result "tran") ?value1 halfVdd ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 halfVdd ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+
 
 ;------------------------------------------------
 ; calculate rise and fall times
@@ -41,7 +49,8 @@ nandtf0 = cross(v("outNAND") 0.765 2 'falling)
 nandtf1 = cross(v("outNAND") 0.085 2 'falling)
 nandtf  = nandtf1-nandtf0
 
-; nortr=riseTime(v("outNOR") 2n t 5n t 10 90)
+; t = 0, t = 0.85
+; nortr=riseTime(v("outNOR") 2n t 5n t 10 90) 
 ; nortf=riseTime(v("outNOR") 2n t 5n t 90 10)
 nortr0 = cross(v("outNOR") 0.085 2 'rising)
 nortr1 = cross(v("outNOR") 0.765 2 'rising)
@@ -70,91 +79,107 @@ tgxortr  = tgxortr1-tgxortr0
 tgxortf0 = cross(v("outTGXOR") 0.765 2 'falling)
 tgxortf1 = cross(v("outTGXOR") 0.085 2 'falling)
 tgxortf  = tgxortf1-tgxortf0
+
+
 ;------------------------------------------------
 ; calculate propagation delay
 ;------------------------------------------------
-invtplh=delay(v("outBUF0") 0.425 1 'falling v("outINV") 0.425 1 'rising)
-invtphl=delay(v("outBUF0") 0.425 1 'rising v("outINV") 0.425 1 'falling)
+invtplh = delay(v("outBUF0") 0.425 1 'falling v("outINV") 0.425 1 'rising)
+invtphl = delay(v("outBUF0") 0.425 1 'rising v("outINV") 0.425 1 'falling)
 
-nandtplh=delay(v("outBUF1") 0.425 1 'falling v("outNAND") 0.425 1 'rising)
-nandtphl=delay(v("outBUF1") 0.425 1 'rising v("outNAND") 0.425 1 'falling)
+nandtplh = delay(v("outBUF1") 0.425 1 'falling v("outNAND") 0.425 1 'rising)
+nandtphl = delay(v("outBUF1") 0.425 1 'rising v("outNAND") 0.425 1 'falling)
 
-nortplh=delay(v("outBUF2") 0.425 1 'falling v("outNOR") 0.425 1 'rising)
-nortphl=delay(v("outBUF2") 0.425 1 'rising v("outNOR") 0.425 1 'falling)
+nortplh = delay(v("outBUF2") 0.425 1 'falling v("outNOR") 0.425 1 'rising)
+nortphl = delay(v("outBUF2") 0.425 1 'rising v("outNOR") 0.425 1 'falling)
 
-xortplh=delay(v("outBUF3") 0.425 1 'falling v("outXOR") 0.425 1 'rising)
-xortphl=delay(v("outBUF3") 0.425 1 'rising v("outXOR") 0.425 1 'falling)
+xortplh = delay(v("outBUF3") 0.425 1 'falling v("outXOR") 0.425 1 'rising)
+xortphl = delay(v("outBUF3") 0.425 1 'rising v("outXOR") 0.425 1 'falling)
 
-tgxortplh=delay(v("outBUF4") 0.425 1 'falling v("outTGXOR") 0.425 1 'rising)
-tgxortphl=delay(v("outBUF4") 0.425 1 'rising v("outTGXOR") 0.425 1 'falling)
+tgxortplh = delay(v("outBUF4") 0.425 1 'falling v("outTGXOR") 0.425 1 'rising)
+tgxortphl = delay(v("outBUF4") 0.425 1 'rising v("outTGXOR") 0.425 1 'falling)
+
+
+;------------------------------------------------
+; calculate power and energy
+;------------------------------------------------
+invpwr = 0.85*average(abs(i("Vdinv:p" ?result "tran")))
+inveng = 0.85*average(abs(i("Vdinv:p" ?result "tran")))*20n
+
+nandpwr = 0.85*average(abs(i("Vdnand:p" ?result "tran")))
+nandeng = 0.85*average(abs(i("Vdnand:p" ?result "tran")))*20n
+
+norpwr = 0.85*average(abs(i("Vdnor:p" ?result "tran")))
+noreng = 0.85*average(abs(i("Vdnor:p" ?result "tran")))*20n
+
+xorpwr = 0.85*average(abs(i("Vdxor:p" ?result "tran")))
+xoreng = 0.85*average(abs(i("Vdxor:p" ?result "tran")))*20n
+
+tgxorpwr = 0.85*average(abs(i("Vdtgxor:p" ?result "tran")))
+tgxoreng = 0.85*average(abs(i("Vdtgxor:p" ?result "tran")))*20n
+
 
 ;------------------------------------------------
 ; print results to the output file
 ;------------------------------------------------
-
 fprintf(of "#-------------------------------#\n")
 fprintf(of "#-           INVERTER          -#\n")
 fprintf(of "#-------------------------------#\n")
-fprintf(of "rise = %.6e\n" invtr)
-fprintf(of "fall = %.6e\n" invtf)
-fprintf(of "Tphl = %10.6e\n" invtphl)
-fprintf(of "Tplh = %10.6e\n" invtplh)
-fprintf(of "Tp   = %10.6e\n" (invtphl+invtplh)/2)
+fprintf(of "rise = %e\n" invtr)
+fprintf(of "fall = %e\n" invtf)
+fprintf(of "Tphl = %e\n" invtphl)
+fprintf(of "Tplh = %e\n" invtplh)
+fprintf(of "Tp   = %e\n" (invtphl+invtplh)/2)
+fprintf(of "Pwr  = %e\n" invpwr)
+fprintf(of "Engy = %e\n\n" inveng)
+
 
 fprintf(of "#-------------------------------#\n")
 fprintf(of "#-           NAND2             -#\n")
 fprintf(of "#-------------------------------#\n")
-fprintf(of "rise = %.6e\n" nandtr)
-fprintf(of "fall = %.6e\n" nandtf)
-fprintf(of "Tphl = %10.6e\n" nandtphl)
-fprintf(of "Tplh = %10.6e\n" nandtplh)
-fprintf(of "Tp   = %10.6e\n" (nandtphl+nandtplh)/2)
+fprintf(of "rise = %e\n" nandtr)
+fprintf(of "fall = %e\n" nandtf)
+fprintf(of "Tphl = %e\n" nandtphl)
+fprintf(of "Tplh = %e\n" nandtplh)
+fprintf(of "Tp   = %e\n" (nandtphl+nandtplh)/2)
+fprintf(of "Pwr  = %e\n" nandpwr)
+fprintf(of "Engy = %e\n\n" nandeng)
+
 
 fprintf(of "#-------------------------------#\n")
 fprintf(of "#-           NOR2              -#\n")
 fprintf(of "#-------------------------------#\n")
-fprintf(of "rise = %.6e\n" nortr)
-fprintf(of "fall = %.6e\n" nortf)
-fprintf(of "Tphl = %10.6e\n" nortphl)
-fprintf(of "Tplh = %10.6e\n" nortplh)
-fprintf(of "Tp   = %10.6e\n" (nortphl+nortplh)/2)
+fprintf(of "rise = %e\n" nortr)
+fprintf(of "fall = %e\n" nortf)
+fprintf(of "Tphl = %e\n" nortphl)
+fprintf(of "Tplh = %e\n" nortplh)
+fprintf(of "Tp   = %e\n" (nortphl+nortplh)/2)
+fprintf(of "Pwr  = %e\n" norpwr)
+fprintf(of "Engy = %e\n\n" noreng)
+
 
 fprintf(of "#-------------------------------#\n")
 fprintf(of "#-           XOR2              -#\n")
 fprintf(of "#-------------------------------#\n")
-fprintf(of "rise = %.6e\n" xortr)
-fprintf(of "fall = %.6e\n" xortf)
-fprintf(of "Tphl = %10.6e\n" xortphl)
-fprintf(of "Tplh = %10.6e\n" xortplh)
-fprintf(of "Tp   = %10.6e\n" (xortphl+xortplh)/2)
+fprintf(of "rise = %e\n" xortr)
+fprintf(of "fall = %e\n" xortf)
+fprintf(of "Tphl = %e\n" xortphl)
+fprintf(of "Tplh = %e\n" xortplh)
+fprintf(of "Tp   = %e\n" (xortphl+xortplh)/2)
+fprintf(of "Pwr  = %e\n" xorpwr)
+fprintf(of "Engy = %e\n\n" xoreng)
+
 
 fprintf(of "#-------------------------------#\n")
 fprintf(of "#-           TG XOR2           -#\n")
 fprintf(of "#-------------------------------#\n")
-fprintf(of "rise = %.6e\n" tgxortr)
-fprintf(of "fall = %.6e\n" tgxortf)
-fprintf(of "Tphl = %10.6e\n" tgxortphl)
-fprintf(of "Tplh = %10.6e\n" tgxortplh)
-fprintf(of "Tp   = %10.6e\n" (tgxortphl+tgxortplh)/2)
-
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "#-   NOISE MARGIN  G1 - G2     -#\n")
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "NMH = %10.6f\n" nmh_12)
-; fprintf(of "NML = %10.6f\n" nml_12)
-
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "#-   NOISE MARGIN  G2 - G1     -#\n")
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "NMH = %10.6f\n" nmh_21)
-; fprintf(of "NML = %10.6f\n" nml_21)
-
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "#-        NOISE MARGIN         -#\n")
-; fprintf(of "#-------------------------------#\n")
-; fprintf(of "Min(NMH) = %10.6f\n" nmh)
-; fprintf(of "Min(NML) = %10.6f\n" nml)
-; fprintf(of "SNM = %10.6f\n" snm)
+fprintf(of "rise = %e\n" tgxortr)
+fprintf(of "fall = %e\n" tgxortf)
+fprintf(of "Tphl = %e\n" tgxortphl)
+fprintf(of "Tplh = %e\n" tgxortplh)
+fprintf(of "Tp   = %e\n" (tgxortphl+tgxortplh)/2)
+fprintf(of "Pwr  = %e\n" tgxorpwr)
+fprintf(of "Engy = %e\n\n" tgxoreng)
 
 close(of)
 
