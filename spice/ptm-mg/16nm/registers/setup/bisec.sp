@@ -7,9 +7,8 @@
 .include '../../modelfiles/lstp/16pfet.pm'
 
 .PARAM vd=0.85
-+      DelayTime=0
+.PARAM DelayTime=0
 .OPTION POST=2
-+       OPTLST=1 ; display bisec info
 .GLOBAL gnd! vdd!
 
 ****************************************************
@@ -55,100 +54,95 @@ XNAND8 out  out6 out8 nand2
 ****************************************************
 ************** INSTANCES
 ****************************************************
-XBUF0 databuffer0 data0 buf
+XBUF0 databuffer data0 buf
 
 XNANDIV0 data0 rdata0 CLK nandinv
+XNANDIV1 rdata0 rdata1 CLK nandinv
+XNANDIV2 rdata1 rdata2 CLK nandinv
 
-XBUF1 rdata0 E0 buf
+XBUF1 rdata2 E buf
 
 * CAPS
-C0 E0 gnd! 1fF
+C0 E gnd! 1fF
+
 
 ****************************************************
 ************** SUPPLY
 ****************************************************
-Vvdd vdd! 0 'vd'
+Vvdd vdd! 0 0.85v
 Vgnd gnd! 0 0v
 
 
 ****************************************************
 ************** STIMULUS
 ****************************************************
-* clock
+*VIN0 CLK 0 0 pulse 0 0.85 0 50p 50p 2n 4n 
+*VIN1 databuffer 0 0 pulse 0 0.85 3n 50p 50p 4n 8n 
+
+*.DC VIN 0 1.8 0.01 
+
+*.tran 10p 40n 
+
+*.meas tran avgpower AVG power from=1n to=60n
+
+.IC v(rdata0)=0
+****************
+* PWL Stimulus *
+****************
+vdata databuffer gnd PWL
++ 0n                   0v 
++ 1n                   0v 
++ 2n                   0.85v
++ Td = 'DelayTime'
+***********
+*  CLOCK  *
+***********
 vclk CLK gnd PWL
-+ 0s          0v 
-+ 3.0n        0v
-+ 3.05n       'vd'
-+ 6.0n        'vd'
-+ 6.05n       0v
++ 0s        0v
++ 3n        0v
++ 4n        0.85v
 
-* initial data value on register out
-.IC v(rdata0) = 0
-+   v(rdata1) = 0
 
-* data
-vdata0 databuffer0 gnd PWL
-+ 0ns                      0v 
-+ '2.0ns+DelayTime'        0v 
-+ '2.05ns+DelayTime'       'vd'
-+ '5.0ns+DelayTime'        'vd'
-+ '5.05ns+DelayTime'       0v
+*
+* Specify DelayTime as the search parameter and provide 
+* the lower and upper limits.
+*
+.Param DelayTime = Opt1 ( 0.0p, 0.0p, 5.0n )
 
-* search parameter, lower and upper limits.
-.Param DelayTime = Opt1 ( 0n, 0n, 5n )
-
+*
 * Transient simulation with Bisection Optimization
-.Tran 1n 7n Sweep Optimize = Opt1
-+                 Result = pushout
-* +                Result = MaxVout
-+                 Model = OptMod
+*
+.Tran 1n 10n Sweep Optimize = Opt1
++                 Result   = MaxVout    $ Look at measure
++                 Model    = OptMod
 
-* max(vout), ~vdd
-.MEASURE Tran MaxVout Max v(rdata0) Goal = 'vd'
+*
+* This measure finds the transition
+*
+.param vih=0.85v
 
-* optimistic setup time value
-* .Measure Tran pushout When v(rdata0)='vd/2' rise=1 
+.MEASURE Tran MaxVout Max v(rdata0) Goal = '0.85'
+
+* .Measure Tran pushout When v(rdata0)='vih/2' rise=1 
 * * Relative pushout time
 * + pushout_per=0.01
 * * Absolute pushout time
 * *+ pushout = 0.01n
 
-* pessimistic setup time value
-.Measure Tran pushout Trig v(rdata0)  Val = 'vd/2' cross=1
-+                     Targ v(CLK)     Val = 'vd/2' cross=1
+*Comment the above and Uncomment the below for regular passfail run or for pessimistic setup time value
+* .Measure Tran pushout Trig v(rdata0)  Val = '0.425' cross=1
+* +                       Targ v(CLK) Val = '0.425' cross=1
+*
+* This measure calculates the setup time value
+*
+.Measure Tran SetupTime Trig v(data0)  Val = '0.425' cross=1
++                       Targ v(CLK) Val = '0.425' cross=1
 
-* setup time value
-.Measure Tran SetupTime Trig v(data0)  Val = 'vd/2' cross=1
-+                       Targ v(CLK)    Val = 'vd/2' cross=1
-
+*
 * Optimization Model
-.Model OptMod Opt 
-+      Method = passfail 
-+      relin = 0.0001 
-+      relout = 0.001 
+*
+.Model OptMod Opt Method = Bisection
 
-
-.alter case2: hold time: data fixed, clock as variable
-* clock
-vclk CLK gnd PWL
-+ 0n                      0v 
-+ '3.0n+DelayTime'        0v
-+ '3.05n+DelayTime'       'vd'
-+ '6.0n+DelayTime'        'vd'
-+ '6.05n+DelayTime'       0v
-
-* initial data value on register out
-.IC v(rdata0) = 0
-+   v(rdata1) = 0
-
-* data
-vdata0 databuffer0 gnd PWL
-+ 0n            'vd'
-+ 5.0n          'vd'
-+ 5.05n         0v
-
-.Measure Tran HoldTime Trig v(CLK)      Val = 'vd/2' cross=1
-+                      Targ v(data0)    Val = 'vd/2' cross=1
 
 .END
  
