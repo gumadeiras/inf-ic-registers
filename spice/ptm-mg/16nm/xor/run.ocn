@@ -1,0 +1,113 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./run.txt" "w")
+
+analysis('tran ?stop 20n)
+run()
+
+selectResults('tran)
+; delay(?wf1 v("/D1" ?result "tran") ?value1 0.5 ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 0.5 ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+; o de cima esta errado, certo:
+; halfVdd = evalstring(desVar("simVdd"))/2.0
+; delay(?wf1 v("/D1" ?result "tran") ?value1 halfVdd ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 halfVdd ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+
+; method 1
+; xortr = riseTime(v("outXOR") 0 nil 0.85 nil 10 90 t "time")
+; xortf = riseTime(v("outXOR") 0.85 nil 0 nil 90 10 t "time")
+; ocnPrint(?output of xortr)
+; ocnPrint(?output of xortf)
+
+; method 2
+; nandtr0 = cross(v("outNAND") 0.085 2 'rising)
+; nandtr1 = cross(v("outNAND") 0.765 2 'rising)
+; nandtr  = nandtr1-nandtr0
+; nandtf0 = cross(v("outNAND") 0.765 2 'falling)
+; nandtf1 = cross(v("outNAND") 0.085 2 'falling)
+; nandtf  = nandtf1-nandtf0
+
+;------------------------------------------------
+; print results to the output file
+;------------------------------------------------
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           XOR TRAN          -#\n")
+fprintf(of "#-------------------------------#\n")
+
+;------------------------------------------------
+; calculate rise and fall times
+;------------------------------------------------
+xortr = riseTime(v("outXOR") 0 nil 0.85 nil 10 90 t "time")
+xortf = riseTime(v("outXOR") 0 nil 0.85 nil 90 10 t "time")
+fprintf(of "\n#------------RISE TIME----------#\n")
+ocnPrint(?output of xortr)
+fprintf(of "\n#------------FALL TIME----------#\n")
+ocnPrint(?output of xortf)
+
+;------------------------------------------------
+; calculate propagation delay
+fprintf(of "\n#--------PROPAGATION DELAY------#\n")
+;------------------------------------------------
+for(xx 1 5
+xortplh = delay(v("outBUF3") 0.425 xx 'falling v("outXOR") 0.425 xx 'rising)
+xortphl = delay(v("outBUF3") 0.425 xx 'rising v("outXOR") 0.425 xx 'falling)
+fprintf(of "#--- CROSS --------- VALUE(S) ---#\n")
+fprintf(of "Tphl: %n            %e\n" xx xortphl)
+fprintf(of "Tplh: %n            %e\n" xx xortplh)
+)
+fprintf(of "Tp   = %e\n" (xortphl+xortplh)/2)
+
+;------------------------------------------------
+; calculate power and energy
+;------------------------------------------------
+xorpwr = 0.85*average(abs(i("Vdinv:p" ?result "tran")))
+xoreng = 0.85*average(abs(i("Vdinv:p" ?result "tran")))*20n
+
+fprintf(of "Pwr  = %e\n" xorpwr)
+fprintf(of "Engy = %e\n\n" xoreng)
+
+
+
+
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           TG XOR TRA        -#\n")
+fprintf(of "#-------------------------------#\n")
+
+;------------------------------------------------
+; calculate rise and fall times
+;------------------------------------------------
+tgxortr = riseTime(v("outTGXOR") 0 nil 0.85 nil 10 90 t "time")
+tgxortf = riseTime(v("outTGXOR") 0 nil 0.85 nil 90 10 t "time")
+fprintf(of "\n#------------RISE TIME----------#\n")
+ocnPrint(?output of tgxortr)
+fprintf(of "\n#------------FALL TIME----------#\n")
+ocnPrint(?output of tgxortf)
+
+;------------------------------------------------
+; calculate propagation delay
+fprintf(of "\n#--------PROPAGATION DELAY------#\n")
+;------------------------------------------------
+for(xx 1 5
+tgxortplh = delay(v("outBUF4") 0.425 xx 'falling v("outTGXOR") 0.425 xx 'rising)
+tgxortphl = delay(v("outBUF4") 0.425 xx 'rising v("outTGXOR") 0.425 xx 'falling)
+fprintf(of "#--- CROSS --------- VALUE(S) ---#\n")
+fprintf(of "Tphl: %n            %e\n" xx tgxortphl)
+fprintf(of "Tplh: %n            %e\n" xx tgxortplh)
+)
+fprintf(of "Tp   = %e\n" (tgxortphl+tgxortplh)/2)
+
+
+
+
+
+close(of)
+
+; end of file

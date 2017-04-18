@@ -1,67 +1,25 @@
 * finfet testbench
 
-.simulator lang=spice
+simulator lang=spectre
+simulator lang=spice
 
-.lib '../../modelfiles/models' ptm16lstp
-.include '../../modelfiles/lstp/16nfet.pm'
-.include '../../modelfiles/lstp/16pfet.pm'
+.lib '../../../../modelfiles/models' ptm16lstp
+.include '../../../../library.sp'
 
-.PARAM  vd=0.85
-+       DelayTime=0
+.PARAM vd=0.85
 .OPTION POST=2
-+       OPTLST=1 ; display bisec info
+* +       OPTLST=1 ; display bisec info
 .GLOBAL gnd! vdd!
 
-****************************************************
-************** INVERTER
-****************************************************
-.SUBCKT inv vi vo
-Mn0 vo vi gnd! gnd! nfet
-Mp0 vo vi vdd! vdd! pfet
-.ENDS 
-
-****************************************************
-************** BUFFER
-****************************************************
-.SUBCKT buf vi vo
-XINV0 vi _vo inv
-XINV1 _vo vo inv
-.ENDS
-
-****************************************************
-************** NAND2
-****************************************************
-.SUBCKT nand2 in0 in1 out
-Mn0 out in0 nnode gnd! nfet
-Mn1 nnode in1 gnd! gnd! nfet
-Mp0 out in0 vdd! vdd! pfet
-Mp1 out in1 vdd! vdd! pfet
-.ENDS
-
-****************************************************
-************** REGISTER - MUX NAND INV DFF
-****************************************************
-.SUBCKT muxnand data out clk
-* SLAVE
-XNAND1 data clk  out1 nand2
-XINV2  clk  out2      inv
-XNAND3 out2 out4 out3 nand2
-XNAND4 out1 out3 out4 nand2
-* MASTER
-XNAND5 out  clk  out5 nand2
-*XINV6  clk  out6      inv
-XNAND7 out2 out4 out7 nand2
-XNAND8 out5 out7 out  nand2
-.ENDS
 
 ****************************************************
 ************** INSTANCES
 ****************************************************
-XBUF0 databuffer0 data0 buf
+XBUF0 databuffer0 data0 vdd! gnd! buf
 
-XMUXNAND0 data0 rdata0 CLK muxnand
+XNANDIV0 data0 rdata0 CLK X0 gnd! nandinv
 
-XBUF1 rdata0 E0 buf
+XBUF1 rdata0 E0 vdd! gnd! buf
 
 C0 E0 gnd! 1fF
 
@@ -70,6 +28,7 @@ C0 E0 gnd! 1fF
 ****************************************************
 Vvdd vdd! 0 'vd'
 Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
 
 
 ****************************************************
@@ -85,6 +44,7 @@ vclk CLK gnd PWL
 
 * initial data value on register out
 .IC v(rdata0) = 0
++   v(rdata1) = 0
 
 * data
 vdata0 databuffer0 gnd PWL
@@ -98,7 +58,7 @@ vdata0 databuffer0 gnd PWL
 .Param DelayTime = Opt1 ( 0n, 0n, 5n )
 
 * Transient simulation with Bisection Optimization
-.Tran 10p 10n Sweep Optimize = Opt1
+.Tran 10p 8n Sweep Optimize = Opt1
 +                 Result = pushout
 * +                Result = MaxVout
 +                 Model = OptMod
@@ -128,6 +88,57 @@ vdata0 databuffer0 gnd PWL
 +      relout = 0.001 
 
 
+
+
+.alter case2: hold time data high low
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      'vd'
++ '2.0ns+DelayTime'        'vd'
++ '2.05ns+DelayTime'       0v
++ '5.0ns+DelayTime'        0v
+
+.IC v(rdata0) = 0
+
+
+
+
+.alter case3: setup time rdata HIGH data high low
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      'vd'
++ '2.0ns+DelayTime'        'vd'
++ '2.05ns+DelayTime'       0v
++ '5.0ns+DelayTime'        0v
+
+.IC v(rdata0) = 'vd'
+
+
+
+
+.alter case4: hold time rdata HIGH data low high
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      0v
++ '2.0ns+DelayTime'        0v
++ '2.05ns+DelayTime'       'vd'
++ '5.0ns+DelayTime'        'vd'
+
+.IC v(rdata0) = 'vd'
+
+
+
+
+.alter case5: power energy
+
+.Tran 10p 8n
+
+vclk CLK gnd 0 pulse 0 0.85 0 50p 50p 1n 2n
+vdata0 databuffer0 gnd 0 pulse 0 0.85 0 50p 50p 2n 4n
+
+* initial data value on register out
+.IC v(rdata0) = 0
+
 * .alter case2: hold time: data fixed, clock as variable
 * * clock
 * vclk CLK gnd PWL
@@ -139,7 +150,6 @@ vdata0 databuffer0 gnd PWL
 
 * * initial data value on register out
 * .IC v(rdata0) = 0
-* +   v(rdata1) = 0
 
 * * data
 * vdata0 databuffer0 gnd PWL

@@ -1,0 +1,45 @@
+* finfet testbench
+
+simulator lan=spectre
+simulator lang=spice
+
+.lib '../../../modelfiles/models' ptm16lstp
+.include '../../../library.sp'
+
+.PARAM vd=0.85
+.PARAM var=2
+.OPTION POST=2
+.GLOBAL gnd! vdd!
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0  A0       outBUF0  vdd! gnd! buf
+
+XINV   outBUF0  outINV   X0   gnd! inv
+
+XBUF5  outINV   outC0    vdd! gnd! buf
+
+C0     outC0    gnd!     1fF
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 0.85v
+Vgnd gnd! 0 0v
+Vdinv vdd! X0 dc=0v
+
+****************************************************
+************** STIMULUS
+****************************************************
+VIN0 A0 0 0 pulse 0 vdd 0 50p 50p 2n 4n
+VIN5 H 0 dc=0.85v
+VIN6 L 0 dc=0v
+
+.DC VIN0 0 0.85 0.01
+
+.tran 10p 20n
+
+*.tran 10p 100n sweep var 2 15 1
+
+.END

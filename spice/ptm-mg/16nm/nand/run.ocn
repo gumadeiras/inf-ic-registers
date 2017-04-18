@@ -1,0 +1,79 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./run.txt" "w")
+
+analysis('tran ?stop 20n)
+run()
+
+selectResults('tran)
+; delay(?wf1 v("/D1" ?result "tran") ?value1 0.5 ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 0.5 ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+; o de cima esta errado, certo:
+; halfVdd = evalstring(desVar("simVdd"))/2.0
+; delay(?wf1 v("/D1" ?result "tran") ?value1 halfVdd ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 halfVdd ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+
+; method 1
+; invtr = riseTime(v("outINV") 0 nil 0.85 nil 10 90 t "time")
+; invtf = riseTime(v("outINV") 0 nil 0.85 nil 90 10 t "time")
+; ocnPrint(?output of invtr)
+; ocnPrint(?output of invtf)
+
+; method 2
+; nandtr0 = cross(v("outNAND") 0.085 2 'rising)
+; nandtr1 = cross(v("outNAND") 0.765 2 'rising)
+; nandtr  = nandtr1-nandtr0
+; nandtf0 = cross(v("outNAND") 0.765 2 'falling)
+; nandtf1 = cross(v("outNAND") 0.085 2 'falling)
+; nandtf  = nandtf1-nandtf0
+
+;------------------------------------------------
+; print results to the output file
+;------------------------------------------------
+fprintf(of "#-------------------------------#\n")
+fprintf(of "#-           NAND TRAN     -#\n")
+fprintf(of "#-------------------------------#\n")
+
+;------------------------------------------------
+; calculate rise and fall times
+;------------------------------------------------
+nandtr = riseTime(v("outNAND") 0 nil 0.85 nil 10 90 t "time")
+nandtf = riseTime(v("outNAND") 0.85 nil 0 nil 90 10 t "time")
+fprintf(of "\n#------------RISE TIME----------#\n")
+ocnPrint(?output of nandtr)
+fprintf(of "\n#------------FALL TIME----------#\n")
+ocnPrint(?output of nandtf)
+
+;------------------------------------------------
+; calculate propagation delay
+fprintf(of "\n#--------PROPAGATION DELAY------#\n")
+;------------------------------------------------
+for(xx 1 5
+nandtplh = delay(v("outBUF1") 0.425 xx 'falling v("outNAND") 0.425 xx 'rising)
+nandtphl = delay(v("outBUF1") 0.425 xx 'rising v("outNAND") 0.425 xx 'falling)
+fprintf(of "#--- CROSS --------- VALUE(S) ---#\n")
+fprintf(of "Tphl: %n            %e\n" xx nandtphl)
+fprintf(of "Tplh: %n            %e\n" xx nandtplh)
+)
+fprintf(of "Tp   = %e\n" (nandtphl+nandtplh)/2)
+
+;------------------------------------------------
+; calculate power and energy
+;------------------------------------------------
+nandpwr = 0.85*average(abs(i("Vdnand:p" ?result "tran")))
+nandeng = 0.85*average(abs(i("Vdnand:p" ?result "tran")))*20n
+
+fprintf(of "Pwr  = %e\n" nandpwr)
+fprintf(of "Engy = %e\n\n" nandeng)
+
+close(of)
+
+; end of file

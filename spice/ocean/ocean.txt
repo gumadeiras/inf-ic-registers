@@ -1,3 +1,0 @@
-t_ string " 
-s_ symbol ' 
-? optional arg

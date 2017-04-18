@@ -1,0 +1,182 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./run.txt" "w")
+
+
+analysis('tran ?stop 8n)
+run()
+
+selectResults('tran)
+; delay(?wf1 v("/D1" ?result "tran") ?value1 0.5 ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 0.5 ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+; o de cima esta errado, certo:
+; halfVdd = evalstring(desVar("simVdd"))/2.0
+; delay(?wf1 v("/D1" ?result "tran") ?value1 halfVdd ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 halfVdd ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+
+; method 1
+; invtr = riseTime(v("outINV") 0 nil 0.85 nil 10 90 t "time")
+; invtf = riseTime(v("outINV") 0 nil 0.85 nil 90 10 t "time")
+; ocnPrint(?output of invtr)
+; ocnPrint(?output of invtf)
+
+; method 2
+; nandtr0 = cross(v("outNAND") 0.085 2 'rising)
+; nandtr1 = cross(v("outNAND") 0.765 2 'rising)
+; nandtr  = nandtr1-nandtr0
+; nandtf0 = cross(v("outNAND") 0.765 2 'falling)
+; nandtf1 = cross(v("outNAND") 0.085 2 'falling)
+; nandtf  = nandtf1-nandtf0
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           NANDINV REGISTER TRAN       \n")
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "-------------- REG: LOW -> HIGH\n")
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "\n#--------------------------------------------------\n")
+fprintf(of "-------------- D: LOW -> HIGH\n")
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Data to Q:")
+DtoQ1 = delay(v("data0" ?result "tran") 0.425 1 'either v("rdata0" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoQ1)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Clock to Q:")
+CtoQ1 = delay(v("CLK" ?result "tran") 0.425 1 'rising v("rdata0" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of CtoQ1)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Q rise time:")
+regtr = riseTime(v("rdata0" ?result "tran") 0 nil 0.85 nil 10 90 t "time")
+ocnPrint(?output of regtr)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "setup time:")
+ocnPrint(?output of getData("setuptime" ?result "bisection_transient_meas-meas_search"))
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "\n#--------------------------------------------------\n")
+fprintf(of "-------------- D: HIGH -> LOW\n")
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Data to Q:")
+DtoQ2 = delay(v("data0" ?result "bisection_transient1-search") 0.425 1 'either v("rdata0" ?result "bisection_transient1-search") 0.425 1 'either)
+ocnPrint(?output of DtoQ2)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Clock to Q:")
+CtoQ2 = delay(v("CLK" ?result "bisection_transient1-search") 0.425 1 'rising v("rdata0" ?result "bisection_transient1-search") 0.425 1 'either)
+ocnPrint(?output of CtoQ2)
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Q rise time:")
+regtr2 = riseTime(v("rdata0" ?result "bisection_transient1-search") 0.85 nil 0 nil 90 10 t "time")
+ocnPrint(?output of regtr2)
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "hold time:")
+ocnPrint(?output of getData("setuptime" ?result "bisection_transient1_meas-meas_search"))
+fprintf(of "#--------------------------------------------------\n")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "-------------- REG: HIGH -> LOW\n")
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "\n#--------------------------------------------------\n")
+fprintf(of "-------------- D: LOW -> HIGH\n")
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Data to Q:")
+DtoQ1 = delay(v("data0" ?result "bisection_transient3-search") 0.425 1 'either v("rdata0" ?result "bisection_transient3-search") 0.425 1 'either)
+ocnPrint(?output of DtoQ1)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Clock to Q:")
+CtoQ1 = delay(v("CLK" ?result "bisection_transient3-search") 0.425 1 'rising v("rdata0" ?result "bisection_transient3-search") 0.425 1 'either)
+ocnPrint(?output of CtoQ1)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Q rise time:")
+regtr = riseTime(v("rdata0" ?result "bisection_transient3-search") 0 nil 0.85 nil 10 90 t "time")
+ocnPrint(?output of regtr)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "setup time:")
+ocnPrint(?output of getData("setuptime" ?result "bisection_transient3_meas-meas_search"))
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "\n#--------------------------------------------------\n")
+fprintf(of "-------------- D: HIGH -> LOW\n")
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Data to Q:")
+DtoQ2 = delay(v("data0" ?result "bisection_transient2-search") 0.425 1 'either v("rdata0" ?result "bisection_transient2-search") 0.425 1 'either)
+ocnPrint(?output of DtoQ2)
+fprintf(of "#--------------------------------------------------\n")
+
+
+fprintf(of "Clock to Q:")
+CtoQ2 = delay(v("CLK" ?result "bisection_transient2-search") 0.425 1 'rising v("rdata0" ?result "bisection_transient2-search") 0.425 1 'either)
+ocnPrint(?output of CtoQ2)
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "Q rise time:")
+regtr2 = riseTime(v("rdata0" ?result "bisection_transient2-search") 0.85 nil 0 nil 90 10 t "time")
+ocnPrint(?output of regtr2)
+fprintf(of "#--------------------------------------------------\n")
+
+fprintf(of "hold time:")
+ocnPrint(?output of getData("setuptime" ?result "bisection_transient2_meas-meas_search"))
+fprintf(of "#--------------------------------------------------\n")
+
+
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           POWER / ENERGY       \n")
+fprintf(of "#--------------------------------------------------\n")
+regpwr = 0.85*average(abs(i("Vdreg:p" ?result "transient1-tran")))
+regeng = 0.85*average(abs(i("Vdreg:p" ?result "transient1-tran")))*8n
+fprintf(of "Pwr  = %e\n" regpwr)
+fprintf(of "Engy = %e\n\n" regeng)
+
+close(of)
+
+; end of file

@@ -1,0 +1,124 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./run.txt" "w")
+
+analysis('dc ?saveOppoint t ?oppoint "rawfile")
+run()
+
+ ; Determine static noise margin using the minus one point strategy
+selectResults('dc)
+gvtc1 = deriv(v("outINV"))
+
+;------------------------------------------------
+; determine input/output margins for gate 1
+;------------------------------------------------
+; verifies both positive and negative gains
+vil1 = cross(gvtc1 -1 1 'either)
+vih1 = cross(gvtc1 -1 2 'either)
+if( vil1 == nil (vil1 = cross(gvtc1 1 1 'either)))
+if( vih1 == nil (vih1 = cross(gvtc1 1 2 'either)))
+
+; considerating gate unateness, sometimes voh and vol must be swapped
+voh1 = value(v("outINV") vil1)
+vol1 = value(v("outINV") vih1)
+if( voh1 < vol1 then
+    aux = voh1
+    voh1 = vol1
+    vol1 = aux
+)
+
+;------------------------------------------------
+; calculate noise margin
+;------------------------------------------------
+nmh_1 = voh1 - vih1
+nml_1 = vil1 - vol1
+
+;------------------------------------------------
+; print results to the output file
+;------------------------------------------------
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           INVERTER DC       \n")
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "VIL = %10.6f\n" vil1)
+fprintf(of "VIH = %10.6f\n" vih1)
+fprintf(of "VOL = %10.6f\n" vol1)
+fprintf(of "VOH = %10.6f\n" voh1)
+fprintf(of "NMH = %10.6f\n" nmh_1)
+fprintf(of "NML = %10.6f\n\n" nml_1)
+
+; desVar("vdd" 0.85)
+; halfVdd = evalstring(desVar("vdd"))/2.0
+analysis('tran ?stop 20n)
+run()
+
+selectResults('tran)
+; delay(?wf1 v("/D1" ?result "tran") ?value1 0.5 ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 0.5 ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+; o de cima esta errado, certo:
+; halfVdd = evalstring(desVar("simVdd"))/2.0
+; delay(?wf1 v("/D1" ?result "tran") ?value1 halfVdd ?edge1 "rising"  ?nth1 1 ?td1 0.0 ?wf2 v("/CMPLT32" ?result "tran") ?value2 halfVdd ?edge2 "rising"  ?nth2 1 ?td2 nil ?stop nil ?multiple nil)
+
+; method 1
+; invtr = riseTime(v("outINV") 0 nil 0.85 nil 10 90 t "time")
+; invtf = riseTime(v("outINV") 0 nil 0.85 nil 90 10 t "time")
+; ocnPrint(?output of invtr)
+; ocnPrint(?output of invtf)
+
+; method 2
+; nandtr0 = cross(v("outNAND") 0.085 2 'rising)
+; nandtr1 = cross(v("outNAND") 0.765 2 'rising)
+; nandtr  = nandtr1-nandtr0
+; nandtf0 = cross(v("outNAND") 0.765 2 'falling)
+; nandtf1 = cross(v("outNAND") 0.085 2 'falling)
+; nandtf  = nandtf1-nandtf0
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           INVERTER TRAN       \n")
+fprintf(of "#--------------------------------------------------\n")
+
+
+invtr = riseTime(v("outINV") 0 nil 0.85 nil 10 90 t "time")
+invtf = riseTime(v("outINV") 0.85 nil 0 nil 90 10 t "time")
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           RISE TIME       \n")
+fprintf(of "#--------------------------------------------------\n")
+ocnPrint(?output of invtr)
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           FALL TRAN       \n")
+fprintf(of "#--------------------------------------------------\n")
+ocnPrint(?output of invtf)
+
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           PROPAGATION DELAY       \n")
+fprintf(of "#--------------------------------------------------\n")
+for(xx 1 5
+invtplh = delay(v("outBUF0") 0.425 xx 'falling v("outINV") 0.425 xx 'rising)
+invtphl = delay(v("outBUF0") 0.425 xx 'rising v("outINV") 0.425 xx 'falling)
+fprintf(of "#--- CROSS --------- VALUE(S) ---#\n")
+fprintf(of "Tphl: %n            %e\n" xx invtphl)
+fprintf(of "Tplh: %n            %e\n" xx invtplh)
+)
+fprintf(of "Tp   = %e\n" (invtphl+invtplh)/2)
+
+fprintf(of "#--------------------------------------------------\n")
+fprintf(of "#-           POWER / ENERGY       \n")
+fprintf(of "#--------------------------------------------------\n")
+invpwr = 0.85*average(abs(i("Vdinv:p" ?result "tran")))
+inveng = 0.85*average(abs(i("Vdinv:p" ?result "tran")))*20n
+fprintf(of "Pwr  = %e\n" invpwr)
+fprintf(of "Engy = %e\n\n" inveng)
+
+close(of)
+
+; end of file
