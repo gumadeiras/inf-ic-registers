@@ -1,0 +1,96 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./run.txt" "w")
+desVar( "DelayTime" 0ps)
+
+analysis('tran ?stop 10n)
+run()
+
+selectResults('tran)
+
+paramAnalysis( "DelayTime" ?start 0ps ?stop 50ps ?step 1ps)
+; paramAnalysis( "DelayTime" ?center 3.025ns ?span 150ps)
+paramRun()
+
+foreach(currentwave famGetSweepValues(v("rdata0" ?result "tran"))
+    temp = famValue(v("rdata0" ?result "tran") currentwave)
+    ; ocnPrint(?output of temp)
+)
+
+
+DtoQ1 = delay(v("data0" ?result "tran") 0.425 1 'either v("rdata0" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoQ1)
+
+CtoQ1 = delay(v("CLK" ?result "tran") 0.425 1 'rising v("rdata0" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of CtoQ1)
+
+DtoC = delay(v("data0" ?result "tran") 0.425 1 'rising v("CLK" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoC)
+
+regtr = riseTime(v("rdata0" ?result "tran") 0 nil 0.85 nil 10 90 t "time")
+ocnPrint(?output of regtr)
+
+
+
+
+DtoQ10 = delay(v("data1" ?result "tran") 0.425 1 'either v("rdata1" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoQ10)
+
+CtoQ10 = delay(v("CLK" ?result "tran") 0.425 1 'rising v("rdata1" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of CtoQ10)
+
+DtoC0 = delay(v("data1" ?result "tran") 0.425 1 'rising v("CLK" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoC0)
+
+regtr0 = riseTime(v("rdata1" ?result "tran") 0.85 nil 0 nil 90 10 t "time")
+ocnPrint(?output of regtr0)
+
+
+
+
+DtoQ101 = delay(v("data01" ?result "tran") 0.425 1 'either v("rdata01" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoQ101)
+
+CtoQ101 = delay(v("CLK" ?result "tran") 0.425 1 'rising v("rdata01" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of CtoQ101)
+
+DtoC01 = delay(v("data01" ?result "tran") 0.425 1 'rising v("CLK" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoC01)
+
+regtr101 = riseTime(v("rdata01" ?result "tran") 0.85 nil 0 nil 90 10 t "time")
+ocnPrint(?output of regtr101)
+
+
+
+
+DtoQ1011 = delay(v("data11" ?result "tran") 0.425 1 'either v("rdata11" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoQ1011)
+
+CtoQ1011 = delay(v("CLK" ?result "tran") 0.425 1 'rising v("rdata11" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of CtoQ1011)
+
+DtoC1011 = delay(v("data11" ?result "tran") 0.425 1 'rising v("CLK" ?result "tran") 0.425 1 'either)
+ocnPrint(?output of DtoC1011)
+
+regtr1011 = riseTime(v("rdata11" ?result "tran") 0.85 nil 0 nil 90 10 t "time")
+ocnPrint(?output of regtr1011)
+
+
+; regpwr = 0.85*average(abs(i("Vdreg:p" ?result "transient3-tran")))
+; regeng = 0.85*average(abs(i("Vdreg:p" ?result "transient3-tran")))*10n
+; fprintf(of "Pwr  = %e\n" regpwr)
+; fprintf(of "Engy = %e\n\n" regeng)
+
+close(of)
+
+; end of file

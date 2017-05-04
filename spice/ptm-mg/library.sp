@@ -11,7 +11,7 @@ simulator lang=spice
 ****************************************************
 .SUBCKT inv vi vo cvdd cgnd
 Mn0 vo vi cgnd cgnd nfet
-Mp0 vo vi cvdd cvdd pfet
+Mp0 vo vi cvdd cvdd pfet nfin=2
 .ENDS 
 
 ****************************************************
@@ -20,8 +20,8 @@ Mp0 vo vi cvdd cvdd pfet
 .SUBCKT tsinv vi vo nclk pclk cvdd cgnd
 Mn0 nnode vi cgnd cgnd nfet
 Mn1 vo nclk nnode cgnd nfet
-Mp0 pnode vi cvdd cvdd pfet
-Mp1 vo pclk pnode cvdd pfet
+Mp0 pnode vi cvdd cvdd pfet nfin=2
+Mp1 vo pclk pnode cvdd pfet nfin=2
 .ENDS 
 
 ****************************************************
@@ -50,8 +50,8 @@ Mp0 drain gate source cvdd pfet
 .SUBCKT nand2 in0 in1 out cvdd cgnd
 Mn0 out in0 nnode cgnd nfet
 Mn1 nnode in1 cgnd cgnd nfet
-Mp0 out in0 cvdd cvdd pfet
-Mp1 out in1 cvdd cvdd pfet
+Mp0 out in0 cvdd cvdd pfet nfin=2
+Mp1 out in1 cvdd cvdd pfet nfin=2
 .ENDS
 
 ****************************************************
@@ -116,8 +116,8 @@ Mp1 out0 clk pnode0 cvdd pfet
 Mn0 out0 data cgnd cgnd nfet
 * SECOND STAGE
 Mp2 out1 clk cvdd cvdd pfet
-Mn1 out1 out0 nnode0 cgnd nfet
-Mn2 nnode0 clk cgnd cgnd nfet
+Mn1 out1 out0 nnode0 cgnd nfet nfin=2
+Mn2 nnode0 clk cgnd cgnd nfet nfin=2
 * THIRD STAGE
 Mp3 out2 out1 cvdd cvdd pfet
 Mn3 out2 clk nnode1 cgnd nfet
@@ -149,8 +149,8 @@ XNAND3 out2 out4 out3 cvdd cgnd nand2
 XNAND4 out1 out3 out4 cvdd cgnd nand2
 * MASTER
 XNAND5 out  clk  out5 cvdd cgnd nand2
-*XINV6  clk  out6      inv
-XNAND7 out2 out4 out7 cvdd cgnd nand2
+XINV6  clk  out6      cvdd cgnd inv
+XNAND7 out6 out4 out7 cvdd cgnd nand2
 XNAND8 out5 out7 out  cvdd cgnd nand2
 .ENDS
 
@@ -172,54 +172,79 @@ XNAND8 out  out6 out8 cvdd cgnd nand2
 ************** REGISTER - POWERPC DFF
 ****************************************************
 .SUBCKT powerpc data out clk cvdd cgnd
-XINV0 clk nclk inv
-XTG1 out1 clk nclk data tgp
-XINV2 out1 out2 inv
-XTSINV3 out2 out3 clk nclk tsinv
-XTG4 out2 clk nclk out4 tgn
-XINV5 out4 out inv
-XTSINV6 out out4 nclk clk tsinv
+XINV0 clk nclk cvdd cgnd inv
+XTG1 out1 clk nclk data cvdd cgnd tgp
+XINV2 out1 out2 cvdd cgnd inv
+XTSINV3 out2 out3 clk nclk cvdd cgnd tsinv
+XTG4 out2 clk nclk out4 cvdd cgnd tgn
+XINV5 out4 out cvdd cgnd inv
+XTSINV6 out out4 nclk clk cvdd cgn tsinv
 .ENDS
 
 ****************************************************
 ************** REGISTER - RACEFREE NAND INV DFF
 ****************************************************
 .SUBCKT racefreenand data out clk cvdd cgnd
-XNAND1 out4  out2  out1 nand2
-XNAND2 data  out5  out2 nand2
-XINV3  out1  nout1      inv
-XNAND4 out1  clk   out4 nand2
-XNAND5 nout1 clk   out5 nand2
-XNAND6 out4  out7  out  nand2
-XNAND7 out   out5  out7 nand2
+XNAND1 out4  out2  out1 cvdd cgnd nand2
+XNAND2 data  out5  out2 cvdd cgnd nand2
+XINV3  out1  nout1      cvdd cgnd inv
+XNAND4 out1  clk   out4 cvdd cgnd nand2
+XNAND5 nout1 clk   out5 cvdd cgnd nand2
+XNAND6 out4  out7  out  cvdd cgnd nand2
+XNAND7 out   out5  out7 cvdd cgnd nand2
 .ENDS
 
 ****************************************************
 ************** REGISTER - SINGLEPASS DFF
 ****************************************************
 .SUBCKT singlepass data out clk cvdd cgnd
-Mn1 out1 clk data pfet
-Mn2 out1 clk out4 nfet
-XINV3 out1 out3 inv
-XINV4 out3 out4 inv
-Mn5 out5 clk out3 nfet
-Mn6 out5 clk out8 pfet
-XINV7 out5 out inv
-XINV8 out out8 inv
+Mn1 out1 clk data cvdd pfet nfin=3
+Mn2 out1 clk out4 cgnd nfet
+XINV3 out1 out3 cvdd cgnd inv
+XINV4 out3 out4 cvdd cgnd inv
+Mn5 out5 clk out3 cgnd nfet nfin=3
+Mn6 out5 clk out8 cvdd pfet
+XINV7 out5 out cvdd cgnd inv
+XINV8 out out8 cvdd cgnd inv
 .ENDS
 
 ****************************************************
 ************** REGISTER - TG INV DFF
 ****************************************************
 .SUBCKT tgregister data out clk cvdd cgnd
-XINV0 clk nclk inv
-XTG1 out1 clk nclk data tgp
-XTG2 out1 clk nclk out4 tgn
-XINV3 out1 out3 inv
-XINV4 out3 out4 inv
-XTG5 out3 clk nclk out5 tgn
-XTG6 out8 clk nclk out6 tgp
-XINV7 out5 out inv
-XINV8 out out8 inv
+XINV0 clk nclk cvdd cgnd inv
+XTG1 out1 clk nclk data cvdd cgnd tgp
+XTG2 out1 clk nclk out4 cvdd cgnd tgn
+XINV3 out1 out3 cvdd cgnd inv
+XINV4 out3 out4 cvdd cgnd inv
+XTG5 out5 clk nclk out3 cvdd cgnd tgn
+XTG6 out6 clk nclk out8 cvdd cgnd tgp
+XINV7 out5 out cvdd cgnd inv
+XINV8 out out8 cvdd cgnd inv
 .ENDS
 
+****************************************************
+************** REGISTER - MUX XNOR DFF
+****************************************************
+.SUBCKT xnormux data out clk cvdd cgnd
+XINV5 clk nclk cvdd cgnd inv
+Mp11 pnode10 nclk cvdd cvdd pfet nfin=2
+Mp12 out1 data pnode10 cvdd pfet nfin=2
+Mp13 pnode11 clk cvdd cvdd pfet nfin=2
+Mp14 out1 out6 pnode11 cvdd pfet nfin=2
+Mn21 out1 data nnode20 cgnd nfet
+Mn22 nnode20 clk cgnd cgnd nfet
+Mn23 out1 out6 nnode21 cgnd nfet
+Mn24 nnode21 nclk cgnd cgnd nfet
+XINV6 out1 out6 cvdd cgnd inv
+* SECOND MUX
+Mp211 pnode01 clk cvdd cvdd pfet nfin=2
+Mp212 in8 out pnode01 cvdd pfet nfin=2
+Mp213 pnode12 nclk cvdd cvdd pfet nfin=2
+Mp214 in8 out6 pnode12 cvdd pfet nfin=2
+Mn221 in8 out nnode02 cgnd nfet
+Mn222 nnode02 nclk cgnd cgnd nfet
+Mn223 in8 out6 nnode22 cgnd nfet
+Mn224 nnode22 clk cgnd cgnd nfet
+XINV7 in8 out cvdd cgnd inv
+.ENDS

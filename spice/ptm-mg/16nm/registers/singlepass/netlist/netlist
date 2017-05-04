@@ -15,9 +15,9 @@ simulator lang=spice
 ****************************************************
 ************** INSTANCES
 ****************************************************
-XBUF01 databuffer0 data0 vdd! gnd! buf
+XBUF0 databuffer0 data0 vdd! gnd! buf
 
-XNANDIV0 data0 rdata0 CLK X0 gnd! nandinv
+XSP0 data0 rdata0 CLK X0 gnd! singlepass
 
 XBUF02 data0 E1 vdd! gnd! buf
 XBUF03 data0 E1 vdd! gnd! buf

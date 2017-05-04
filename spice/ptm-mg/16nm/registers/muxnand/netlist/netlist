@@ -17,7 +17,7 @@ simulator lang=spice
 ****************************************************
 XBUF01 databuffer0 data0 vdd! gnd! buf
 
-XNANDIV0 data0 rdata0 CLK X0 gnd! nandinv
+XMUXNAND0 data0 rdata0 CLK X0 gnd! muxnand
 
 XBUF02 data0 E1 vdd! gnd! buf
 XBUF03 data0 E1 vdd! gnd! buf
@@ -52,7 +52,6 @@ vclk CLK gnd PWL
 
 * initial data value on register out
 .IC v(rdata0) = 0
-+   v(rdata1) = 0
 
 * data
 vdata0 databuffer0 gnd PWL

@@ -161,14 +161,14 @@ ocnPrint(?output of CtoQ2)
 fprintf(of "#--------------------------------------------------\n")
 
 fprintf(of "Q fall time:")
-tf01 = cross(v("rdata0" ?result "bisection_transient2-search") 0.765 1 'falling)
-tf11 = cross(v("rdata0" ?result "bisection_transient2-search") 0.085 1 'falling)
+tf01 = cross(v("rdata0" ?result "bisection_transient3-search") 0.765 1 'falling)
+tf11 = cross(v("rdata0" ?result "bisection_transient3-search") 0.085 1 'falling)
 tf01  = tf11-tf01
 ocnPrint(?output of tf01)
 fprintf(of "#--------------------------------------------------\n")
 
 fprintf(of "hold time:")
-ocnPrint(?output of getData("setuptime" ?result "bisection_transient2_meas-meas_search"))
+ocnPrint(?output of getData("setuptime" ?result "bisection_transient3_meas-meas_search"))
 fprintf(of "#--------------------------------------------------\n")
 
 
