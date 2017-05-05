@@ -1,0 +1,168 @@
+* finfet testbench
+
+simulator lang=spectre
+
+
+simulator lang=spice
+
+.lib '../../../../../../modelfiles/models' ptm16lstp
+.include '../../../../../../library.sp'
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 databuffer0 data0 vdd! gnd! buf
+
+XBUF02 data0 E1 vdd! gnd! buf
+XBUF03 data0 E1 vdd! gnd! buf
+XBUF04 data0 E1 vdd! gnd! buf
+Xtgregister0 data0 rdata0 CLK X0 gnd! tgregister
+
+XBUF11 rdata0 E0 vdd! gnd! buf
+XBUF12 rdata0 E0 vdd! gnd! buf
+XBUF13 rdata0 E0 vdd! gnd! buf
+XBUF14 rdata0 E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+
+
+XBUF00 databuffer1 data1 vdd! gnd! buf
+
+XBUF020 data1 E2 vdd! gnd! buf
+XBUF030 data1 E2 vdd! gnd! buf
+XBUF040 data1 E2 vdd! gnd! buf
+Xtgregister00 data1 rdata1 CLK vdd! gnd! tgregister
+
+XBUF110 rdata1 E3 vdd! gnd! buf
+XBUF120 rdata1 E3 vdd! gnd! buf
+XBUF130 rdata1 E3 vdd! gnd! buf
+XBUF140 rdata1 E3 vdd! gnd! buf
+
+C00 E2 gnd! 1fF
+C10 E3 gnd! 1fF
+
+
+
+
+
+
+
+XBUF003 databuffer01 data01 vdd! gnd! buf
+
+XBUF023 data01 E12 vdd! gnd! buf
+XBUF033 data01 E12 vdd! gnd! buf
+XBUF043 data01 E12 vdd! gnd! buf
+Xtgregister03 data01 rdata01 CLK X0 gnd! tgregister
+
+XBUF113 rdata01 E02 vdd! gnd! buf
+XBUF123 rdata01 E02 vdd! gnd! buf
+XBUF133 rdata01 E02 vdd! gnd! buf
+XBUF143 rdata01 E02 vdd! gnd! buf
+
+C03 E02 gnd! 1fF
+C13 E12 gnd! 1fF
+
+
+XBUF002 databuffer11 data11 vdd! gnd! buf
+
+XBUF0202 data11 E23 vdd! gnd! buf
+XBUF0302 data11 E23 vdd! gnd! buf
+XBUF0402 data11 E23 vdd! gnd! buf
+Xtgregister002 data11 rdata11 CLK vdd! gnd! tgregister
+
+XBUF1102 rdata11 E33 vdd! gnd! buf
+XBUF1202 rdata11 E33 vdd! gnd! buf
+XBUF1302 rdata11 E33 vdd! gnd! buf
+XBUF1402 rdata11 E33 vdd! gnd! buf
+
+C002 E23 gnd! 1fF
+C102 E33 gnd! 1fF
+
+
+
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+vclk CLK gnd PWL
++ 0s          0v 
++ 1.0n        0v
++ 1.05n       'vd'
++ 4.0n        'vd'
++ 4.05n       0v
+
+* initial data value on register out
+.IC v(rdata0) = 0
+.IC v(rdata1) = 0.85v
+.IC v(rdata01) = 0.85v
+.IC v(rdata11) = 0
+
+
+* data
+vdata0 databuffer0 gnd PWL
++ 0ns                     0v 
++ '0.95ns+DelayTime'      0v 
++ '1ns+DelayTime'        'vd'
+
+
+vdata1 databuffer1 gnd PWL
++ 0ns                    'vd'
++ '0.95ns+DelayTime'     'vd' 
++ '1ns+DelayTime'        0v
+
+vdata01 databuffer01 gnd PWL
++ 0ns                     0v 
++ '0.95ns+DelayTime'      0v 
++ '1ns+DelayTime'        'vd'
+
+
+vdata11 databuffer11 gnd PWL
++ 0ns                    'vd'
++ '0.95ns+DelayTime'     'vd' 
++ '1ns+DelayTime'        0v
+
+
+* search parameter, lower and upper limits.
+
+.Tran 10p 5n
+
+* .Measure Tran CtoQ0    Trig v(CLK)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata0)   Val = 'vd/2' cross=1
+
+* .Measure Tran DtoQ0    Trig v(data0)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata0)   Val = 'vd/2' cross=1
+
+* * setup time value
+* .Measure Tran SetupHold0 Trig v(data0)  Val = 'vd/2' cross=1
+* +                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+
+* .Measure Tran CtoQ1    Trig v(CLK)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
+
+* .Measure Tran DtoQ1    Trig v(data1)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
+
+* * setup time value
+* .Measure Tran SetupHold1 Trig v(data1)  Val = 'vd/2' cross=1
+* +                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+.END
+ 
