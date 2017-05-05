@@ -84,8 +84,8 @@ Vgnd gnd! 0 0v
 ****************************************************
 ************** STIMULUS
 ****************************************************
-VIN0 CLK 0 0 pulse 0 0.85 0 50p 50p 2n 4n 
-VIN1 datain 0 0 pulse 0 0.85 3n 50p 50p 4n 8n 
+VIN0 CLK 0 0 pulse 0 0.85 0 1p 1p 2n 4n 
+VIN1 datain 0 0 pulse 0 0.85 3n 1p 1p 4n 8n 
 
 * .DC VIN 0 1.8 0.01 
 

@@ -52,11 +52,11 @@ Vdtgxor vdd! X4 dc=0v
 ****************************************************
 ************** STIMULUS
 ****************************************************
-VIN0 A0 0 0 pulse 0 vdd 0 50p 50p 2n 4n
-VIN1 A1 0 0 pulse 0 vdd 0 50p 50p 2n 4n
-VIN2 A2 0 0 pulse 0 vdd 0 50p 50p 2n 4n
-VIN3 A3 0 0 pulse 0 vdd 0 50p 50p 2n 4n
-VIN4 A4 0 0 pulse 0 vdd 0 50p 50p 2n 4n
+VIN0 A0 0 0 pulse 0 vdd 0 1p 1p 2n 4n
+VIN1 A1 0 0 pulse 0 vdd 0 1p 1p 2n 4n
+VIN2 A2 0 0 pulse 0 vdd 0 1p 1p 2n 4n
+VIN3 A3 0 0 pulse 0 vdd 0 1p 1p 2n 4n
+VIN4 A4 0 0 pulse 0 vdd 0 1p 1p 2n 4n
 VIN5 H 0 dc=0.85v
 VIN6 L 0 dc=0v
 

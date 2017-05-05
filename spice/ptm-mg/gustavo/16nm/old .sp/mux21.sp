@@ -84,7 +84,7 @@ Vgnd gnd! 0 0v
 ****************************************************
 VIN0 A 0 dc=0v
 VIN1 B 0 dc=0.85v
-VIN2 C 0 0 pulse 0 0.85 0 50p 50p 4n 8n 
+VIN2 C 0 0 pulse 0 0.85 0 1p 1p 4n 8n 
 
 * .DC VIN 0 1.8 0.01 
 

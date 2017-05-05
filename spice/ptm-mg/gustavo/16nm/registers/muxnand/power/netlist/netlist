@@ -45,8 +45,8 @@ Vdreg vdd! X0 dc=0v
 ************** STIMULUS
 ****************************************************
 * clock
-VIN0 CLK 0 0 pulse 0 0.85 250p 50p 50p 2n 4n 
-VIN1 databuffer0 0 0 pulse 0 0.85 0 50p 50p 3n 6n 
+VIN0 CLK 0 0 pulse 0 0.85 21p 1p 1p 2n 4n 
+VIN1 databuffer0 0 0 pulse 0 0.85 0 1p 1p 3n 6n 
 
 .IC v(rdata0) = 0
 

@@ -140,8 +140,8 @@ vdata0 databuffer0 gnd PWL
 
 .Tran 10p 8n
 
-vclk CLK gnd 0 pulse 0 0.85 0 50p 50p 1n 2n
-vdata0 databuffer0 gnd 0 pulse 0 0.85 0 50p 50p 2n 4n
+vclk CLK gnd 0 pulse 0 0.85 0 1p 1p 1n 2n
+vdata0 databuffer0 gnd 0 pulse 0 0.85 0 1p 1p 2n 4n
 
 * initial data value on register out
 .IC v(rdata0) = 0

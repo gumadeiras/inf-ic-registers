@@ -38,7 +38,7 @@ Vgnd gnd! 0 0v
 ****************************************************
 VINA A 0 dc=0.85v
 Vdummy vdd! X dc=0v
-VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+VIN1 B 0 0 pulse 0 0.85 0 1p 1p 2n 4n
 
 .tran 10p 100n sweep var 2 5 1
 
@@ -63,7 +63,7 @@ VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 
 
 * .alter case2: A pulse B high
-* VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
+* VINA A 0 0 pulse 0 0.85 0 1p 1p 2n 4n
 * VIN1 B 0 dc=0.85v
 
 * .meas tran trise_nand2 trig v(F) val='vd*0.1' rise='var'
@@ -82,8 +82,8 @@ VIN1 B 0 0 pulse 0 0.85 0 50p 50p 2n 4n
 
 
 * .alter case3: A pulse B pulse
-* VINA A 0 0 pulse 0 0.85 0 50p 50p 2n 4n
-* VIN1 B 0 0 pulse 0 0.85 0 50p 50p 6n 12n
+* VINA A 0 0 pulse 0 0.85 0 1p 1p 2n 4n
+* VIN1 B 0 0 pulse 0 0.85 0 1p 1p 6n 12n
 
 * .meas tran trise_nand2 trig v(F) val='vd*0.1' rise='var'
 * +                      targ v(F) val='vd*0.9' rise='var'
