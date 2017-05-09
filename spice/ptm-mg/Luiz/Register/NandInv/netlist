@@ -1,7 +1,8 @@
-*mux based master slave register
+*Nand INV gustavo
 simulator lang=spice
+
 .lib '../../../modelfiles/models' ptm16lstp
-.lib '../../../library.sp'
+.lib '../../../library' standardCells
 
 .option post=2
 .global gnd! vdd!

@@ -1,0 +1,631 @@
+
+Cadence (R) Virtuoso (R) Spectre (R) Circuit Simulator
+Version 14.1.0.988.isr20 32bit -- 8 May 2016
+Copyright (C) 1989-2016 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence, Virtuoso and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: luiz.enger   Host: ufrgs-server-10   HostID: 368F2655   PID: 15324
+Memory  available: 497.6844 MB  physical: 33.7361 GB
+CPU Type: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
+          Processor PhysicalID CoreID Frequency Load
+              0         1        0     2261.1     6.0
+              1         0        0     2261.1     7.5
+              2         1        1     2261.1     5.9
+              3         0        1     2261.1     6.0
+              4         1        2     2261.1     6.0
+              5         0        2     2261.1     6.8
+              6         1        3     2261.1     6.2
+              7         0        3     2261.1     7.2
+              8         1        0     2261.1     6.8
+              9         0        0     2261.1     9.0
+             10         1        1     2261.1     7.3
+             11         0        1     2261.1     7.4
+             12         1        2     2261.1     7.4
+             13         0        2     2261.1     8.8
+             14         1        3     2261.1    15.5
+             15         0        3     2261.1    11.5
+
+
+Simulating `input.scs' on ufrgs-server-10 at 2:03:52 PM, Tue May 9, 2017 (process id: 15324).
+Current working directory: /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/Luiz/Register/NandInv
+Command line:
+    /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/bin/spectre  \
+        input.scs +escchars +log delay=1.15e-10/psf/spectre.out  \
+        +inter=mpsc +mpssession=spectre0_14442_1 -format psfxl -raw  \
+        delay=1.15e-10/psf +lqtimeout 900 -maxw 5 -maxn 5
+spectre pid = 15324
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libinfineon_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_o_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libsparam_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libstmodels_sh.so ...
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/Luiz/Register/NandInv/input.scs
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/models
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/lstp/16nfet.pm
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/lstp/16pfet.pm
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/param.inc
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/library
+Time for NDB Parsing: CPU = 160.977 ms, elapsed = 354.332 ms.
+Time accumulated: CPU = 195.97 ms, elapsed = 354.343 ms.
+Peak resident memory used = 28.9 Mbytes.
+
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/discipline.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/disciplines.vams
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.vams
+
+Warning from spectre during hierarchy flattening.
+    WARNING (SFE-30): "input.scs" 8: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
+Warning from spectre in `nfet':`xinv0.Mn0', in `inv':`xinv0', during hierarchy flattening.
+    WARNING (SFE-32): "../../../modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xinv0.Mp0', in `inv':`xinv0', during hierarchy flattening.
+    WARNING (SFE-32): "../../../modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+
+Time for Elaboration: CPU = 36.993 ms, elapsed = 131.751 ms.
+Time accumulated: CPU = 232.963 ms, elapsed = 486.402 ms.
+Peak resident memory used = 32.3 Mbytes.
+
+Time for EDB Visiting: CPU = 3 ms, elapsed = 2.45404 ms.
+Time accumulated: CPU = 235.963 ms, elapsed = 489.165 ms.
+Peak resident memory used = 32.7 Mbytes.
+
+
+Global user options:
+
+Circuit inventory:
+              nodes 24
+            bsimcmg 40    
+          capacitor 1     
+            vsource 5     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+Time for parsing: CPU = 4.999 ms, elapsed = 5.46503 ms.
+Time accumulated: CPU = 240.962 ms, elapsed = 494.922 ms.
+Peak resident memory used = 33.7 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+Entering remote command mode using MPSC service (spectre, ipi, v0.0, spectre0_14442_1, ).
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 131.98 ms, elapsed = 131.752 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1
+
+Notice from spectre at time = 3.66796 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1.
+
+Notice from spectre at time = 3.74796 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1...
+
+Notice from spectre at time = 3.82796 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1....
+
+Notice from spectre at time = 3.90796 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             331
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 131.98 ms, elapsed = 131.826 ms.
+Intrinsic tran analysis time:    CPU = 436.934 ms, elapsed = 438.834 ms.
+Total time required for tran analysis `timeSweep': CPU = 573.913 ms, elapsed = 576.876 ms.
+Time accumulated: CPU = 821.874 ms, elapsed = 1.99954 s.
+Peak resident memory used = 36.2 Mbytes.
+
+
+Notice from spectre.
+    2 notices suppressed.
+Warning from spectre.
+    WARNING (CMI-2178): Vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 127.981 ms, elapsed = 245.009 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             332
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 127.981 ms, elapsed = 245.097 ms.
+Intrinsic tran analysis time:    CPU = 399.939 ms, elapsed = 802.359 ms.
+Total time required for tran analysis `timeSweep': CPU = 531.919 ms, elapsed = 1.0524 s.
+Time accumulated: CPU = 1.36479 s, elapsed = 5.17916 s.
+Peak resident memory used = 36.5 Mbytes.
+
+
+Warning from spectre.
+    WARNING (CMI-2178): Vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 119.982 ms, elapsed = 119.722 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......
+
+Notice from spectre at time = 3.64384 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1.
+
+Notice from spectre at time = 3.72384 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1..
+
+Notice from spectre at time = 3.80384 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1....
+
+Notice from spectre at time = 3.88384 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             333
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 119.982 ms, elapsed = 119.816 ms.
+Intrinsic tran analysis time:    CPU = 427.936 ms, elapsed = 431.32 ms.
+Total time required for tran analysis `timeSweep': CPU = 550.917 ms, elapsed = 556.718 ms.
+Time accumulated: CPU = 1.92871 s, elapsed = 9.27286 s.
+Peak resident memory used = 36.6 Mbytes.
+
+
+Notice from spectre.
+    2 notices suppressed.
+Warning from spectre.
+    WARNING (CMI-2178): Vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 118.982 ms, elapsed = 119.185 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......
+
+Notice from spectre at time = 3.62436 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1
+
+Notice from spectre at time = 3.70436 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1..
+
+Notice from spectre at time = 3.78436 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1...
+
+Notice from spectre at time = 3.86436 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_si.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             330
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 118.982 ms, elapsed = 119.243 ms.
+Intrinsic tran analysis time:    CPU = 404.939 ms, elapsed = 408.671 ms.
+Total time required for tran analysis `timeSweep': CPU = 526.921 ms, elapsed = 532.899 ms.
+Time accumulated: CPU = 2.46462 s, elapsed = 12.1518 s.
+Peak resident memory used = 36.6 Mbytes.
+
+
+Notice from spectre.
+    2 notices suppressed.
+Warning from spectre.
+    WARNING (CMI-2178): Vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 87.986 ms, elapsed = 88.7229 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             337
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 87.986 ms, elapsed = 88.7809 ms.
+Intrinsic tran analysis time:    CPU = 407.938 ms, elapsed = 410.335 ms.
+Total time required for tran analysis `timeSweep': CPU = 500.924 ms, elapsed = 503.978 ms.
+Time accumulated: CPU = 2.97555 s, elapsed = 14.9554 s.
+Peak resident memory used = 36.7 Mbytes.
+
+
+Warning from spectre.
+    WARNING (CMI-2178): Vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 4 ns)
+****************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `timeSweep'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xNandInvReg.XNAND4.Mn1.mnfet:int_di) = -5.56595 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 127.981 ms, elapsed = 127.954 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 4 ns
+    step = 2 ps
+    maxstep = 80 ps
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   4       (current)
+                 save   24      (voltage)
+
+....
+
+Notice from spectre at time = 294.323 ps during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XNAND7.Mn1.mnfet:int_si.
+
+......9......8......7......6......5......4......3......2......1.
+
+Notice from spectre at time = 3.76103 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1...
+
+Notice from spectre at time = 3.84103 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1....
+
+Notice from spectre at time = 3.92103 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+
+......9......8......7......6......5......4......3......2......1......
+
+Notice from spectre at time = 4 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xNandInvReg.XINV5.Mn0.mnfet:int_di.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             332
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 127.981 ms, elapsed = 128.012 ms.
+Intrinsic tran analysis time:    CPU = 405.938 ms, elapsed = 408.121 ms.
+Total time required for tran analysis `timeSweep': CPU = 535.918 ms, elapsed = 541.161 ms.
+Time accumulated: CPU = 3.52346 s, elapsed = 17.7222 s.
+Peak resident memory used = 36.8 Mbytes.
+
+Spectre received SIGTERM.
+
+Error found by spectre.
+    ERROR (SPECTRE-25): Killed by user.
+
+
+Aggregate audit (2:04:29 PM, Tue May 9, 2017):
+Time used: CPU = 3.52 s, elapsed = 37.3 s, util. = 9.45%.
+Time spent in licensing: elapsed = 157 ms.
+Peak memory used = 36.8 Mbytes.
+Simulation started at: 2:03:52 PM, Tue May 9, 2017, ended at: 2:04:29 PM, Tue May 9, 2017, with elapsed time (wall clock): 37.3 s.
+spectre completes with 1 error, 8 warnings, and 43 notices.
+spectre terminated prematurely due to fatal error.

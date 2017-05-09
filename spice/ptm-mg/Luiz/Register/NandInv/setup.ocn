@@ -6,12 +6,24 @@ setup(?precision 15)
 simulator('spectre)
 design("./netlist")
 resultsDir(".")
+/**************************************************************************************************
+*	Script varia delay de subida da entrada D através de uma análise paramétrica,             *
+*	pega a última onda da saída que subiu acima de 90% do VDD e calcula os tempos relevantes. *
+*	Para analisar entrada descendo, trocar a linha						  *
+*	"if( valY > 0.8075 then" por "if( valY < xxx then"					  *
+*												  *
+*												  *
+*	Para análise de hold time, são necessárias mudanças no netlist				  *
+***************************************************************************************************/
+
+
+
 /***************************************************************
 *                                                              *
 *                        (abLastY wave)                        *
 *                                                              *
 *          Return the last Y value from the waveform           *
-*                                                              *
+*            Funcao do Andrew                                  *
 ***************************************************************/
 (defun abLastY (wave)
   (cond
@@ -36,11 +48,11 @@ fp = outfile("./Tsetup_TCtQ.txt", "w")
 desVar( "delay" 120ps )
 analysis( 'tran ?start 1n ?stop 4n )
 
-paramAnalysis( "delay" ?start 130ps ?stop 110ps ?step -1ps )
+paramAnalysis( "delay" ?start 115ps ?stop 110ps ?step -1ps )
 paramRun()
 
-foreach( delay famGetSweepValues( v("Q" ?result "tran") )
-	wave = famValue( v("Q" ?result "tran") delay )
+foreach( delay famGetSweepValues( v("Q" ?result "tran") ) ;famGetSweepValues cria uma lista com os valores parametrizados da familia de ondas Q
+	wave = famValue( v("Q" ?result "tran") delay ) ;famValue pega a onda especifica da familia com o valor do parametro desejado
 	valY = abLastY(wave)
 	if( valY > 0.8075 then 
 		wave2 = wave 
@@ -52,7 +64,7 @@ plot(wave2)
 
 Tsetup = delay( ?wf1 leafValue( v("D" ?result "tran") "delay" delay2 ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLK" ?result "tran") "delay" delay2 ) ?value2 0.425 ?edge2 'rising ?nth2 2 )
 
-TCtQ = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delay2 ) ?value1 0.425 ?edge1 'rising ?nth1 2 ?wf2 leafValue( v("Q" ?result "tran") "delay" delay2 ) ?value2 0.425 ?edge2 'either ?nth2 1 )
+TCtQ = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delay2 ) ?value1 0.425 ?edge1 'rising ?nth1 2 ?wf2 leafValue( v("Q" ?result "tran") "delay" delay2 ) ?value2 0.425 ?edge2 'either)
 
 fprintf(fp "Setup Time last transition\n")
 fprintf(fp "T_setup = %e\n" Tsetup)

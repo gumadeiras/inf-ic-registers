@@ -5,58 +5,52 @@ Copyright (C) 1989-2016 Cadence Design Systems, Inc. All rights reserved worldwi
 
 Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
 
-User: luiz.enger   Host: ufrgs-server-10   HostID: 368F2655   PID: 2407
-Memory  available: 15.2497 GB  physical: 33.7361 GB
+User: luiz.enger   Host: ufrgs-server-10   HostID: 368F2655   PID: 13910
+Memory  available: 563.1754 MB  physical: 33.7361 GB
 CPU Type: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
           Processor PhysicalID CoreID Frequency Load
-              0         1        0     2261.1     5.9
-              1         0        0     2261.1     7.3
-              2         1        1     2261.1     5.7
-              3         0        1     2261.1     5.9
-              4         1        2     2261.1     5.9
-              5         0        2     2261.1     6.7
-              6         1        3     2261.1     6.1
-              7         0        3     2261.1     7.0
-              8         1        0     2261.1     6.5
-              9         0        0     2261.1     8.9
-             10         1        1     2261.1     7.0
-             11         0        1     2261.1     7.1
-             12         1        2     2261.1     7.3
-             13         0        2     2261.1     8.5
-             14         1        3     2261.1    15.4
-             15         0        3     2261.1    11.4
+              0         1        0     2261.1     6.0
+              1         0        0     2261.1     7.5
+              2         1        1     2261.1     5.9
+              3         0        1     2261.1     6.0
+              4         1        2     2261.1     6.0
+              5         0        2     2261.1     6.8
+              6         1        3     2261.1     6.2
+              7         0        3     2261.1     7.2
+              8         1        0     2261.1     6.8
+              9         0        0     2261.1     9.0
+             10         1        1     2261.1     7.3
+             11         0        1     2261.1     7.4
+             12         1        2     2261.1     7.4
+             13         0        2     2261.1     8.8
+             14         1        3     2261.1    15.5
+             15         0        3     2261.1    11.5
 
 
-Simulating `input.scs' on ufrgs-server-10 at 10:22:50 AM, Tue May 9, 2017 (process id: 2407).
-Current working directory: /home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/setup_hold
+Simulating `input.scs' on ufrgs-server-10 at 2:01:43 PM, Tue May 9, 2017 (process id: 13910).
+Current working directory: /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/Luiz/Register/MSMuxReg/setup_hold
 Command line:
     /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/bin/spectre  \
         input.scs +escchars +log delay=1.3e-10/psf/spectre.out  \
-        +inter=mpsc +mpssession=spectre0_1586_1 -format psfxl -raw  \
+        +inter=mpsc +mpssession=spectre0_12848_1 -format psfxl -raw  \
         delay=1.3e-10/psf +lqtimeout 900 -maxw 5 -maxn 5
-spectre pid = 2407
+spectre pid = 13910
 
 Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libinfineon_sh.so ...
 Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_o_sh.so ...
 Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_sh.so ...
 Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libsparam_sh.so ...
 Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libstmodels_sh.so ...
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/setup_hold/input.scs
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/Luiz/Register/MSMuxReg/setup_hold/input.scs
 Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/configs/spectre.cfg
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/models
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16nfet.pm
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16pfet.pm
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/param.inc
-Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/library_16nmlstp
-Time for NDB Parsing: CPU = 104.983 ms, elapsed = 153.406 ms.
-Time accumulated: CPU = 127.979 ms, elapsed = 153.413 ms.
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/models
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/lstp/16nfet.pm
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/modelfiles/lstp/16pfet.pm
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/param.inc
+Reading file:  /home/inf01185/luiz.enger/inf-ic-registers/spice/ptm-mg/library
+Time for NDB Parsing: CPU = 168.973 ms, elapsed = 348.676 ms.
+Time accumulated: CPU = 199.968 ms, elapsed = 348.686 ms.
 Peak resident memory used = 28.9 Mbytes.
-
-
-Warning from spectre in `inv', during circuit read-in.
-    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
-Warning from spectre in `MSMuxReg', during circuit read-in.
-    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
 
 Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/discipline.h
 Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/disciplines.vams
@@ -64,20 +58,20 @@ Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl
 Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.vams
 
 Warning from spectre during hierarchy flattening.
-    WARNING (SFE-30): "input.scs" 9: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
-Warning from spectre in `nfet':`xInv0.MM1', in `inv':`xInv0', during hierarchy flattening.
-    WARNING (SFE-32): "../../../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
-Warning from spectre in `pfet':`xInv0.MM0', in `inv':`xInv0', during hierarchy flattening.
-    WARNING (SFE-32): "../../../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
-Warning from spectre in `pfet':`xMuxReg.MP0', in `MSMuxReg':`xMuxReg', during hierarchy flattening.
-    WARNING (SFE-32): "../../../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+    WARNING (SFE-30): "input.scs" 7: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
+Warning from spectre in `nfet':`xInv0.Mn0', in `inv':`xInv0', during hierarchy flattening.
+    WARNING (SFE-32): "../../../../modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xInv0.Mp0', in `inv':`xInv0', during hierarchy flattening.
+    WARNING (SFE-32): "../../../../modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xMuxReg.MP0', in `tgmuxreg':`xMuxReg', during hierarchy flattening.
+    WARNING (SFE-32): "../../../../modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
 
-Time for Elaboration: CPU = 28.997 ms, elapsed = 28.5819 ms.
-Time accumulated: CPU = 156.976 ms, elapsed = 182.263 ms.
-Peak resident memory used = 32.2 Mbytes.
+Time for Elaboration: CPU = 35.995 ms, elapsed = 136.472 ms.
+Time accumulated: CPU = 236.963 ms, elapsed = 485.574 ms.
+Peak resident memory used = 32.3 Mbytes.
 
-Time for EDB Visiting: CPU = 999 us, elapsed = 1.2579 ms.
-Time accumulated: CPU = 157.975 ms, elapsed = 183.765 ms.
+Time for EDB Visiting: CPU = 2 ms, elapsed = 2.04706 ms.
+Time accumulated: CPU = 238.963 ms, elapsed = 488.028 ms.
 Peak resident memory used = 32.7 Mbytes.
 
 
@@ -97,15 +91,15 @@ Output statements:
            .measure 0     
                save 0     
 
-Time for parsing: CPU = 2 ms, elapsed = 4.06194 ms.
-Time accumulated: CPU = 160.974 ms, elapsed = 188.057 ms.
-Peak resident memory used = 33.6 Mbytes.
+Time for parsing: CPU = 4.999 ms, elapsed = 5.21398 ms.
+Time accumulated: CPU = 243.962 ms, elapsed = 493.595 ms.
+Peak resident memory used = 33.7 Mbytes.
 
 ~~~~~~~~~~~~~~~~~~~~~~
 Pre-Simulation Summary
 ~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~
-Entering remote command mode using MPSC service (spectre, ipi, v0.0, spectre0_1586_1, ).
+Entering remote command mode using MPSC service (spectre, ipi, v0.0, spectre0_12848_1, ).
 
 ****************************************************
 Transient Analysis `timeSweep': time = (0 s -> 4 ns)
@@ -115,7 +109,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.588 ms.
+DC simulation time: CPU = 87.986 ms, elapsed = 88.1639 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -146,27 +140,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -186,11 +180,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.992 ms, elapsed = 55.6381 ms.
-Intrinsic tran analysis time:    CPU = 225.967 ms, elapsed = 225.84 ms.
-Total time required for tran analysis `timeSweep': CPU = 284.958 ms, elapsed = 286.487 ms.
-Time accumulated: CPU = 448.931 ms, elapsed = 1.34354 s.
-Peak resident memory used = 36.1 Mbytes.
+Initial condition solution time: CPU = 87.986 ms, elapsed = 88.2971 ms.
+Intrinsic tran analysis time:    CPU = 339.948 ms, elapsed = 341.13 ms.
+Total time required for tran analysis `timeSweep': CPU = 431.934 ms, elapsed = 435.881 ms.
+Time accumulated: CPU = 679.896 ms, elapsed = 1.93231 s.
+Peak resident memory used = 36.2 Mbytes.
 
 
 Notice from spectre.
@@ -207,7 +201,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.991 ms, elapsed = 55.0451 ms.
+DC simulation time: CPU = 78.988 ms, elapsed = 78.342 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -238,27 +232,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -278,11 +272,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.991 ms, elapsed = 55.083 ms.
-Intrinsic tran analysis time:    CPU = 230.965 ms, elapsed = 233.696 ms.
-Total time required for tran analysis `timeSweep': CPU = 287.955 ms, elapsed = 292.701 ms.
-Time accumulated: CPU = 742.886 ms, elapsed = 3.73751 s.
-Peak resident memory used = 36.3 Mbytes.
+Initial condition solution time: CPU = 78.988 ms, elapsed = 78.4171 ms.
+Intrinsic tran analysis time:    CPU = 313.952 ms, elapsed = 593.313 ms.
+Total time required for tran analysis `timeSweep': CPU = 396.939 ms, elapsed = 676.367 ms.
+Time accumulated: CPU = 1.08883 s, elapsed = 3.85801 s.
+Peak resident memory used = 36.4 Mbytes.
 
 
 Notice from spectre.
@@ -299,7 +293,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 55.992 ms, elapsed = 55.449 ms.
+DC simulation time: CPU = 81.988 ms, elapsed = 107.216 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -330,27 +324,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -370,11 +364,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 55.992 ms, elapsed = 55.4891 ms.
-Intrinsic tran analysis time:    CPU = 222.966 ms, elapsed = 223.631 ms.
-Total time required for tran analysis `timeSweep': CPU = 278.958 ms, elapsed = 282.885 ms.
-Time accumulated: CPU = 1.02784 s, elapsed = 6.10947 s.
-Peak resident memory used = 36.4 Mbytes.
+Initial condition solution time: CPU = 81.988 ms, elapsed = 107.338 ms.
+Intrinsic tran analysis time:    CPU = 328.951 ms, elapsed = 628.131 ms.
+Total time required for tran analysis `timeSweep': CPU = 413.938 ms, elapsed = 740.718 ms.
+Time accumulated: CPU = 1.51177 s, elapsed = 5.72209 s.
+Peak resident memory used = 36.5 Mbytes.
 
 
 Notice from spectre.
@@ -391,7 +385,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 43.994 ms, elapsed = 43.366 ms.
+DC simulation time: CPU = 65.99 ms, elapsed = 66.3669 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -422,27 +416,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -462,10 +456,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 43.994 ms, elapsed = 43.4072 ms.
-Intrinsic tran analysis time:    CPU = 229.965 ms, elapsed = 232.337 ms.
-Total time required for tran analysis `timeSweep': CPU = 275.958 ms, elapsed = 279.249 ms.
-Time accumulated: CPU = 1.3118 s, elapsed = 8.47765 s.
+Initial condition solution time: CPU = 65.99 ms, elapsed = 66.443 ms.
+Intrinsic tran analysis time:    CPU = 320.951 ms, elapsed = 323.391 ms.
+Total time required for tran analysis `timeSweep': CPU = 390.939 ms, elapsed = 394.663 ms.
+Time accumulated: CPU = 1.91171 s, elapsed = 7.23946 s.
 Peak resident memory used = 36.5 Mbytes.
 
 
@@ -483,7 +477,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 42.993 ms, elapsed = 43.9939 ms.
+DC simulation time: CPU = 68.99 ms, elapsed = 69.603 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -514,27 +508,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -554,10 +548,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 42.993 ms, elapsed = 44.035 ms.
-Intrinsic tran analysis time:    CPU = 212.968 ms, elapsed = 215.138 ms.
-Total time required for tran analysis `timeSweep': CPU = 258.961 ms, elapsed = 262.861 ms.
-Time accumulated: CPU = 1.57576 s, elapsed = 9.83023 s.
+Initial condition solution time: CPU = 68.99 ms, elapsed = 69.6812 ms.
+Intrinsic tran analysis time:    CPU = 329.949 ms, elapsed = 330.568 ms.
+Total time required for tran analysis `timeSweep': CPU = 403.939 ms, elapsed = 405.433 ms.
+Time accumulated: CPU = 2.32464 s, elapsed = 10.2867 s.
 Peak resident memory used = 36.6 Mbytes.
 
 
@@ -575,7 +569,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 43.993 ms, elapsed = 43.39 ms.
+DC simulation time: CPU = 65.99 ms, elapsed = 66.51 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -606,27 +600,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -646,11 +640,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 43.993 ms, elapsed = 43.4308 ms.
-Intrinsic tran analysis time:    CPU = 211.968 ms, elapsed = 212.548 ms.
-Total time required for tran analysis `timeSweep': CPU = 255.961 ms, elapsed = 259.904 ms.
-Time accumulated: CPU = 1.83672 s, elapsed = 12.1814 s.
-Peak resident memory used = 36.6 Mbytes.
+Initial condition solution time: CPU = 65.99 ms, elapsed = 66.587 ms.
+Intrinsic tran analysis time:    CPU = 313.953 ms, elapsed = 316.022 ms.
+Total time required for tran analysis `timeSweep': CPU = 383.942 ms, elapsed = 387.581 ms.
+Time accumulated: CPU = 2.71659 s, elapsed = 13.5076 s.
+Peak resident memory used = 36.7 Mbytes.
 
 
 Notice from spectre.
@@ -667,7 +661,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 49.992 ms, elapsed = 50.055 ms.
+DC simulation time: CPU = 80.988 ms, elapsed = 80.9171 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -698,27 +692,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -738,11 +732,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 49.992 ms, elapsed = 50.0939 ms.
-Intrinsic tran analysis time:    CPU = 203.968 ms, elapsed = 207.016 ms.
-Total time required for tran analysis `timeSweep': CPU = 255.96 ms, elapsed = 260.943 ms.
-Time accumulated: CPU = 2.09768 s, elapsed = 14.5305 s.
-Peak resident memory used = 36.7 Mbytes.
+Initial condition solution time: CPU = 80.988 ms, elapsed = 80.9951 ms.
+Intrinsic tran analysis time:    CPU = 322.951 ms, elapsed = 323.482 ms.
+Total time required for tran analysis `timeSweep': CPU = 406.938 ms, elapsed = 409.585 ms.
+Time accumulated: CPU = 3.13352 s, elapsed = 16.5814 s.
+Peak resident memory used = 36.8 Mbytes.
 
 
 Notice from spectre.
@@ -759,7 +753,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.3699 ms.
+DC simulation time: CPU = 83.988 ms, elapsed = 84.3461 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -790,27 +784,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -830,10 +824,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.992 ms, elapsed = 55.4099 ms.
-Intrinsic tran analysis time:    CPU = 197.97 ms, elapsed = 201.174 ms.
-Total time required for tran analysis `timeSweep': CPU = 254.962 ms, elapsed = 260.421 ms.
-Time accumulated: CPU = 2.36064 s, elapsed = 15.8815 s.
+Initial condition solution time: CPU = 83.988 ms, elapsed = 84.4591 ms.
+Intrinsic tran analysis time:    CPU = 290.956 ms, elapsed = 293.072 ms.
+Total time required for tran analysis `timeSweep': CPU = 377.943 ms, elapsed = 382.691 ms.
+Time accumulated: CPU = 3.52346 s, elapsed = 18.6788 s.
 Peak resident memory used = 36.8 Mbytes.
 
 
@@ -851,7 +845,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.161 ms.
+DC simulation time: CPU = 85.986 ms, elapsed = 85.1562 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -882,27 +876,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -922,10 +916,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 55.992 ms, elapsed = 55.212 ms.
-Intrinsic tran analysis time:    CPU = 199.97 ms, elapsed = 201.197 ms.
-Total time required for tran analysis `timeSweep': CPU = 256.962 ms, elapsed = 260.357 ms.
-Time accumulated: CPU = 2.6236 s, elapsed = 18.2312 s.
+Initial condition solution time: CPU = 85.986 ms, elapsed = 85.2382 ms.
+Intrinsic tran analysis time:    CPU = 296.955 ms, elapsed = 582.899 ms.
+Total time required for tran analysis `timeSweep': CPU = 385.941 ms, elapsed = 673.104 ms.
+Time accumulated: CPU = 3.9174 s, elapsed = 20.5809 s.
 Peak resident memory used = 36.9 Mbytes.
 
 
@@ -943,7 +937,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 55.991 ms, elapsed = 55.2599 ms.
+DC simulation time: CPU = 83.987 ms, elapsed = 84.722 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -974,27 +968,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1014,11 +1008,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 55.991 ms, elapsed = 55.3019 ms.
-Intrinsic tran analysis time:    CPU = 193.971 ms, elapsed = 197.452 ms.
-Total time required for tran analysis `timeSweep': CPU = 250.962 ms, elapsed = 256.33 ms.
-Time accumulated: CPU = 2.87856 s, elapsed = 20.5741 s.
-Peak resident memory used = 36.9 Mbytes.
+Initial condition solution time: CPU = 84.987 ms, elapsed = 84.8429 ms.
+Intrinsic tran analysis time:    CPU = 287.956 ms, elapsed = 290.379 ms.
+Total time required for tran analysis `timeSweep': CPU = 376.943 ms, elapsed = 380.425 ms.
+Time accumulated: CPU = 4.30235 s, elapsed = 22.4533 s.
+Peak resident memory used = 37 Mbytes.
 
 
 Notice from spectre.
@@ -1035,7 +1029,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.0971 ms.
+DC simulation time: CPU = 85.987 ms, elapsed = 85.0492 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1066,27 +1060,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1106,11 +1100,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.992 ms, elapsed = 55.1369 ms.
-Intrinsic tran analysis time:    CPU = 198.97 ms, elapsed = 200.352 ms.
-Total time required for tran analysis `timeSweep': CPU = 255.961 ms, elapsed = 258.975 ms.
-Time accumulated: CPU = 3.14052 s, elapsed = 21.9211 s.
-Peak resident memory used = 37 Mbytes.
+Initial condition solution time: CPU = 85.987 ms, elapsed = 85.1281 ms.
+Intrinsic tran analysis time:    CPU = 293.955 ms, elapsed = 295.037 ms.
+Total time required for tran analysis `timeSweep': CPU = 382.942 ms, elapsed = 384.884 ms.
+Time accumulated: CPU = 4.69629 s, elapsed = 25.3058 s.
+Peak resident memory used = 37.1 Mbytes.
 
 
 Notice from spectre.
@@ -1127,7 +1121,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 47.992 ms, elapsed = 48.676 ms.
+DC simulation time: CPU = 75.988 ms, elapsed = 76.7889 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1158,27 +1152,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1198,10 +1192,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 47.992 ms, elapsed = 48.7149 ms.
-Intrinsic tran analysis time:    CPU = 202.97 ms, elapsed = 203.653 ms.
-Total time required for tran analysis `timeSweep': CPU = 253.962 ms, elapsed = 256.174 ms.
-Time accumulated: CPU = 3.40048 s, elapsed = 24.2663 s.
+Initial condition solution time: CPU = 75.988 ms, elapsed = 76.8659 ms.
+Intrinsic tran analysis time:    CPU = 312.952 ms, elapsed = 345.718 ms.
+Total time required for tran analysis `timeSweep': CPU = 393.94 ms, elapsed = 427.404 ms.
+Time accumulated: CPU = 5.10222 s, elapsed = 27.9979 s.
 Peak resident memory used = 37.1 Mbytes.
 
 
@@ -1219,7 +1213,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.991 ms, elapsed = 55.2211 ms.
+DC simulation time: CPU = 84.987 ms, elapsed = 85.7971 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1250,27 +1244,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1290,10 +1284,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.991 ms, elapsed = 55.2621 ms.
-Intrinsic tran analysis time:    CPU = 198.97 ms, elapsed = 201.935 ms.
-Total time required for tran analysis `timeSweep': CPU = 255.961 ms, elapsed = 261.113 ms.
-Time accumulated: CPU = 3.66244 s, elapsed = 26.6154 s.
+Initial condition solution time: CPU = 84.987 ms, elapsed = 85.88 ms.
+Intrinsic tran analysis time:    CPU = 292.955 ms, elapsed = 295.642 ms.
+Total time required for tran analysis `timeSweep': CPU = 382.942 ms, elapsed = 386.185 ms.
+Time accumulated: CPU = 5.49516 s, elapsed = 30.9463 s.
 Peak resident memory used = 37.2 Mbytes.
 
 
@@ -1311,7 +1305,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.485 ms.
+DC simulation time: CPU = 84.987 ms, elapsed = 85.2549 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1342,27 +1336,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1382,11 +1376,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.992 ms, elapsed = 55.531 ms.
-Intrinsic tran analysis time:    CPU = 225.965 ms, elapsed = 228.122 ms.
-Total time required for tran analysis `timeSweep': CPU = 283.956 ms, elapsed = 287.737 ms.
-Time accumulated: CPU = 3.9514 s, elapsed = 27.9943 s.
-Peak resident memory used = 37.2 Mbytes.
+Initial condition solution time: CPU = 84.987 ms, elapsed = 85.3739 ms.
+Intrinsic tran analysis time:    CPU = 295.956 ms, elapsed = 300.002 ms.
+Total time required for tran analysis `timeSweep': CPU = 384.942 ms, elapsed = 390.523 ms.
+Time accumulated: CPU = 5.8881 s, elapsed = 32.6707 s.
+Peak resident memory used = 37.3 Mbytes.
 
 
 Notice from spectre.
@@ -1403,7 +1397,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 55.992 ms, elapsed = 55.2759 ms.
+DC simulation time: CPU = 84.988 ms, elapsed = 85.0902 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1434,27 +1428,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1474,11 +1468,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 55.992 ms, elapsed = 55.3341 ms.
-Intrinsic tran analysis time:    CPU = 202.969 ms, elapsed = 204.589 ms.
-Total time required for tran analysis `timeSweep': CPU = 259.961 ms, elapsed = 263.858 ms.
-Time accumulated: CPU = 4.21836 s, elapsed = 30.3488 s.
-Peak resident memory used = 37.3 Mbytes.
+Initial condition solution time: CPU = 84.988 ms, elapsed = 85.171 ms.
+Intrinsic tran analysis time:    CPU = 302.954 ms, elapsed = 303.956 ms.
+Total time required for tran analysis `timeSweep': CPU = 390.94 ms, elapsed = 393.83 ms.
+Time accumulated: CPU = 6.29004 s, elapsed = 34.6319 s.
+Peak resident memory used = 37.4 Mbytes.
 
 
 Notice from spectre.
@@ -1495,7 +1489,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 46.993 ms, elapsed = 46.6869 ms.
+DC simulation time: CPU = 72.989 ms, elapsed = 73.2059 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1526,27 +1520,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1566,10 +1560,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 46.993 ms, elapsed = 46.7279 ms.
-Intrinsic tran analysis time:    CPU = 206.969 ms, elapsed = 208.428 ms.
-Total time required for tran analysis `timeSweep': CPU = 253.962 ms, elapsed = 258.746 ms.
-Time accumulated: CPU = 4.47732 s, elapsed = 32.6951 s.
+Initial condition solution time: CPU = 72.989 ms, elapsed = 73.323 ms.
+Intrinsic tran analysis time:    CPU = 297.954 ms, elapsed = 299.447 ms.
+Total time required for tran analysis `timeSweep': CPU = 372.943 ms, elapsed = 378.09 ms.
+Time accumulated: CPU = 6.67198 s, elapsed = 36.5232 s.
 Peak resident memory used = 37.4 Mbytes.
 
 
@@ -1587,7 +1581,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 45.993 ms, elapsed = 46.005 ms.
+DC simulation time: CPU = 71.989 ms, elapsed = 95.4342 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1618,27 +1612,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1658,10 +1652,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 45.993 ms, elapsed = 46.047 ms.
-Intrinsic tran analysis time:    CPU = 205.968 ms, elapsed = 206.551 ms.
-Total time required for tran analysis `timeSweep': CPU = 254.961 ms, elapsed = 256.256 ms.
-Time accumulated: CPU = 4.73728 s, elapsed = 35.0391 s.
+Initial condition solution time: CPU = 71.989 ms, elapsed = 95.551 ms.
+Intrinsic tran analysis time:    CPU = 301.955 ms, elapsed = 603.783 ms.
+Total time required for tran analysis `timeSweep': CPU = 375.944 ms, elapsed = 704.7 ms.
+Time accumulated: CPU = 7.05793 s, elapsed = 39.3593 s.
 Peak resident memory used = 37.5 Mbytes.
 
 
@@ -1679,7 +1673,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 55.992 ms, elapsed = 55.2449 ms.
+DC simulation time: CPU = 80.987 ms, elapsed = 168.25 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1710,27 +1704,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1750,11 +1744,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 55.992 ms, elapsed = 55.2931 ms.
-Intrinsic tran analysis time:    CPU = 203.969 ms, elapsed = 207.062 ms.
-Total time required for tran analysis `timeSweep': CPU = 259.961 ms, elapsed = 266.176 ms.
-Time accumulated: CPU = 5.00124 s, elapsed = 37.3952 s.
-Peak resident memory used = 37.5 Mbytes.
+Initial condition solution time: CPU = 80.987 ms, elapsed = 168.328 ms.
+Intrinsic tran analysis time:    CPU = 288.956 ms, elapsed = 587.202 ms.
+Total time required for tran analysis `timeSweep': CPU = 372.943 ms, elapsed = 760.251 ms.
+Time accumulated: CPU = 7.44087 s, elapsed = 42.2463 s.
+Peak resident memory used = 37.6 Mbytes.
 
 
 Notice from spectre.
@@ -1771,7 +1765,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 54.992 ms, elapsed = 55.2962 ms.
+DC simulation time: CPU = 84.987 ms, elapsed = 160.46 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1802,27 +1796,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1842,11 +1836,11 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 54.992 ms, elapsed = 55.3372 ms.
-Intrinsic tran analysis time:    CPU = 211.968 ms, elapsed = 215.549 ms.
-Total time required for tran analysis `timeSweep': CPU = 270.959 ms, elapsed = 275.005 ms.
-Time accumulated: CPU = 5.2752 s, elapsed = 38.7603 s.
-Peak resident memory used = 37.6 Mbytes.
+Initial condition solution time: CPU = 84.987 ms, elapsed = 160.54 ms.
+Intrinsic tran analysis time:    CPU = 307.953 ms, elapsed = 605.934 ms.
+Total time required for tran analysis `timeSweep': CPU = 395.94 ms, elapsed = 771.104 ms.
+Time accumulated: CPU = 7.84681 s, elapsed = 44.2366 s.
+Peak resident memory used = 37.7 Mbytes.
 
 
 Notice from spectre.
@@ -1863,7 +1857,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 46.992 ms, elapsed = 47.349 ms.
+DC simulation time: CPU = 67.989 ms, elapsed = 142.675 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1894,27 +1888,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -1934,10 +1928,10 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 46.992 ms, elapsed = 47.389 ms.
-Intrinsic tran analysis time:    CPU = 208.968 ms, elapsed = 210.896 ms.
-Total time required for tran analysis `timeSweep': CPU = 258.96 ms, elapsed = 262.431 ms.
-Time accumulated: CPU = 5.54016 s, elapsed = 41.1148 s.
+Initial condition solution time: CPU = 68.989 ms, elapsed = 142.753 ms.
+Intrinsic tran analysis time:    CPU = 293.956 ms, elapsed = 522.737 ms.
+Total time required for tran analysis `timeSweep': CPU = 365.944 ms, elapsed = 670.024 ms.
+Time accumulated: CPU = 8.22275 s, elapsed = 46.1244 s.
 Peak resident memory used = 37.7 Mbytes.
 
 
@@ -1955,7 +1949,7 @@ Trying `homotopy = gmin' for initial conditions.
 Notice from spectre during IC analysis, during transient analysis `timeSweep'.
     Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
 
-DC simulation time: CPU = 46.993 ms, elapsed = 46.447 ms.
+DC simulation time: CPU = 71.989 ms, elapsed = 71.8889 ms.
 Important parameter values:
     start = 0 s
     outputstart = 0 s
@@ -1986,27 +1980,27 @@ Output and IC/nodeset summary:
 ..
 
 Notice from spectre at time = 176.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ...
 
 Notice from spectre at time = 256.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ....
 
 Notice from spectre at time = 336.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......
 
 Notice from spectre at time = 416.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
 
 ......9
 
 Notice from spectre at time = 496.331 ps during transient analysis `timeSweep'.
-    Found trapezoidal ringing on node xMuxReg.xInvCLK.MM1.mnfet:int_si.
+    Found trapezoidal ringing on node xMuxReg.xInvCLK.Mn0.mnfet:int_si.
         Further occurrences of this notice will be suppressed.
 
 ......9......8......7......6......5......4......3......2......1......0
@@ -2026,12 +2020,26 @@ Post-Transient Simulation Summary
           add +cktpreset=pll on command line for PLL simulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initial condition solution time: CPU = 46.993 ms, elapsed = 46.4871 ms.
-Intrinsic tran analysis time:    CPU = 209.969 ms, elapsed = 211.237 ms.
-Total time required for tran analysis `timeSweep': CPU = 259.961 ms, elapsed = 261.116 ms.
-Time accumulated: CPU = 5.80812 s, elapsed = 43.465 s.
+Initial condition solution time: CPU = 71.989 ms, elapsed = 71.9709 ms.
+Intrinsic tran analysis time:    CPU = 296.954 ms, elapsed = 298.616 ms.
+Total time required for tran analysis `timeSweep': CPU = 370.943 ms, elapsed = 375.637 ms.
+Time accumulated: CPU = 8.60369 s, elapsed = 47.6223 s.
 Peak resident memory used = 37.8 Mbytes.
 
 
 Notice from spectre.
     46 notices suppressed.
+
+Spectre received SIGTERM.
+
+Error found by spectre.
+    ERROR (SPECTRE-25): Killed by user.
+
+
+Aggregate audit (2:03:11 PM, Tue May 9, 2017):
+Time used: CPU = 8.6 s, elapsed = 87.6 s (1m  27.6s), util. = 9.82%.
+Time spent in licensing: elapsed = 142 ms.
+Peak memory used = 37.8 Mbytes.
+Simulation started at: 2:01:43 PM, Tue May 9, 2017, ended at: 2:03:11 PM, Tue May 9, 2017, with elapsed time (wall clock): 87.6 s (1m  27.6s).
+spectre completes with 1 error, 24 warnings, and 168 notices.
+spectre terminated prematurely due to fatal error.

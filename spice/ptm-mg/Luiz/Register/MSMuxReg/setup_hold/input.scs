@@ -1,10 +1,8 @@
 parameters delay=1.3e-10
 *mux based master slave register
 simulator lang=spice
-.lib '../../../PTM-MG/modelfiles/models' ptm16lstp
-.lib '../../../library_16nmlstp' standardCells 
-
-
+.lib '../../../../modelfiles/models' ptm16lstp
+.lib '../../../../library' standardCells
 
 .option post=2
 .global gnd! vdd!
@@ -17,7 +15,7 @@ xInv1 D1 D vdd! gnd! inv
 xInv2 CLK0 CLK1 vdd! gnd! inv
 xInv3 CLK1 CLK vdd! gnd! inv
 
-xMuxReg D CLK Q vdd gnd! MSMuxReg
+xMuxReg D CLK Q vdd gnd! tgmuxreg 
 
 xInvout Q invOUT vdd gnd! inv
 
