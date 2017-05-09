@@ -13,7 +13,13 @@ simulator lang=spice
 Mn0 vo vi cgnd cgnd nfet
 Mp0 vo vi cvdd cvdd pfet nfin=2
 .ENDS 
-
+**************************************************
+*********** 	INVERTER X2 (Luiz)
+************************************************
+.SUBCKT invx2 vi vo cvdd cgnd
+MP0 vo vi cvdd cvdd pfet nfin = 4
+MN0 vo vi cgnd cgnd nfet nfin = 2
+.ENDS
 ****************************************************
 ************** TRI-STATE INVERTER
 ****************************************************
@@ -32,6 +38,13 @@ XINV0 vi _vo cvdd cgnd inv
 XINV1 _vo vo cvdd cgnd inv
 .ENDS
 
+**************************************************
+*************** BUFFER X2
+***********************************************
+.SUBCKT buffx2 vi vo cvdd cgnd
+xInv0 vi _vo cvdd cgnd inv
+xInv1 _vo vo cvdd cgnd invx2
+.ENDS
 ****************************************************
 ************** TRANSMISSION GATE
 ****************************************************
@@ -92,18 +105,17 @@ Mp1 out in0 in1 cvdd pfet
 .ENDS
 
 ****************************************************
-************** MUX 2:1
+************** TG MUX 2:1
 ****************************************************
 .SUBCKT mux21 in0 in1 sel out cvdd cgnd
-* XINV sel nsel inv
-* * SEL = 0
-* Mn0 out nsel in0 cgnd nfet
-* Mp0 out sel in0 cvdd pfet
-* * SEL = 1
-* Mn1 out sel in1 cgnd nfet
-* Mp1 out nsel in1 cvdd pfet
-XTG0 out sel in0 cvdd cgnd tgn
-XTG1 out sel in1 cvdd cgnd tgp
+MP0 selinv sel cvdd cvdd pfet
+MN0 selinv sel cgnd cgnd nfet
+
+MP1 in0 sel out cvdd pfet
+MN1 in0 selinv out cgnd nfet
+
+MP2 in1 selinv out cvdd pfet
+MN2 in1 sel out cgnd nfet
 .ENDS
 
 ****************************************************
@@ -125,6 +137,24 @@ Mn4 nnode1 out1 cgnd cgnd nfet
 XINV out2 out cvdd cgnd inv
 .ENDS
 
+*************************************************
+************** REGISTER - TSPCR  (Luiz)
+************************************************
+.SUBCKT TSPCR D CLK Q cvdd cgnd
+MP0 1 D cvdd cvdd pfet
+MP1 nodeX CLK 1 cvdd pfet
+MN0 nodeX D cgnd cgnd nfet
+
+MP2 nodeY CLK cvdd cvdd pfet
+MN1 nodeY nodeX 2 cgnd nfet $ utilizando duas fins, nodeX cai a VDD/2 na subida do CLK e D=0
+MN2 2 CLK cgnd cgnd nfet
+
+MP3 notQ nodeY cvdd cvdd pfet
+MN3 notQ CLK 3 cgnd nfet
+MN4 3 nodeY cgnd cgnd nfet
+
+xINV Q notQ cvdd cgnd inv
+.ENDS
 ****************************************************
 ************** REGISTER - CLOCKED CMOS DFF
 ****************************************************
@@ -138,6 +168,32 @@ XINV6 out out6 cvdd cgnd inv
 XTSINV5 out6 out nclk clk cvdd cgnd tsinv
 .ENDS
 
+*************************************************
+************ REGISTER - TG MUX  (Luiz)
+***********************************************
+.SUBCKT tgmuxreg D CLK Q cvdd cgnd
+xInvCLK CLK CLKinv cvdd cgnd inv
+xInvD D Dinv cvdd cgnd inv
+
+MP0 Qminv CLKinv 1 cvdd pfet
+MN0 Qminv CLK 1 cgnd nfet
+
+MP1 Dinv CLK 1 cvdd pfet
+MN1 Dinv CLKinv 1 cgnd nfet
+
+xInv1 1 Qm cvdd cgnd inv
+xInvQm Qm Qminv cvdd cgnd inv
+
+xInv2 Qm 2 cvdd cgnd inv
+xInvQ Q Qinv cvdd cgnd inv
+xInv3 3 Q cvdd cgnd inv
+
+MP2 Qinv CLK 3 cvdd pfet
+MN2 Qinv CLKinv 3 cgnd nfet
+
+MP3 2 CLKinv 3 cvdd pfet
+MN3 2 CLK 3 cgnd nfet
+.ENDS
 ****************************************************
 ************** REGISTER - MUX NAND INV DFF
 ****************************************************
