@@ -168,6 +168,25 @@ XINV6 out out6 cvdd cgnd inv
 XTSINV5 out6 out nclk clk cvdd cgnd tsinv
 .ENDS
 
+**********************************************
+********** REGISTER - C2MOS Rabaey (Luiz)
+*********************************************
+.SUBCKT c2mos D CLK Q cvdd cgnd
+MP0 1 D cvdd cvdd pfet
+MP1 nodeX CLK 1 cvdd pfet
+
+MN0 nodeX CLKinv 2 cgnd nfet
+MN1 2 D cgnd cgnd nfet
+
+MP2 3 nodeX cvdd cvdd pfet
+MP3 Q CLKinv 3 cvdd pfet
+
+MN2 Q CLK 4 cgnd nfet
+MN3 4 nodeX cgnd cgnd nfet
+
+xInv CLK CLKinv cvdd cgnd inv
+.ENDS
+ 
 *************************************************
 ************ REGISTER - TG MUX  (Luiz)
 ***********************************************
