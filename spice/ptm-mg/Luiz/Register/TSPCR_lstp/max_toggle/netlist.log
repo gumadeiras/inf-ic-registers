@@ -1,0 +1,190 @@
+
+Cadence (R) Virtuoso (R) Spectre (R) Circuit Simulator
+Version 14.1.0.988.isr20 32bit -- 8 May 2016
+Copyright (C) 1989-2016 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence, Virtuoso and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: luiz.enger   Host: ufrgs-server-09   HostID: 368F2555   PID: 5582
+Memory  available: 593.0311 MB  physical: 33.7361 GB
+CPU Type: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
+          Processor PhysicalID CoreID Frequency Load
+              0         1        0     2261.1     0.3
+              1         0        0     2261.1     0.6
+              2         1        1     2261.1     0.4
+              3         0        1     2261.1     0.3
+              4         1        2     2261.1     0.3
+              5         0        2     2261.1     0.3
+              6         1        3     2261.1     0.3
+              7         0        3     2261.1     0.3
+              8         1        0     2261.1     0.4
+              9         0        0     2261.1     0.3
+             10         1        1     2261.1     0.4
+             11         0        1     2261.1     0.4
+             12         1        2     2261.1     0.3
+             13         0        2     2261.1     0.4
+             14         1        3     2261.1     0.5
+             15         0        3     2261.1     1.2
+
+
+Simulating `netlist' on ufrgs-server-09 at 10:40:25 AM, Thur Apr 20, 2017 (process id: 5582).
+Current working directory: /home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/Max toggle
+Command line:
+    /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/bin/spectre  \
+        netlist
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libinfineon_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_o_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libsparam_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libstmodels_sh.so ...
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/Max toggle/netlist
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/models
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16nfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16pfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/param.inc
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/library_16nmlstp
+Time for NDB Parsing: CPU = 97.986 ms, elapsed = 132.089 ms.
+Time accumulated: CPU = 119.981 ms, elapsed = 132.096 ms.
+Peak resident memory used = 28.4 Mbytes.
+
+
+Warning from spectre in `TSPCR', during circuit read-in.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/discipline.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/disciplines.vams
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.vams
+
+Warning from spectre during hierarchy flattening.
+    WARNING (SFE-30): "netlist" 9: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
+Warning from spectre in `pfet':`xTSPCR0.MP0', in `TSPCR':`xTSPCR0', during hierarchy flattening.
+    WARNING (SFE-32): "../../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `nfet':`xTSPCR0.MN0', in `TSPCR':`xTSPCR0', during hierarchy flattening.
+    WARNING (SFE-32): "../../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xTSPCR0.MP2', in `TSPCR':`xTSPCR0', during hierarchy flattening.
+    WARNING (SFE-32): "../../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `nfet':`xTSPCR0.MN1', in `TSPCR':`xTSPCR0', during hierarchy flattening.
+    WARNING (SFE-32): "../../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+
+Time for Elaboration: CPU = 21.996 ms, elapsed = 23.36 ms.
+Time accumulated: CPU = 141.977 ms, elapsed = 155.65 ms.
+Peak resident memory used = 31.7 Mbytes.
+
+Time for EDB Visiting: CPU = 1 ms, elapsed = 904.083 us.
+Time accumulated: CPU = 142.977 ms, elapsed = 156.74 ms.
+Peak resident memory used = 32.1 Mbytes.
+
+
+Global user options:
+
+Circuit inventory:
+              nodes 17
+            bsimcmg 22    
+            vsource 4     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 0     
+               save 0     
+
+Time for parsing: CPU = 2 ms, elapsed = 2.79307 ms.
+Time accumulated: CPU = 145.977 ms, elapsed = 159.756 ms.
+Peak resident memory used = 33 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+
+*****************************************************
+Transient Analysis `timeSweep': time = (0 s -> 20 ns)
+*****************************************************
+
+Notice from spectre during transient analysis `timeSweep'.
+    There are 1 IC nodes defined.
+
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 20 ns
+    step = 2 ps
+    maxstep = 400 ps
+    ic = all
+    useprevic = no
+    skipdc = yes
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   3       (current)
+                 save   17      (voltage)
+                 ic     1       
+
+................9................8
+
+Notice from spectre at time = 4.04345 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xTSPCR1.MN1.mnfet:int_si.
+Notice from spectre at time = 4.05316 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xTSPCR1.MN2.mnfet:int_di.
+Notice from spectre at time = 4.06924 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xTSPCR1.MN2.mnfet:int_di.
+
+................9................8.
+
+Notice from spectre at time = 4.09615 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xTSPCR1.MN2.mnfet:int_di.
+Notice from spectre at time = 4.1419 ns during transient analysis `timeSweep'.
+    Found trapezoidal ringing on node xTSPCR1.MN2.mnfet:int_di.
+        Further occurrences of this notice will be suppressed.
+
+................9................8................7................6................5................4................3................2................1................0
+Number of accepted tran steps =             363
+
+Notice from spectre during transient analysis `timeSweep'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 0 s, elapsed = 0 s.
+Intrinsic tran analysis time:    CPU = 186.971 ms, elapsed = 188.097 ms.
+Total time required for tran analysis `timeSweep': CPU = 186.971 ms, elapsed = 189.663 ms.
+Time accumulated: CPU = 334.948 ms, elapsed = 350.718 ms.
+Peak resident memory used = 34.4 Mbytes.
+
+
+Notice from spectre.
+    75 notices suppressed.
+
+
+Aggregate audit (10:40:25 AM, Thur Apr 20, 2017):
+Time used: CPU = 342 ms, elapsed = 357 ms, util. = 95.7%.
+Time spent in licensing: elapsed = 57.6 ms, percentage of total = 16.1%.
+Peak memory used = 34.6 Mbytes.
+Simulation started at: 10:40:25 AM, Thur Apr 20, 2017, ended at: 10:40:25 AM, Thur Apr 20, 2017, with elapsed time (wall clock): 357 ms.
+spectre completes with 0 errors, 6 warnings, and 8 notices.

@@ -1,0 +1,529 @@
+
+Cadence (R) Virtuoso (R) Spectre (R) Circuit Simulator
+Version 14.1.0.988.isr20 32bit -- 8 May 2016
+Copyright (C) 1989-2016 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence, Virtuoso and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: luiz.enger   Host: ufrgs-server-09   HostID: 368F2555   PID: 15288
+Memory  available: 222.7281 MB  physical: 33.7361 GB
+CPU Type: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
+          Processor PhysicalID CoreID Frequency Load
+              0         1        0     2261.1     0.3
+              1         0        0     2261.1     0.7
+              2         1        1     2261.1     0.5
+              3         0        1     2261.1     0.4
+              4         1        2     2261.1     0.4
+              5         0        2     2261.1     0.4
+              6         1        3     2261.1     0.4
+              7         0        3     2261.1     0.4
+              8         1        0     2261.1     0.5
+              9         0        0     2261.1     0.4
+             10         1        1     2261.1     0.5
+             11         0        1     2261.1     0.5
+             12         1        2     2261.1     0.4
+             13         0        2     2261.1     0.5
+             14         1        3     2261.1     0.6
+             15         0        3     2261.1     1.6
+
+
+Simulating `input.scs' on ufrgs-server-09 at 11:06:25 AM, Thur Apr 13, 2017 (process id: 15288).
+Current working directory: /home/inf01185/luiz.enger/Voluntario.WA/nand_lstp
+Command line:
+    /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/bin/spectre  \
+        input.scs +escchars +log psf/spectre.out +inter=mpsc  \
+        +mpssession=spectre0_14494_1 -format psfxl -raw psf +lqtimeout  \
+        900 -maxw 5 -maxn 5
+spectre pid = 15288
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libinfineon_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_o_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libsparam_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libstmodels_sh.so ...
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/nand_lstp/input.scs
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/models
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16nfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16pfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/param.inc
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/library_16nmlstp
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-2931): "input.scs" 30: `VN0' is a no independent source value specified. Set to zero.
+
+Time for NDB Parsing: CPU = 104.983 ms, elapsed = 147.082 ms.
+Time accumulated: CPU = 129.979 ms, elapsed = 147.09 ms.
+Peak resident memory used = 28.9 Mbytes.
+
+
+Warning from spectre in `inv', during circuit read-in.
+    WARNING (SFE-2453): The global node `vdd!' and sub circuit terminal `vdd!' will be treated as the sub circuit terminal.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+Warning from spectre in `nand', during circuit read-in.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/discipline.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/disciplines.vams
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.vams
+
+Warning from spectre during hierarchy flattening.
+    WARNING (SFE-30): "input.scs" 8: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
+Warning from spectre in `nfet':`xInvA.MM1', in `inv':`xInvA', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xInvA.MM0', in `inv':`xInvA', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `nfet':`xNandtran.MM2', in `nand':`xNandtran', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+
+Time for Elaboration: CPU = 24.996 ms, elapsed = 24.7099 ms.
+Time accumulated: CPU = 154.975 ms, elapsed = 172.025 ms.
+Peak resident memory used = 32.2 Mbytes.
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/lib/mdl/libSpectreEH_sh.so ...
+Time for EDB Visiting: CPU = 124.982 ms, elapsed = 126.864 ms.
+Time accumulated: CPU = 279.957 ms, elapsed = 299.129 ms.
+Peak resident memory used = 39 Mbytes.
+
+
+Notice from spectre during topology check.
+    No DC path from node `OUT' to ground, Gmin installed to provide path.
+
+
+Global user options:
+
+Circuit inventory:
+              nodes 13
+            bsimcmg 14    
+          capacitor 2     
+            vsource 6     
+
+Analysis and control statement inventory:
+         altergroup 2     
+                 dc 3     
+               tran 3     
+
+Output statements:
+             .probe 0     
+           .measure 4     
+               save 0     
+
+Time for parsing: CPU = 2.999 ms, elapsed = 3.06797 ms.
+Time accumulated: CPU = 282.956 ms, elapsed = 302.445 ms.
+Peak resident memory used = 39.9 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+Entering remote command mode using MPSC service (spectre, ipi, v0.0, spectre0_14494_1, ).
+
+******************************************************
+Transient Analysis `transient1': time = (0 s -> 50 ns)
+******************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `transient1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 13.997 ms, elapsed = 14.374 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 50 ns
+    step = 5 ps
+    maxstep = 1 ns
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   5       (current)
+                 save   13      (voltage)
+
+
+Notice from spectre at time = 101.583 ps during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 144.957 ps during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 228.387 ps during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 386.33 ps during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+
+.
+
+Notice from spectre at time = 687.759 ps during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             1561
+
+Notice from spectre during transient analysis `transient1', during task `MDLControl'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 13.997 ms, elapsed = 14.415 ms.
+Intrinsic tran analysis time:    CPU = 593.91 ms, elapsed = 595.401 ms.
+Total time required for tran analysis `transient1': CPU = 612.907 ms, elapsed = 614.324 ms.
+Time accumulated: CPU = 902.861 ms, elapsed = 1.6788 s.
+Peak resident memory used = 43.1 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    114 notices suppressed.
+Warning from spectre.
+    WARNING (SPECTRE-16707): Only tran supports psfxl format, result of other analyses will be in psfbin format.
+
+
+**********************************************
+DC Analysis `dcrun1': VN0:dc = (0 V -> 850 mV)
+**********************************************
+Important parameter values:
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    gmindc = 1 pS
+Trying `homotopy = gmin'.
+
+Notice from spectre at dc = 0 V during DC analysis `dcrun1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 250 uV during DC analysis `dcrun1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 500 uV during DC analysis `dcrun1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 750 uV during DC analysis `dcrun1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 1 mV during DC analysis `dcrun1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        Further occurrences of this notice will be suppressed.
+        dV(OUT) = -4.96711 mV
+        Further occurrences of this notice will be suppressed.
+        Use the `gmin_check' option to eliminate or expand this report.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Total time required for dc analysis `dcrun1': CPU = 1.41579 s, elapsed = 1.41554 s.
+Time accumulated: CPU = 2.32065 s, elapsed = 3.09903 s.
+Peak resident memory used = 43.1 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    3396 notices suppressed.
+Warning from spectre.
+    WARNING (SPECTRE-16707): Only tran supports psfxl format, result of other analyses will be in psfbin format.
+
+
+*************************
+Alter Group `altergroup1'
+*************************
+        device "va" is altered
+        device "vb" is altered
+
+Warning from spectre during altergroup `altergroup1', during task `MDLControl'.
+    WARNING (CMI-2178): vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+******************************************************
+Transient Analysis `transient2': time = (0 s -> 50 ns)
+******************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `transient2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+
+DC simulation time: CPU = 13.997 ms, elapsed = 14.1001 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 50 ns
+    step = 5 ps
+    maxstep = 1 ns
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   5       (current)
+                 save   13      (voltage)
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             1668
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 13.997 ms, elapsed = 14.1351 ms.
+Intrinsic tran analysis time:    CPU = 632.904 ms, elapsed = 634.291 ms.
+Total time required for tran analysis `transient2': CPU = 648.901 ms, elapsed = 652.153 ms.
+Time accumulated: CPU = 2.97455 s, elapsed = 3.7589 s.
+Peak resident memory used = 43.3 Mbytes.
+
+
+Warning from spectre.
+    WARNING (SPECTRE-16707): Only tran supports psfxl format, result of other analyses will be in psfbin format.
+
+
+**********************************************
+DC Analysis `dcrun2': VN0:dc = (0 V -> 850 mV)
+**********************************************
+Important parameter values:
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    gmindc = 1 pS
+Trying `homotopy = gmin'.
+
+Notice from spectre at dc = 0 V during DC analysis `dcrun2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 250 uV during DC analysis `dcrun2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 500 uV during DC analysis `dcrun2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 750 uV during DC analysis `dcrun2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 1 mV during DC analysis `dcrun2', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        Further occurrences of this notice will be suppressed.
+        dV(OUT) = -4.96711 mV
+        Further occurrences of this notice will be suppressed.
+        Use the `gmin_check' option to eliminate or expand this report.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Total time required for dc analysis `dcrun2': CPU = 1.41878 s, elapsed = 1.41855 s.
+Time accumulated: CPU = 4.39533 s, elapsed = 5.18205 s.
+Peak resident memory used = 43.3 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    3396 notices suppressed.
+Warning from spectre.
+    WARNING (SPECTRE-16707): Only tran supports psfxl format, result of other analyses will be in psfbin format.
+
+
+*************************
+Alter Group `altergroup2'
+*************************
+        device "va" is altered
+        device "vb" is altered
+
+Warning from spectre during altergroup `altergroup2', during task `MDLControl'.
+    WARNING (CMI-2178): vgnd: Terminals must not be connected together (to node `gnd!').
+
+
+******************************************************
+Transient Analysis `transient3': time = (0 s -> 50 ns)
+******************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `transient3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+
+DC simulation time: CPU = 13.998 ms, elapsed = 13.8471 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 50 ns
+    step = 5 ps
+    maxstep = 1 ns
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   5       (current)
+                 save   13      (voltage)
+
+..
+
+Notice from spectre at time = 1.71762 ns during transient analysis `transient3', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvA.MM0.mpfet:int_di.
+
+......
+
+Notice from spectre at time = 4.09352 ns during transient analysis `transient3', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 4.12911 ns during transient analysis `transient3', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 4.19484 ns during transient analysis `transient3', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+Notice from spectre at time = 4.31765 ns during transient analysis `transient3', during task `MDLControl'.
+    Found trapezoidal ringing on node xInvB.MM1.mnfet:int_di.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Number of accepted tran steps =             2270
+
+Notice from spectre during transient analysis `transient3', during task `MDLControl'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 13.998 ms, elapsed = 13.8822 ms.
+Intrinsic tran analysis time:    CPU = 871.867 ms, elapsed = 872.221 ms.
+Total time required for tran analysis `transient3': CPU = 887.865 ms, elapsed = 889.477 ms.
+Time accumulated: CPU = 5.29019 s, elapsed = 6.07999 s.
+Peak resident memory used = 43.8 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    51 notices suppressed.
+Warning from spectre.
+    WARNING (SPECTRE-16707): Only tran supports psfxl format, result of other analyses will be in psfbin format.
+
+
+**********************************************
+DC Analysis `dcrun3': VN0:dc = (0 V -> 850 mV)
+**********************************************
+Important parameter values:
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    gmindc = 1 pS
+Trying `homotopy = gmin'.
+
+Notice from spectre at dc = 0 V during DC analysis `dcrun3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 250 uV during DC analysis `dcrun3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 500 uV during DC analysis `dcrun3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 750 uV during DC analysis `dcrun3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(OUT) = -4.96711 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+Notice from spectre at dc = 1 mV during DC analysis `dcrun3', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        Further occurrences of this notice will be suppressed.
+        dV(OUT) = -4.96711 mV
+        Further occurrences of this notice will be suppressed.
+        Use the `gmin_check' option to eliminate or expand this report.
+        Further occurrences of this notice will be suppressed.
+
+......9......8......7......6......5......4......3......2......1......0
+Total time required for dc analysis `dcrun3': CPU = 1.42078 s, elapsed = 1.42081 s.
+Time accumulated: CPU = 6.71298 s, elapsed = 7.50557 s.
+Peak resident memory used = 43.8 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    3396 notices suppressed.
+
+Spectre received SIGTERM.
+
+Error found by spectre.
+    ERROR (SPECTRE-25): Killed by user.
+
+
+Aggregate audit (11:06:55 AM, Thur Apr 13, 2017):
+Time used: CPU = 6.71 s, elapsed = 30.1 s, util. = 22.3%.
+Time spent in licensing: elapsed = 70.3 ms.
+Peak memory used = 43.8 Mbytes.
+Simulation started at: 11:06:25 AM, Thur Apr 13, 2017, ended at: 11:06:55 AM, Thur Apr 13, 2017, with elapsed time (wall clock): 30.1 s.
+spectre completes with 1 error, 15 warnings, and 37 notices.
+spectre terminated prematurely due to fatal error.

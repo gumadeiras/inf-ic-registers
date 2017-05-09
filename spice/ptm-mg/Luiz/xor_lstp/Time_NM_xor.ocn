@@ -1,0 +1,139 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+
+fp = outfile("./RiseFall_NoiseMargin.txt", "w")
+fprintf(fp "\t\t Tempos de Propagação \t\t \n\n")
+
+analysis('tran ?stop 60n ?maxstep 3p)
+
+run()
+
+
+selectResults('tran)
+
+Trise = riseTime( v("OUT_tran") 0 nil 0.85 nil 10 90 t "time")
+
+Tfall = riseTime( v("OUT_tran") 0.85 nil 0 nil 10 90 t "time")
+
+
+fprintf(fp "-------A = GND-------------\n")
+
+
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+Trise = riseTime( v("OUT_tran" ?result "transient2-tran") 0 nil 0.85 nil 10 90 t "time")
+
+Tfall = riseTime( v("OUT_tran" ?result "transient2-tran") 0.85 nil 0 nil 10 90 t "time")
+
+fprintf(fp "\n\n------A = VDD-------------\n")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+
+Trise = riseTime( v("OUT_tran" ?result "transient3-tran") 0 nil 0.85 nil 10 90 t "time")
+
+Tfall = riseTime( v("OUT_tran" ?result "transient3-tran") 0.85 nil 0 nil 10 90 t "time")
+
+fprintf(fp "\n\n-------B = GND-------------\n")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+Trise = riseTime( v("OUT_tran" ?result "transient4-tran") 0 nil 0.85 nil 10 90 t "time")
+
+Tfall = riseTime( v("OUT_tran" ?result "transient4-tran") 0.85 nil 0 nil 10 90 t "time")
+
+fprintf(fp "\n\n-------B = VCC-------------\n")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+Trise = riseTime( v("OUT_tran" ?result "transient5-tran") 0 nil 0.85 nil 10 90 t "time")
+
+Tfall = riseTime( v("OUT_tran" ?result "transient5-tran") 0.85 nil 0 nil 10 90 t "time")
+
+fprintf(fp "\n\n-------Oscillating-------------\n")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+;*****************START NOISE MARGIN ANALYSIS***********
+
+
+delete( 'analysis 'tran )
+
+analysis('dc ?saveOppoint t ?oppoint "rawfile")
+
+run()
+
+selectResults('dc)
+
+fprintf(fp "\n\n-------Noise Margin input A = VDD--------------\n\n")
+
+gvtc1 = deriv(v("OUT_dcA"))
+
+;------------------------------------------------
+; determine input/output margins for gate 1
+;------------------------------------------------
+; verifies both positive and negative gains
+vil1 = cross(gvtc1 -1 1 'either)
+vih1 = cross(gvtc1 -1 2 'either)
+if( vil1 == nil (vil1 = cross(gvtc1 1 1 'either)))
+if( vih1 == nil (vih1 = cross(gvtc1 1 2 'either)))
+
+; considerating gate unateness, sometimes voh and vol must be swapped
+voh1 = value(v("OUT_dcA") vil1)
+vol1 = value(v("OUT_dcA") vih1)
+if( voh1 < vol1 then
+	aux = voh1
+	voh1 = vol1
+	vol1 = aux
+)
+
+fprintf(fp "VIL  = %10.6f\n" vil1)
+fprintf(fp "VIH  = %10.6f\n" vih1)
+fprintf(fp "VOL  = %10.6f\n" vol1)
+fprintf(fp "VOH  = %10.6f\n" voh1)
+fprintf(fp "NMl = %10.6f\n" vil1 - vol1)
+fprintf(fp "NMh = %10.6f\n" voh1 - vih1) 
+
+fprintf(fp "\n\n-------Noise Margin input B = VDD--------------\n\n")
+
+gvtc1 = deriv(v("OUT_dcB"))
+
+;------------------------------------------------
+; determine input/output margins for gate 1
+;------------------------------------------------
+; verifies both positive and negative gains
+vil1 = cross(gvtc1 -1 1 'either)
+vih1 = cross(gvtc1 -1 2 'either)
+if( vil1 == nil (vil1 = cross(gvtc1 1 1 'either)))
+if( vih1 == nil (vih1 = cross(gvtc1 1 2 'either)))
+
+; considerating gate unateness, sometimes voh and vol must be swapped
+voh1 = value(v("OUT_dcB") vil1)
+vol1 = value(v("OUT_dcB") vih1)
+if( voh1 < vol1 then
+	aux = voh1
+	voh1 = vol1
+	vol1 = aux
+)
+
+fprintf(fp "VIL  = %10.6f\n" vil1)
+fprintf(fp "VIH  = %10.6f\n" vih1)
+fprintf(fp "VOL  = %10.6f\n" vol1)
+fprintf(fp "VOH  = %10.6f\n" voh1)
+fprintf(fp "NMl = %10.6f\n" vil1 - vol1)
+fprintf(fp "NMh = %10.6f\n" voh1 - vih1)
+
+close(fp)

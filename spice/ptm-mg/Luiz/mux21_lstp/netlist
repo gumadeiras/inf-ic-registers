@@ -1,0 +1,53 @@
+Obtenção tempos
+simulator lang=spice
+.lib '../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../library_16nmlstp' standardCells
+
+.param
+
+.option post=2
+.global gnd! vdd!
+
+*************DEFINE CIRCUIT************
+xInv0 notIn0 In0 vdd! gnd! inv
+xInv1 notIn1 In1 vdd! gnd! inv
+xInv2 notSel Sel vdd! gnd! inv
+
+xMux In0 In1 Sel OUT_tran vdd gnd! mux21
+
+xInv3 OUT_tran OUTinv vdd! gnd! inv
+
+c0 OUTinv gnd! 2pF
+***************************************
+
+******************DEFINE STIMULI***************
+Vdd vdd 0 0.85V
+Vvdd vdd! 0 0.85V
+Vgnd gnd! 0 0.0V
+
+Vin0 notIn0 0 0.85V
+Vin1 notIn1 0 0.0V
+VSel notSel 0 DC=0.0 pulse 0 0.85 0 50p 50p 2n 4n
+*************************************************
+
+****************DEFINE ANALYSIS******************
+.tran STEP=2p STOP=40n
+
+.measure tran Iint INTEG i(Vaux) FROM=0n TO=40n
+.measure tran Iavg AVG abs(i(Vaux)) FROM=0n TO=40n
+
+.measure tran Pint PARAM='Iint*0.85/40n'
+.measure tran Pavg PARAM='Iavg*0.85'
+************************************************
+
+****************ALTER STATEMENTS*****************
+.alter case 2: seletor fixo e entrada 0 variando
+Vsel notSel 0 DC=0.85
+Vin0 notIn0 0 DC=0.0 pulse 0 0.85 0 50p 50p 2n 4n
+
+.alter case 3: seletor fixo e entrada 1 variando
+Vsel notSel 0 DC=0.0
+Vin1 notIn1 0 DC=0.0 pulse 0 0.85 0 50p 50p 2n 4n
+***********************************************
+
+.end

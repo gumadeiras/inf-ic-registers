@@ -1,0 +1,8 @@
+Setup Time last transition
+T_setup = -2.026073e-09
+
+respective Clock to Q delay
+TCtQ = 3.009699e-11
+
+ Delay value for last transition
+delay = 1.130000e-10

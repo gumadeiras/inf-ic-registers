@@ -1,0 +1,46 @@
+*mux based master slave register
+simulator lang=spice
+.lib '../../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../../library_16nmlstp' standardCells 
+
+.param
+*.param Per = 2n
+.option post=2
+.global gnd! vdd!
+
+**********DEFINE CIRCUIT************
+
+xInv0 notD D vdd! gnd! inv
+
+xMuxReg D CLK OUT_tran vdd gnd! MSMuxReg
+
+xInv1 OUT_tran invOUT vdd gnd! inv
+
+c0 invOUT gnd! 2f
+
+xInvCLK notCLK CLK vdd! gnd! inv
+
+*xMuxReg2 D CLK2 Q vdd! gnd! MSMuxReg
+
+*xInv2 Q D vdd! gnd! inv
+
+*************************************
+
+*****DEFINE STIMULI***********
+
+Vdd vdd 0 0.85V
+Vvdd vdd! 0 0.85V
+Vgnd gnd! 0 0.0V
+
+Vclock notCLK gnd! DC = 0 pulse 0 0.85 0 10p 10p "Per/2" "Per"
+Vd notD gnd! DC = 0 pulse 0 0.85 0 50p 50p 2n 4n
+
+*Vclk CLK2 gnd! DC = 0 pulse 0 0.85 0 10p 10p "Per/2" "Per"
+
+*****************************************************
+
+***********DEFINE ANALYSIS**********
+
+.tran STEP=2p STOP=15n
+
+.end

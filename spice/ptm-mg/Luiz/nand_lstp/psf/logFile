@@ -1,0 +1,113 @@
+HEADER
+"PSFversion" "1.00"
+"Log Generator" "drlLog rev. 1.0"
+"Log Time Stamp" "Thu Apr 13 11:06:25 2017"
+"simulator" "spectre"
+"version" "14.1.0.988.isr20"
+"date" "11:06:25 AM, Thur Apr 13, 2017"
+"design" "teste de nand com finfet 16nm"
+"signalNameType" "spectre"
+"measdgt" 0
+"ingold" 2
+"sst2usecolon" 0
+TYPE
+"analysisInst" STRUCT(
+"analysisType" STRING *
+"dataFile" STRING *
+"format" STRING *
+"parent" STRING *
+"sweepVariable" ARRAY ( * ) STRING *
+"description" STRING *
+)
+VALUE
+"transient1-tran" "analysisInst" (
+"tran"
+"transient1.tran"
+"PSF"
+""
+("time")
+"Transient Analysis `transient1': time = (0 s -> 50 ns)"
+) PROP(
+"data_type" "swept_scalar"
+)
+
+"transient1-meas_tran" "analysisInst" (
+"meas_tran"
+"transient1.meas_tran"
+"PSF"
+""
+()
+"Measurement Results for transient1 Analysis tran"
+)
+"dcrun1-dc" "analysisInst" (
+"dc"
+"dcrun1.dc"
+"PSF"
+""
+("dc")
+"DC Analysis `dcrun1': VN0:dc = (0 V -> 850 mV)"
+) PROP(
+"data_type" "scalar"
+)
+
+"transient2-tran" "analysisInst" (
+"tran"
+"transient2.tran"
+"PSF"
+""
+("time")
+"Transient Analysis `transient2': time = (0 s -> 50 ns)"
+) PROP(
+"data_type" "swept_scalar"
+)
+
+"transient2-meas_tran" "analysisInst" (
+"meas_tran"
+"transient2.meas_tran"
+"PSF"
+""
+()
+"Measurement Results for transient2 Analysis tran"
+)
+"dcrun2-dc" "analysisInst" (
+"dc"
+"dcrun2.dc"
+"PSF"
+""
+("dc")
+"DC Analysis `dcrun2': VN0:dc = (0 V -> 850 mV)"
+) PROP(
+"data_type" "scalar"
+)
+
+"transient3-tran" "analysisInst" (
+"tran"
+"transient3.tran"
+"PSF"
+""
+("time")
+"Transient Analysis `transient3': time = (0 s -> 50 ns)"
+) PROP(
+"data_type" "swept_scalar"
+)
+
+"transient3-meas_tran" "analysisInst" (
+"meas_tran"
+"transient3.meas_tran"
+"PSF"
+""
+()
+"Measurement Results for transient3 Analysis tran"
+)
+"dcrun3-dc" "analysisInst" (
+"dc"
+"dcrun3.dc"
+"PSF"
+""
+("dc")
+"DC Analysis `dcrun3': VN0:dc = (0 V -> 850 mV)"
+) PROP(
+"data_type" "scalar"
+)
+
+END

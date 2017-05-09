@@ -1,0 +1,48 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+
+fp = outfile("./RiseFall.txt", "w")
+fprintf(fp "\t\t Tempos de Propagação \t\t \n\n")
+
+analysis('tran ?stop 40n ?maxstep 5p)
+
+run()
+
+
+selectResults('tran)
+
+
+fprintf(fp "-------Entradas Fixas e Seletor variando------------\n")
+
+Trise = riseTime( v("OUT_tran") 0 nil 0.85 nil 10 90 t "cycle")
+Tfall = riseTime( v("OUT_tran") 0.85 nil 0 nil 10 90 t "cycle")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+
+fprintf(fp "\n\n-------In0 variando e Seletor fixo------------\n")
+
+Trise = riseTime( v("OUT_tran" ?result "transient2-tran") 0 nil 0.85 nil 10 90 t "cycle")
+Tfall = riseTime( v("OUT_tran" ?result "transient2-tran") 0.85 nil 0 nil 10 90 t "cycle")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+
+fprintf(fp "\n\n---------In1 variando e Seletor fixo------------\n")
+
+Trise = riseTime( v("OUT_tran" ?result "transient3-tran") 0 nil 0.85 nil 10 90 t "cycle")
+Tfall = riseTime( v("OUT_tran" ?result "transient3-tran") 0.85 nil 0 nil 10 90 t "cycle")
+
+ocnPrint(?output fp Trise)
+ocnPrint(?output fp Tfall)
+
+close(fp)

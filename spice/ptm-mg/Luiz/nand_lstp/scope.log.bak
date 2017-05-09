@@ -1,0 +1,167 @@
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+58+75
+Mdi:ArrangeIcons
+wm geometry . 900x785+60+75
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+73+75
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+106+75
+Mdi:ArrangeIcons
+wm geometry . 900x785+230+75
+Mdi:ArrangeIcons
+wm geometry . 900x785+342+75
+Mdi:ArrangeIcons
+wm geometry . 900x785+530+75
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+828+75
+Mdi:ArrangeIcons
+wm geometry . 900x785+937+80
+Mdi:ArrangeIcons
+wm geometry . 900x785+1105+80
+Mdi:ArrangeIcons
+wm geometry . 900x785+1186+85
+Mdi:ArrangeIcons
+wm geometry . 900x785+1450+90
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+1651+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1681+94
+Mdi:ArrangeIcons
+Mdi:ArrangeIcons
+wm geometry . 900x785+1773+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1787+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1821+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1833+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1846+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1867+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1880+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1895+94
+Mdi:ArrangeIcons
+wm geometry . 900x785+1908+94
+Mdi:ArrangeIcons
+wm geometry . 900x813+1918+104
+Mdi:ArrangeIcons
+wm geometry . 900x813+1745+24
+Mdi:ArrangeIcons
+wm geometry . 1615x995+1745+24
+Mdi:ArrangeIcons
+Mdi:FullSize
+ScopeSigMgr:loadpffile /home/inf01185/luiz.enger/Voluntario.WA/nand_lstp/nand_lstp.tr0 1 openonly
+# PF:1
+wm geometry .sigmgr._PF:1 288x349+1671+515
+wm geometry .sigmgr._PF:1 288x349+1672+515
+wm geometry .sigmgr._PF:1 288x349+1677+515
+wm geometry .sigmgr._PF:1 288x349+1686+515
+wm geometry .sigmgr._PF:1 288x349+1779+515
+wm geometry .sigmgr._PF:1 288x349+1923+515
+wm geometry .sigmgr._PF:1 288x349+1989+515
+wm geometry .sigmgr._PF:1 288x349+2150+515
+wm geometry .sigmgr._PF:1 288x349+2233+515
+wm geometry .sigmgr._PF:1 288x349+2315+515
+wm geometry .sigmgr._PF:1 288x349+2399+515
+wm geometry .sigmgr._PF:1 288x349+2483+515
+wm geometry .sigmgr._PF:1 288x349+2566+515
+wm geometry .sigmgr._PF:1 288x349+2695+515
+wm geometry .sigmgr._PF:1 288x349+2738+515
+wm geometry .sigmgr._PF:1 288x349+2777+515
+wm geometry .sigmgr._PF:1 288x349+2816+515
+wm geometry .sigmgr._PF:1 288x349+2826+513
+wm geometry .sigmgr._PF:1 288x349+2833+510
+wm geometry .sigmgr._PF:1 288x349+2836+509
+wm geometry .sigmgr._PF:1 288x349+2844+504
+wm geometry .sigmgr._PF:1 288x349+2856+499
+wm geometry .sigmgr._PF:1 288x349+2869+494
+wm geometry .sigmgr._PF:1 288x349+2881+489
+wm geometry .sigmgr._PF:1 288x349+2888+486
+wm geometry .sigmgr._PF:1 288x349+2893+483
+wm geometry .sigmgr._PF:1 288x349+2896+481
+wm geometry .sigmgr._PF:1 288x349+2899+479
+wm geometry .sigmgr._PF:1 288x349+2900+478
+wm geometry .sigmgr._PF:1 288x349+2899+478
+wm geometry .sigmgr._PF:1 288x349+2897+478
+wm geometry .sigmgr._PF:1 288x349+2890+478
+wm geometry .sigmgr._PF:1 288x349+2872+478
+wm geometry .sigmgr._PF:1 288x349+2830+478
+wm geometry .sigmgr._PF:1 288x349+2770+478
+wm geometry .sigmgr._PF:1 288x349+2702+478
+wm geometry .sigmgr._PF:1 288x349+2645+478
+wm geometry .sigmgr._PF:1 288x349+2589+478
+pf:read PF:1 v(b)
+# WF:1:1
+Graph addsignal WF:1:1 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal0
+pf:read PF:1 v(out)
+# WF:1:2
+Graph addsignal WF:1:2 -region new -yview real(y) -xview real(x) -tracehi 2
+# Signal1
+wm geometry .sigmgr 472x220+0+0
+wm geometry .sigmgr 472x220+2878+105
+wm geometry .sigmgr 472x220+2878+77
+Mdi:ArrangeIcons
+GrMeas:Falltime Graph0 Signal1 {0.1 0.5 0.9} 0.85 0.0 xyrangeAll - 0 - activeGraph
+# Signal2
+Graph:Select Graph0
+Graph:DSel
+Graph itemselect Signal2 add
+# Signal2
+Graph itemselect Signal2 rem
+Graph delsignal Signal2
+GrMeas:Falltime Graph0 Signal1 {0.1 0.5 0.9} 0.85 0.0 xyrangeAll
+# M:0
+Mdi:ArrangeIcons
+Graph:DSel
+GrMeas:Select Graph0 M:0 6
+GrMeas:MoveArrow Graph0 M:0 6 -2.0
+GrMeas:HideResult Graph0 M:0 6
+GrMeas:ShowResult Graph0 M:0 9
+GrMeas:Select Graph0 M:0 9 1
+Mdi:ArrangeIcons
+GrMeas:HideResult Graph0 M:0 9
+GrMeas:ShowResult Graph0 M:0 13
+GrMeas:Select Graph0 M:0 13 1
+GrMeas:HideResult Graph0 M:0 13
+GrMeas:ShowResult Graph0 M:0 14
+GrMeas:Select Graph0 M:0 14 1
+GrMeas:ShowResult Graph0 M:0 15
+GrMeas:ShowResult Graph0 M:0 19
+Graph:DSel
+GrMeas:Risetime Graph0 Signal1 {0.1 0.5 0.9} 0.85 0.0 xyrangeAll
+# M:1
+Graph:DSel
+GrMeas:Select Graph0 M:1 6
+GrMeas:HideResult Graph0 M:1 6
+GrMeas:ShowResult Graph0 M:1 9
+GrMeas:Select Graph0 M:1 9 1
+GrMeas:ShowResult Graph0 M:1 12
+GrMeas:ShowResult Graph0 M:1 17
+Graph:DSel
+Graph:DSel
+Mdi:ArrangeIcons
+.frame1.mdi.mdi1.work.graph0 save -file /home/inf01185/luiz.enger/Voluntario.WA/nand_lstp/RiseFall_cscope_entradaB.png -format png  -x 0 -y 0 -w 1603 -h 869 -colormode color
+wm geometry .sigmgr._PF:1 288x349+2589+477
+wm geometry .sigmgr._PF:1 288x349+2589+476
+wm geometry .sigmgr._PF:1 288x349+2589+475
+wm geometry .sigmgr._PF:1 288x349+2589+474
+wm geometry .sigmgr._PF:1 288x349+2589+470
+wm geometry .sigmgr._PF:1 288x349+2590+465
+wm geometry .sigmgr._PF:1 288x349+2591+461
+wm geometry .sigmgr._PF:1 288x349+2592+458
+wm geometry .sigmgr._PF:1 288x349+2593+454
+wm geometry .sigmgr._PF:1 288x349+2593+452
+wm geometry .sigmgr._PF:1 288x349+2593+451
+ScopeSigMgr:Unload 0 {{(1) nand_lstp.tr0 [19]}}
+Graph0 delsignal Signal0
+Graph0 delsignal Signal1

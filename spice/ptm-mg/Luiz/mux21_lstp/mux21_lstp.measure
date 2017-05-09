@@ -1,0 +1,32 @@
+Exported variables from results directory:  ./mux21_lstp.raw/
+
+date               :  10:37:11 AM, Thur Mar 23, 2017
+design             :  mux 2 pra 1 com transmission gate
+simulator          :  spectre
+version            :  14.1.0.988.isr20
+
+
+Measurement Name   :  transient1
+Analysis Type      :  tran
+tfall1          = 1.32125e-11 
+tphl            = -2.99245e-09 
+tplh            = -1.99271e-09 
+trise1          = 1.47975e-11 
+
+
+Measurement Name   :  transient2
+Analysis Type      :  tran
+tfall1          = 1.35592e-11 
+tphl            = 2.24909e-12 
+tplh            = 2.42756e-12 
+trise1          = 1.47914e-11 
+
+
+Measurement Name   :  transient3
+Analysis Type      :  tran
+tfall1          = 6.84392e-12 
+tphl            = -2.99245e-09 
+tplh            = -9.37834e-10 
+trise1          = 1.47955e-11 
+
+

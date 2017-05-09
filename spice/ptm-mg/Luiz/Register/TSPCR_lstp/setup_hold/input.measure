@@ -1,0 +1,16 @@
+Exported variables from results directory:  ./delay=2.5e-09/psf/
+
+date               :  1:16:05 PM, Thur Apr 27, 2017
+design             :  (no title)
+simulator          :  spectre
+version            :  14.1.0.988.isr20
+
+
+Measurement Name   :  transient1
+Analysis Type      :  tran
+iavg            = 2.30259e-07 
+iint            = -3.35555e-15 
+pavg            = 1.9572e-07 
+pint            = -1.42611e-07 
+
+

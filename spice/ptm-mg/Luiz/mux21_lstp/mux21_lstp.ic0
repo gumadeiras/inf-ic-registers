@@ -1,0 +1,23 @@
+* "simulator" "HSPICE" 
+* "version" "H-2013.03-SP1 64-BIT"
+* "format" "HSP"
+* "rundate" "15:45:12 03/22/2017 "
+* "netlist" "mux21_lstp.sp "
+* "runtitle" "mux 2 pra 1 com transmission gate"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ 1 = 850.0000m       
++ 2 = 849.9999m       
++ inv1 =   0.            
++ inv2 =   0.            
++ invout =  49.8712n       
++ invsel =   0.            
++ out = 849.9998m       
++ sel = 849.9999m       
++ vdd! = 850.0000m       
++ xmux21.selinv =  49.8906n       
+***   END: Saved Operating Point ***                     

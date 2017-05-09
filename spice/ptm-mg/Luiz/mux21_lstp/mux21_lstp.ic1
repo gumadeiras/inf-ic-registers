@@ -1,0 +1,23 @@
+* "simulator" "HSPICE" 
+* "version" "H-2013.03-SP1 64-BIT"
+* "format" "HSP"
+* "rundate" "15:45:12 03/22/2017 "
+* "netlist" "mux21_lstp.sp "
+* "runtitle" "case 2: seletor fixo na entrada 2"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ 1 = 849.9999m       
++ 2 = 850.0000m       
++ inv1 =   0.            
++ inv2 =   0.            
++ invout =  49.8712n       
++ invsel = 850.0000m       
++ out = 849.9998m       
++ sel =  49.9100n       
++ vdd! = 850.0000m       
++ xmux21.selinv = 850.0000m       
+***   END: Saved Operating Point ***                     

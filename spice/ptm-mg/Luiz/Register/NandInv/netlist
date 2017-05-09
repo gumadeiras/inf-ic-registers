@@ -1,0 +1,38 @@
+*mux based master slave register
+simulator lang=spice
+.lib '../../../modelfiles/models' ptm16lstp
+.lib '../../../library.sp'
+
+.option post=2
+.global gnd! vdd!
+
+*********DEFINE CIRCUIT***********
+xinv0 D0 D1 vdd! gnd! inv
+xinv1 D1 D vdd! gnd! inv
+
+xinv2 CLK0 CLK1 vdd! gnd! inv
+xinv3 CLK1 CLK vdd! gnd! inv
+
+xNandInvReg D Q CLK vvdd gnd! nandinv
+
+xinv4 Q notQ vdd! gnd! inv
+
+c0 notQ 0 5f
+*************************************
+
+*****DEFINE STIMULI***********
+
+Vdd vvdd 0 0.85V
+Vvdd vdd! 0 0.85V
+Vgnd gnd! 0 0.0V
+
+Vclock CLK0 gnd! DC = 0 pulse 1n 0.85 0 20p 20p 1n 2n
+Vd D0 gnd! PWL 0n 0.0V "2.1n-delay" 0.0V "2.15n-delay" 0.85V 4n 0.85V
+
+*****************************************************
+
+***********DEFINE ANALYSIS**********
+
+.tran STEP=2p STOP=4n
+
+.end

@@ -1,0 +1,97 @@
+HEADER
+"PSFversion" "1.00"
+"Run Generator" "drlRun rev. 1.0"
+"Run Time Stamp" "May  5 10:05:18 2017"
+"simulator" "spectre"
+"netlistDir" ".."
+TYPE
+"runObject" STRUCT(
+"logName" ARRAY( * ) STRING *
+"parent" STRING *
+"sweepVariable" ARRAY( * ) STRING *
+) PROP( "key" "runObject" )
+VALUE
+"Root" "runObject" (
+("")
+""
+("delay")
+)
+"delay=1.15e-10" "runObject" (
+(
+"../delay=1.15e-10/psf/logFile"
+"../delay=1.15e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.150000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.15e-10"
+)
+
+"delay=1.14e-10" "runObject" (
+(
+"../delay=1.14e-10/psf/logFile"
+"../delay=1.14e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.140000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.14e-10"
+)
+
+"delay=1.13e-10" "runObject" (
+(
+"../delay=1.13e-10/psf/logFile"
+"../delay=1.13e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.130000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.13e-10"
+)
+
+"delay=1.12e-10" "runObject" (
+(
+"../delay=1.12e-10/psf/logFile"
+"../delay=1.12e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.120000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.12e-10"
+)
+
+"delay=1.11e-10" "runObject" (
+(
+"../delay=1.11e-10/psf/logFile"
+"../delay=1.11e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.110000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.11e-10"
+)
+
+"delay=1.1e-10" "runObject" (
+(
+"../delay=1.1e-10/psf/logFile"
+"../delay=1.1e-10/psf/artistLogFile"
+)
+"Root"
+()
+) PROP(
+ "delay" 1.100000e-10
+"netlistDir" ".."
+"dataDir" "../delay=1.1e-10"
+)
+
+END

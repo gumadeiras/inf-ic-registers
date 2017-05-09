@@ -1,0 +1,57 @@
+		 Tempos de Propagação 		 
+
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 2e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    3.03003n          7.6065p       
+    7.03003n          7.6065p       
+   11.03n             7.6065p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 2e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    1.03338n          6.81302p      
+    5.03338n          6.80977p      
+    9.03338n          6.80977p      
+   13.0334n           6.80977p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 1.5e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.28001n          7.6054p       
+    6.78003n          7.60651p      
+   11.28n             7.60651p      
+   14.28n             7.6054p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 1.5e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  783.378p            6.81301p      
+    5.28338n          6.80982p      
+    8.28337n          6.82715p      
+   12.7834n           6.80983p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 1e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.53003n          7.6065p       
+    6.53003n          7.6065p       
+   10.53n             7.6065p       
+   14.53n             7.6065p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 1e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  533.378p            6.81302p      
+    4.53338n          6.80977p      
+    8.53338n          6.80977p      
+   12.5334n           6.80977p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 5e-10) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.28001n          7.60617p      
+    6.28001n          7.60613p      
+   10.28n             7.60613p      
+   14.28n             7.60613p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/MSMuxReg/" ?result "tran") "Per" 5e-10) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  283.371p            6.82871p      
+    4.28337n          6.83951p      
+    8.28337n          6.83951p      
+   12.2834n           6.83951p      

@@ -1,0 +1,32 @@
+Exported variables from results directory:  ./netlist.raw/
+
+date               :  9:22:41 AM, Thur Apr 13, 2017
+design             :  teste de nand com finfet 16nm
+simulator          :  spectre
+version            :  14.1.0.988.isr20
+
+
+Measurement Name   :  transient1
+Analysis Type      :  tran
+iavg            = 7.03822e-08 
+iint            = -1.4284e-15 
+pavg            = 5.98249e-08 
+pint            = -2.42828e-08 
+
+
+Measurement Name   :  transient2
+Analysis Type      :  tran
+iavg            = 9.1326e-08 
+iint            = -3.06771e-15 
+pavg            = 7.76271e-08 
+pint            = -5.21511e-08 
+
+
+Measurement Name   :  transient3
+Analysis Type      :  tran
+iavg            = 1.05106e-07 
+iint            = -1.84063e-15 
+pavg            = 8.93401e-08 
+pint            = -3.12907e-08 
+
+

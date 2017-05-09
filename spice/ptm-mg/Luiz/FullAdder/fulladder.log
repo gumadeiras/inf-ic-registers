@@ -1,0 +1,209 @@
+
+Cadence (R) Virtuoso (R) Spectre (R) Circuit Simulator
+Version 14.1.0.988.isr20 32bit -- 8 May 2016
+Copyright (C) 1989-2016 Cadence Design Systems, Inc. All rights reserved worldwide. Cadence, Virtuoso and Spectre are registered trademarks of Cadence Design Systems, Inc. All others are the property of their respective holders.
+
+Includes RSA BSAFE(R) Cryptographic or Security Protocol Software from RSA Security, Inc.
+
+User: luiz.enger   Host: ufrgs-server-09   HostID: 368F2555   PID: 15590
+Memory  available: 149.6555 MB  physical: 33.7361 GB
+CPU Type: Intel(R) Xeon(R) CPU           L5520  @ 2.27GHz
+          Processor PhysicalID CoreID Frequency Load
+              0         1        0     2261.1     0.3
+              1         0        0     2261.1     0.6
+              2         1        1     2261.1     0.3
+              3         0        1     2261.1     0.2
+              4         1        2     2261.1     0.3
+              5         0        2     2261.1     0.3
+              6         1        3     2261.1     0.3
+              7         0        3     2261.1     0.2
+              8         1        0     2261.1     0.4
+              9         0        0     2261.1     0.3
+             10         1        1     2261.1     0.4
+             11         0        1     2261.1     0.3
+             12         1        2     2261.1     0.3
+             13         0        2     2261.1     0.4
+             14         1        3     2261.1     0.6
+             15         0        3     2261.1     1.7
+
+
+Simulating `fulladder.sp' on ufrgs-server-09 at 10:38:43 AM, Wed Apr 5, 2017 (process id: 15590).
+Current working directory: /home/inf01185/luiz.enger/Voluntario.WA/FullAdder
+Command line:
+    /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/bin/spectre  \
+        fulladder.sp
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libinfineon_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_o_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libphilips_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libsparam_sh.so ...
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/cmi/lib/5.0/libstmodels_sh.so ...
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/FullAdder/fulladder.sp
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/configs/spectre.cfg
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/models
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16nfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/modelfiles/lstp/16pfet.pm
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/PTM-MG/param.inc
+Reading file:  /home/inf01185/luiz.enger/Voluntario.WA/library_16nmlstp
+
+Warning from spectre during circuit read-in.
+    WARNING (SFE-1805): "fulladder.sp" 6: .simulator is not recognised as a valid SPICE control card.
+
+Time for NDB Parsing: CPU = 83.987 ms, elapsed = 128.229 ms.
+Time accumulated: CPU = 100.984 ms, elapsed = 128.236 ms.
+Peak resident memory used = 27.8 Mbytes.
+
+
+Warning from spectre in `inv', during circuit read-in.
+    WARNING (SFE-2453): The global node `vdd!' and sub circuit terminal `vdd!' will be treated as the sub circuit terminal.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+Warning from spectre in `FullAdder', during circuit read-in.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+Warning from spectre in `xor', during circuit read-in.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+Warning from spectre in `nand', during circuit read-in.
+    WARNING (SFE-2453): The global node `gnd!' and sub circuit terminal `gnd!' will be treated as the sub circuit terminal.
+        Further occurrences of this warning will be suppressed.
+
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/discipline.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/disciplines.vams
+Reading link:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.h
+Reading file:  /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/etc/ahdl/constants.vams
+
+Warning from spectre during hierarchy flattening.
+    WARNING (SFE-30): "fulladder.sp" 9: .options: `post' is not a valid parameter for an instance of `options'.  Ignored.
+Warning from spectre in `nfet':`xInvA.MM1', in `inv':`xInvA', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `pfet':`xInvA.MM0', in `inv':`xInvA', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16pfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+Warning from spectre in `nfet':`xFA0.xNand0.MM2', in `nand':`xFA0.xNand0', in `FullAdder':`xFA0', during hierarchy flattening.
+    WARNING (SFE-32): "../PTM-MG/modelfiles/../modelfiles/lstp/16nfet.pm" 4: Duplicate specification for parameter `bulkmod' (using last value specified).
+
+Time for Elaboration: CPU = 21.996 ms, elapsed = 23.119 ms.
+Time accumulated: CPU = 123.98 ms, elapsed = 151.564 ms.
+Peak resident memory used = 31.1 Mbytes.
+
+Loading /tools/cadence/rhel5/MMSIM_14.10_988/tools.lnx86/spectre/lib/mdl/libSpectreEH_sh.so ...
+Time for EDB Visiting: CPU = 122.982 ms, elapsed = 122.699 ms.
+Time accumulated: CPU = 246.962 ms, elapsed = 274.451 ms.
+Peak resident memory used = 37.9 Mbytes.
+
+
+Global user options:
+
+Circuit inventory:
+              nodes 20
+            bsimcmg 34    
+          capacitor 2     
+            vsource 6     
+
+Analysis and control statement inventory:
+               tran 1     
+
+Output statements:
+             .probe 0     
+           .measure 4     
+               save 0     
+
+Time for parsing: CPU = 2.999 ms, elapsed = 3.088 ms.
+Time accumulated: CPU = 249.961 ms, elapsed = 277.751 ms.
+Peak resident memory used = 38.8 Mbytes.
+
+~~~~~~~~~~~~~~~~~~~~~~
+Pre-Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
+
+******************************************************
+Transient Analysis `transient1': time = (0 s -> 50 ns)
+******************************************************
+Trying `homotopy = gmin' for initial conditions.
+
+Notice from spectre during IC analysis, during transient analysis `transient1', during task `MDLControl'.
+    GminDC = 1 pS is large enough to noticeably affect the DC solution.
+        dV(xFA0.xNand0.MM3.mnfet:int_di) = -3.09401 mV
+        Use the `gmin_check' option to eliminate or expand this report.
+    Bad pivoting is found during DC analysis. Option dc_pivot_check=yes is recommended for possible improvement of convergence.
+
+DC simulation time: CPU = 84.987 ms, elapsed = 85.1619 ms.
+Important parameter values:
+    start = 0 s
+    outputstart = 0 s
+    stop = 50 ns
+    step = 5 ps
+    maxstep = 1 ns
+    ic = all
+    useprevic = no
+    skipdc = no
+    reltol = 1e-03
+    abstol(V) = 1 uV
+    abstol(I) = 1 pA
+    temp = 27 C
+    tnom = 27 C
+    tempeffects = all
+    errpreset = moderate
+    method = traponly
+    lteratio = 3.5
+    relref = sigglobal
+    cmin = 0 F
+    gmin = 1 pS
+
+
+Output and IC/nodeset summary:
+                 save   5       (current)
+                 save   20      (voltage)
+
+....
+
+Notice from spectre at time = 1.29836 ns during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xFA0.xNand0.MM3.mnfet:int_si.
+Notice from spectre at time = 1.4026 ns during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xFA0.xNand0.MM3.mnfet:int_si.
+
+.....
+
+Notice from spectre at time = 1.55 ns during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xFA0.xNand0.MM3.mnfet:int_si.
+
+........
+
+Notice from spectre at time = 2.26361 ns during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xFA0.xNand2.MM0.mpfet:int_si.
+Notice from spectre at time = 2.32123 ns during transient analysis `transient1', during task `MDLControl'.
+    Found trapezoidal ringing on node xFA0.xNand2.MM0.mpfet:int_si.
+        Further occurrences of this notice will be suppressed.
+
+................9................8................7................6................5................4................3................2................1................0
+Number of accepted tran steps =             5198
+
+Notice from spectre during transient analysis `transient1', during task `MDLControl'.
+    Trapezoidal ringing is detected during tran analysis.
+        Please use method=trap for better results and performance.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Post-Transient Simulation Summary
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   -   To further speed up simulation, consider
+          add ++aps on command line
+          add +cktpreset=sampled on command line for ADC/DAC simulation
+          add +cktpreset=pll on command line for PLL simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Initial condition solution time: CPU = 84.987 ms, elapsed = 85.207 ms.
+Intrinsic tran analysis time:    CPU = 4.40133 s, elapsed = 4.4026 s.
+Total time required for tran analysis `transient1': CPU = 4.48732 s, elapsed = 4.48992 s.
+Time accumulated: CPU = 4.73928 s, elapsed = 4.77235 s.
+Peak resident memory used = 41.1 Mbytes.
+
+
+Notice from spectre during task `MDLControl'.
+    28 notices suppressed.
+
+
+Aggregate audit (10:38:48 AM, Wed Apr 5, 2017):
+Time used: CPU = 4.75 s, elapsed = 4.78 s, util. = 99.3%.
+Time spent in licensing: elapsed = 55.2 ms.
+Peak memory used = 41.3 Mbytes.
+Simulation started at: 10:38:43 AM, Wed Apr 5, 2017, ended at: 10:38:48 AM, Wed Apr 5, 2017, with elapsed time (wall clock): 4.78 s.
+spectre completes with 0 errors, 10 warnings, and 9 notices.

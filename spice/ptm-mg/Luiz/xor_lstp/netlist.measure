@@ -1,0 +1,88 @@
+Exported variables from results directory:  ./netlist.raw/
+
+date               :  10:51:53 AM, Tue Apr 4, 2017
+design             :  XOR com transmission gate
+simulator          :  spectre
+version            :  14.1.0.988.isr20
+
+
+Measurement Name   :  transient1
+Analysis Type      :  tran
+iavg            = 1.076e-07 
+iavga           = 1.4371e-07 
+iavgb           = 3.60839e-07 
+iint            = -3.0777e-15 
+iinta           = 4.36216e-15 
+iintb           = -4.35791e-15 
+pavg            = 9.14602e-08 
+pavga           = 1.22153e-07 
+pavgb           = 3.06713e-07 
+pint            = -5.23209e-08 
+pinta           = 7.41567e-08 
+pintb           = -7.40844e-08 
+
+
+Measurement Name   :  transient2
+Analysis Type      :  tran
+iavg            = 1.0308e-07 
+iavga           = 1.38552e-07 
+iavgb           = 2.2909e-07 
+iint            = -2.59958e-15 
+iinta           = -4.73456e-15 
+iintb           = -4.29296e-18 
+pavg            = 8.76178e-08 
+pavga           = 1.17769e-07 
+pavgb           = 1.94727e-07 
+pint            = -4.41929e-08 
+pinta           = -8.04875e-08 
+pintb           = -7.29803e-11 
+
+
+Measurement Name   :  transient3
+Analysis Type      :  tran
+iavg            = 6.83269e-08 
+iavga           = 2.81168e-07 
+iavgb           = 7.0919e-08 
+iint            = -3.04348e-19 
+iinta           = 2.15932e-18 
+iintb           = -1.61831e-18 
+pavg            = 5.80779e-08 
+pavga           = 2.38993e-07 
+pavgb           = 6.02811e-08 
+pint            = -5.17391e-12 
+pinta           = 3.67084e-11 
+pintb           = -2.75113e-11 
+
+
+Measurement Name   :  transient4
+Analysis Type      :  tran
+iavg            = 4.10845e-09 
+iavga           = 1.85306e-07 
+iavgb           = 1.69085e-07 
+iint            = -1.57725e-19 
+iinta           = 1.17133e-18 
+iintb           = -5.66029e-15 
+pavg            = 3.49218e-09 
+pavga           = 1.5751e-07 
+pavgb           = 1.43722e-07 
+pint            = -2.68133e-12 
+pinta           = 1.99126e-11 
+pintb           = -9.62249e-08 
+
+
+Measurement Name   :  transient5
+Analysis Type      :  tran
+iavg            = 1.11327e-07 
+iavga           = 2.76813e-07 
+iavgb           = 2.73578e-07 
+iint            = -1.59145e-15 
+iinta           = -3.44297e-16 
+iintb           = -3.21298e-15 
+pavg            = 9.46279e-08 
+pavga           = 2.35291e-07 
+pavgb           = 2.32541e-07 
+pint            = -2.70546e-08 
+pinta           = -5.85304e-09 
+pintb           = -5.46207e-08 
+
+

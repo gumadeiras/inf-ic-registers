@@ -1,0 +1,21 @@
+* "simulator" "HSPICE" 
+* "version" "H-2013.03-SP1 64-BIT"
+* "format" "HSP"
+* "rundate" "09:08:35 03/28/2017 "
+* "netlist" "nand_lstp.sp "
+* "runtitle" "teste de nand com finfet 16nm"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ a = 849.9998m       
++ ainv =   0.            
++ b = 849.9998m       
++ binv =   0.            
++ out = 156.2960n       
++ outinv = 850.0000m       
++ vdd! = 850.0000m       
++ xnand.node1 = 106.4151n       
+***   END: Saved Operating Point ***                     

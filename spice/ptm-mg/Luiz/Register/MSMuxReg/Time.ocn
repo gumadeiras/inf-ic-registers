@@ -1,0 +1,71 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+
+fp = outfile("./RiseFall.txt", "w")
+fprintf(fp "\t\t Tempos de Propagação \t\t \n\n")
+
+analysis('tran ?stop 30n ?maxstep 5p)
+desVar( "Per" 4n )
+;run()
+
+paramAnalysis( "Per" ?start 2n ?stop 0.5n ?step -0.5n )
+paramRun()
+
+foreach( periodo famGetSweepValues( v("OUT_tran" ?result "tran") )
+	wave = famValue( v("OUT_tran" ?result "tran") periodo )
+	Trise = riseTime( wave 0 nil 0.85 nil 10 90 t "time")
+	Tfall = riseTime( wave 0.85 nil 0 nil 10 90 t "time")
+	ocnPrint(?output fp Trise)
+	ocnPrint(?output fp Tfall)
+)
+
+close(fp)
+
+
+;selectResults('tran)
+
+
+;fprintf(fp "-------D em GND-------------\n")
+;Trise = riseTime( v("OUT_tran") 0 nil 0.85 nil 10 90 t "time")
+;Tfall = riseTime( v("OUT_tran") 0.85 nil 0 nil 10 90 t "time")
+
+;ocnPrint(?output fp Trise)
+;ocnPrint(?output fp Tfall)
+
+;fprintf(fp "\n\n-------D em VDD--------------\n")
+
+;Trise = riseTime( v("OUT_tran" ?result "transient2-tran") 0 nil 0.85 nil 10 90 t "time")
+;Tfall = riseTime( v("OUT_tran" ?result "transient2-tran") 0.85 nil 0 nil 10 90 t "time")
+
+;ocnPrint(?output fp Trise)
+;ocnPrint(?output fp Tfall)
+
+;fprintf(fp "\n\n------D variando--------------\n")
+
+;Trise = riseTime( v("OUT_tran" ?result "transient3-tran") 0 nil 0.85 nil 10 90 t "time")
+;Tfall = riseTime( v("OUT_tran" ?result "transient3-tran") 0.85 nil 0 nil 10 90 t "time")
+
+;ocnPrint(?output fp Trise)
+;ocnPrint(?output fp Tfall)
+
+;close(fp)
+
+;delete('analysis 'tran)
+
+;analysis( 'tran ?stop 12n ?maxstep 10p )
+;desVar("Per")
+;paramAnalysis( "Per" ?start 0.25n ?stop 0.0625n ?step -0.0125n )
+
+;paramRun()

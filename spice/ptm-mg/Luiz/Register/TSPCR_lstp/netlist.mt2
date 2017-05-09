@@ -1,0 +1,5 @@
+$ Simulator: spectre (ver. 14.1.0.988.isr20)
+.title 'True Single Phase Clock Register '
+iint iavg pint pavg temper alter# 
+-1.95999e-14 5.59368e-07 -3.33199e-07 4.75463e-07 27 3 
+

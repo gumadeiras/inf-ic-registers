@@ -1,0 +1,57 @@
+		 Tempos de Propagação 		 
+
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 2e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    3.0211n          10.5488p       
+    7.0211n          10.5488p       
+   11.0211n          10.5488p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 2e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    1.02382n          5.19795p      
+    5.02382n          5.19663p      
+    9.02382n          5.19663p      
+   13.0238n           5.19663p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 1.5e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.2711n          10.5591p       
+    6.77109n         10.5407p       
+   11.2711n          10.5159p       
+   14.2711n          10.572p        
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 1.5e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  773.818p            5.20901p      
+    5.27392n          5.21018p      
+    8.27381n          5.25015p      
+   12.7738n           5.20839p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 1e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.52105n         10.5795p       
+    6.52105n         10.5795p       
+   10.5211n          10.5795p       
+   14.5211n          10.5795p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 1e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  523.814p            5.22289p      
+    4.52382n          5.21961p      
+    8.52382n          5.21961p      
+   12.5238n           5.21961p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 5e-10) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.27104n         10.595p        
+    6.27103n         10.5782p       
+   10.271n           10.5783p       
+   14.271n           10.5783p       
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/C2MOS/" ?result "tran") "Per" 5e-10) 0.85 nil 0 nil 10 90 t "time") (s)
+
+  273.825p            5.23697p      
+    4.27383n          5.25166p      
+    8.27383n          5.24116p      
+   12.2738n           5.24116p      

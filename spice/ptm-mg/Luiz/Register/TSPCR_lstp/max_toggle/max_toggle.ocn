@@ -1,0 +1,19 @@
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+
+analysis( 'tran ?stop 12n ?maxstep 10p )
+desVar("Per" 5n )
+paramAnalysis( "Per" ?start 0.25n ?stop 0.0625n ?step -0.0125n )
+
+paramRun()
+
+selectResults( 'tran )
+
+outputs()
+
+;run()

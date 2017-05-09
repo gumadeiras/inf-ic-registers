@@ -1,0 +1,60 @@
+*True Single Phase Clock Register 
+simulator lang=spice
+.lib '../../../../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../../../../library_16nmlstp' standardCells 
+
+.parameters v_supply=0.85 period = 2n
+.option post=2
+.global gnd! vdd!
+*.ic CLK1=v_supply D1=v_supply 
+
+*********DEFINE CIRCUIT************
+*X0 CLK0 CLK1 vdd! gnd! inv
+*X1 CLK1 CLK vdd! gnd! invx2
+
+*xInvCLK0 CLK0 CLK1 vdd! gnd! inv
+*xInvCLK1 CLK1 CLK vdd! gnd! inv
+
+*xInv0 D0 D1 vdd2! gnd! inv
+*xInv1 D1 D vdd2! gnd! invx2
+
+*xbuf0 CLK0 CLK vdd! gnd! buffx2
+*xbuf1 D0 D vdd! gnd! buffx2
+
+
+*xReg D CLK Q vdd gnd! TSPCR
+
+MP0 1 D vdd! vdd! pfet nfin = 1
+MP1 2x CLK 1 vdd! pfet nfin = 1
+MN0 2x D gnd! gnd! nfet nfin = 1
+
+MP2 3y CLK vdd! vdd! pfet nfin = 1
+MN1 3y 2x 4 gnd! nfet nfin = 1
+MN2 4 CLK gnd! gnd! nfet nfin = 1
+
+MP3 notQ 3y vdd! vdd! pfet nfin = 1
+MN3 notQ CLK 5 gnd! nfet nfin = 1
+MN4 5 3y gnd! gnd! nfet nfin = 1
+
+MP4 Q notQ vdd! vdd! pfet nfin = 1
+MN5 Q notQ gnd! gnd! nfet nfin = 1 
+
+*xInvout OUT_tran Qinv vdd! gnd! inv
+
+C0 Q gnd! 9f
+
+*********DEFINE SOURCES***********
+vvdd vdd! 0 0.85V
+vgnd gnd! 0 0V
+vvdd2 vdd2! 0 0.85
+
+*Vdd vdd 0 0.85V
+
+Vd D 0 DC = 0 pulse 0.85 0 1.2n 60p 60p "period" "period*2"
+VCLK CLK 0 DC = 0 pulse 0 0.85 0.7n 10p 10p "period/2" "period"
+*Vd D0 0 PWL 0n 0.0V "2.1n-delay" 0.0V "2.15n-delay" 0.85V 4n 0.85V
+*Vd D 0 PWL 0n 0.0V "2.1n" 0.0V "2.15n" 0.85V 4n 0.85V
+*************ANALYSIS******************
+.tran STEP=2p STOP=20n UIC
+******************************************
+.end

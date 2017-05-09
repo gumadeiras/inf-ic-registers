@@ -1,0 +1,5 @@
+$ Simulator: spectre (ver. 14.1.0.988.isr20)
+.title 'teste de nand com finfet 16nm'
+iint iavg pavg pint temper alter# 
+-1.4284e-15 7.03822e-08 5.98249e-08 -2.42828e-08 27 1 
+

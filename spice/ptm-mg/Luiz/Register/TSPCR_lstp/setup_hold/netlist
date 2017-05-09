@@ -1,0 +1,44 @@
+*True Single Phase Clock Register 
+simulator lang=spice
+.lib '../../../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../../../library_16nmlstp' standardCells 
+
+.parameters v_supply=0.85
+.option post=2
+.global gnd! vdd!
+*.ic CLK1=v_supply D1=v_supply
+
+*********DEFINE CIRCUIT************
+*X0 CLK0 CLK1 vdd! gnd! inv
+*X1 CLK1 CLK vdd! gnd! inv
+
+*xInvCLK0 CLK0 CLK1 vdd! gnd! inv
+*xInvCLK1 CLK1 CLK vdd! gnd! inv
+
+*xInv0 D0 D1 vdd2! gnd! inv
+*xInv1 D1 D vdd2! gnd! invx2
+
+xbuf0 CLK0 CLK vdd! gnd! buffx2
+xbuf1 D0 D vdd! gnd! buffx2
+
+
+xReg D CLK Q vdd gnd! TSPCR
+
+*xInvout OUT_tran Qinv vdd! gnd! inv
+
+C0 Q gnd! 9f
+
+*********DEFINE SOURCES***********
+vvdd vdd! 0 0.85V
+vgnd gnd! 0 0V
+vvdd2 vdd2! 0 0.85
+
+Vdd vdd 0 0.85V
+
+VCLK CLK0 0 DC = 0 pulse 0 0.85 1n 3p 3p 1n 2n
+*Vd D0 0 PWL 0n 0.0V "2.1n-delay" 0.0V "2.15n-delay" 0.85V 4n 0.85V
+Vd D0 0 PWL 0n 0.0V "2.1n" 0.0V "2.15n" 0.85V 4n 0.85V
+*************ANALYSIS******************
+.tran STEP=2p STOP=4n UIC
+******************************************
+.end

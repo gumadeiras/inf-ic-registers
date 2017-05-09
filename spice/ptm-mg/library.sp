@@ -323,3 +323,5 @@ Mn223 in8 out6 nnode22 cgnd nfet
 Mn224 nnode22 clk cgnd cgnd nfet
 XINV7 in8 out cvdd cgnd inv
 .ENDS
+
+.END

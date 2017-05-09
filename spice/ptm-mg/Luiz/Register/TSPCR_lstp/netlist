@@ -1,0 +1,54 @@
+*True Single Phase Clock Register 
+simulator lang=spice
+.lib '../../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../../library_16nmlstp' standardCells 
+
+.param
+*.param Per = 2n
+.option post=2
+.global gnd! vdd!
+
+*********DEFINE CIRCUIT************
+
+xInv0 Dinv D vdd! gnd! inv
+
+xReg D CLK OUT_tran vdd gnd! TSPCR
+
+xInv1 OUT_tran Qinv vdd! gnd! inv
+
+c0 Qinv gnd! 2f
+
+xInvCLK notCLK CLK vdd! gnd! inv
+
+*xReg2 D CLK2 Q vdd! gnd! TSPCR
+*xInv2 Q D vdd! gnd! inv
+
+************DEFINE SOURCES***********
+vvdd vdd! 0 0.85V
+vgnd gnd! 0 0V
+
+Vdd vdd 0 0.85V
+
+Vclock notCLK 0 DC = 0 pulse 0 0.85 0 25p 25p "Per/2" "Per"
+Vd Dinv 0 DC=0.0 pulse 0 0.85 0 50p 50p 1.5n 3n
+
+*VCLK2 CLK2 0 DC=0.0 pulse 0 0.85 0 10p 10p "Per/2" "Per"
+
+*************ANALYSIS******************
+.tran STEP=2p STOP=30n
+
+.measure tran Iint INTEG i(Vdd) FROM=0n TO=20n
+.measure tran Iavg AVG abs(i(Vdd)) FROM=0n TO=20n
+
+.measure tran Pint PARAM='Iint*0.85/20n'
+.measure tran Pavg PARAM='Iavg*0.85'
+******************************************
+
+**************ALTER STATEMENTS***********************
+*.alter case 2: entrada D em VDD
+*Vd Dinv 0 DC=0.0
+
+*.alter case 3: entrada D variando
+*Vd Dinv 0 DC=0.0 pulse 0 0.85 0 50p 50p 1.5n 3n
+******************************************************
+.end

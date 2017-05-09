@@ -1,0 +1,26 @@
+Exported variables from results directory:  ./nand_lstp.raw/
+
+date               :  10:18:25 AM, Wed Apr 5, 2017
+design             :  teste de nand com finfet 16nm
+simulator          :  spectre
+version            :  14.1.0.988.isr20
+
+
+Measurement Name   :  transient1
+Analysis Type      :  tran
+etotal          = -3.25017e-15 
+itotal          = -3.82373e-15 
+
+
+Measurement Name   :  transient2
+Analysis Type      :  tran
+etotal          = -4.59765e-15 
+itotal          = -5.409e-15 
+
+
+Measurement Name   :  transient3
+Analysis Type      :  tran
+etotal          = -3.11011e-15 
+itotal          = -3.65896e-15 
+
+

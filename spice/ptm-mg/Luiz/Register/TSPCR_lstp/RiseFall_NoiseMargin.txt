@@ -1,0 +1,101 @@
+		 Tempos de Propagação 		 
+
+-------Transient 1--------------
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "time") (s)
+
+    4.02348n          4.08553p      
+    8.02348n          4.08613p      
+   12.0235n           4.08597p      
+   16.0235n           4.08597p      
+   20.0235n           4.08597p      
+   24.0235n           4.08597p      
+   28.0235n           4.08597p      
+   32.0235n           4.08597p      
+   36.0235n           4.08597p      
+   40.0235n           4.08597p      
+   44.0235n           4.08597p      
+   48.0235n           4.08597p      
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "time") (s)
+
+    2.02811n          3.1526p       
+    6.0281n           3.16636p      
+   10.0281n           3.1663p       
+   14.0281n           3.16631p      
+   18.0281n           3.16631p      
+   22.0281n           3.16631p      
+   26.0281n           3.16631p      
+   30.0281n           3.16631p      
+   34.0281n           3.16631p      
+   38.0281n           3.16631p      
+   42.0281n           3.16631p      
+   46.0281n           3.16631p      
+
+
+-------Transient 2--------------
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "time") (s)
+
+    3.02349n          4.08271p      
+    7.02349n          4.08271p      
+   11.0235n           4.08271p      
+   15.0235n           4.08271p      
+   19.0235n           4.08271p      
+   23.0235n           4.08271p      
+   27.0235n           4.08271p      
+   31.0235n           4.08271p      
+   35.0235n           4.08271p      
+   39.0235n           4.08271p      
+   43.0235n           4.08271p      
+   47.0235n           4.08271p      
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "time") (s)
+
+    1.02794n          3.15727p      
+    5.02796n          3.16871p      
+    9.02796n          3.16871p      
+   13.028n            3.16871p      
+   17.028n            3.16871p      
+   21.028n            3.16871p      
+   25.028n            3.16871p      
+   29.028n            3.16871p      
+   33.028n            3.16871p      
+   37.028n            3.16871p      
+   41.028n            3.16871p      
+   45.028n            3.16871p      
+   49.028n            3.16871p      
+
+
+-------Transient 3--------------
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.52348n          4.07029p      
+    6.52347n          4.0739p       
+   10.5235n           4.07417p      
+   14.5235n           4.07395p      
+   18.5235n           4.07417p      
+   22.5235n           4.0735p       
+   26.5235n           4.07407p      
+   30.5235n           4.07407p      
+   34.5235n           4.05344p      
+   38.5235n           4.07437p      
+   42.5235n           4.07438p      
+   46.5235n           4.07436p      
+
+time (s)          riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/TSPCR_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "time") (s)
+
+  527.769p            3.15845p      
+    4.52779n          3.18236p      
+    8.5278n           3.14038p      
+   12.5278n           3.14034p      
+   16.5278n           3.14035p      
+   20.5278n           3.14034p      
+   24.5278n           3.14035p      
+   28.5278n           3.14035p      
+   32.5278n           3.14035p      
+   36.5277n           3.14467p      
+   40.5277n           3.13207p      
+   44.5277n           3.13207p      
+   48.5277n           3.13207p      

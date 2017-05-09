@@ -1,0 +1,20 @@
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; nsc.ocn
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+
+desVar( "setup" 500ps )
+analysis( 'tran ?stop 4n )
+
+paramAnalysis( "setup" ?start 300ps ?stop 100ps ?step 20ps )
+paramRun()

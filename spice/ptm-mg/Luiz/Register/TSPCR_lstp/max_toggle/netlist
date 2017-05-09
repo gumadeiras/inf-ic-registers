@@ -1,0 +1,41 @@
+*True Single Phase Clock Register 
+simulator lang=spice
+
+.lib '../../../PTM-MG/modelfiles/models' ptm16lstp
+.lib '../../../library_16nmlstp' standardCells 
+
+.param
+*.param Per = 4n
+.option post=2
+.global gnd! vdd! Per
+
+********DEFINE CIRCUIT*************
+
+*xTSPCR0 D0 CLK Q0 vdd gnd! TSPCR
+*xTSPCR1 Q0 CLK D0 vdd gnd! TSPCR
+
+xTSPCR2 D CLK Q vdd gnd! TSPCR
+xInv Q D vdd! gnd! inv
+
+***********************************
+
+********DEFINE STIMULI***********
+Vdd vdd 0 0.85V
+
+vvdd vdd! 0 0.85V
+vgnd gnd! 0 0.0V
+
+
+Vclk CLK gnd! DC = 0 pulse 0V 0.85V 0 5p 5p "Per/2" "Per"
+
+*********************************
+
+*********DEFINE ANALYSIS*********
+
+*.IC V(D0) = 0.85V
+*.IC V(Q0) = 0.0V
+.tran STEP = 2p STOP = 20n UIC
+
+**********************************
+
+.end

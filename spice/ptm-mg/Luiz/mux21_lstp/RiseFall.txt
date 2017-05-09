@@ -1,0 +1,87 @@
+		 Tempos de Propagação 		 
+
+-------Entradas Fixas e Seletor variando------------
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "cycle") (s)
+
+1                     8.38999p      
+2                     8.34404p      
+3                     8.31408p      
+4                     8.29654p      
+5                     8.2878p       
+6                     8.28299p      
+7                     8.27987p      
+8                     8.27764p      
+9                     8.27594p      
+10                    8.27483p      
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "cycle") (s)
+
+1                     7.63465p      
+2                     7.66495p      
+3                     7.66357p      
+4                     7.65688p      
+5                     7.6545p       
+6                     7.64849p      
+7                     7.65824p      
+8                     7.66068p      
+9                     7.66259p      
+10                    7.65455p      
+
+
+-------In0 variando e Seletor fixo------------
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "cycle") (s)
+
+1                    15.0709p       
+2                    15.0756p       
+3                    15.0446p       
+4                    15.0263p       
+5                    15.017p        
+6                    15.0117p       
+7                    14.9941p       
+8                    14.9918p       
+9                    14.99p         
+10                   14.9885p       
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "cycle") (s)
+
+1                    13.3045p       
+2                    13.5958p       
+3                    13.5804p       
+4                    13.5685p       
+5                    13.5636p       
+6                    13.5823p       
+7                    13.5892p       
+8                    13.597p        
+9                    13.604p        
+10                   13.6099p       
+
+
+---------In1 variando e Seletor fixo------------
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0 nil 0.85 nil 10 90 t "cycle") (s)
+
+1                    14.9531p       
+2                    14.9309p       
+3                    14.9015p       
+4                    14.8842p       
+5                    14.8743p       
+6                    14.8693p       
+7                    14.866p        
+8                    14.8637p       
+9                    14.8619p       
+10                   14.8604p       
+
+cycle             riseTime(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/mux21_lstp/" ?result "tran") 0.85 nil 0 nil 10 90 t "cycle") (s)
+
+1                    13.3107p       
+2                    13.3391p       
+3                    13.3253p       
+4                    13.3171p       
+5                    13.314p        
+6                    13.3153p       
+7                    13.32p         
+8                    13.3257p       
+9                    13.331p        
+10                   13.3355p       

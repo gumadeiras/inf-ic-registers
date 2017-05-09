@@ -1,0 +1,92 @@
+		 Tempos de Propagação 		 
+
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 2e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    5.05543n          3.9189p       
+   11.0554n           3.91608p      
+   17.0554n           3.91609p      
+   23.0554n           3.91609p      
+   29.0554n           3.91609p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 2e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    7.06162n          3.18753p      
+   13.0616n           3.18746p      
+   19.0616n           3.18746p      
+   25.0616n           3.18746p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 1.5e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.30539n          3.9222p       
+    5.30538n          3.88475p      
+    8.30537n          3.88532p      
+   11.3054n           3.89421p      
+   14.3054n           3.88518p      
+   17.3054n           3.89422p      
+   20.3054n           3.88518p      
+   23.3054n           3.89422p      
+   26.3054n           3.88518p      
+   29.3054n           3.89422p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 1.5e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    3.81155n          3.15263p      
+    6.81143n          3.15991p      
+    9.81154n          3.18037p      
+   12.8114n           3.15929p      
+   15.8115n           3.18037p      
+   18.8114n           3.15929p      
+   21.8115n           3.18037p      
+   24.8114n           3.15929p      
+   27.8115n           3.18037p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 1e-09) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    2.55524n          3.86681p      
+    5.55524n          3.89962p      
+    8.55524n          3.92209p      
+   11.5552n           3.91908p      
+   14.5552n           3.92218p      
+   17.5552n           3.92204p      
+   20.5552n           3.92131p      
+   23.5552n           3.92142p      
+   26.5552n           3.91851p      
+   29.5552n           3.90333p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 1e-09) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    3.56141n          3.18245p      
+    6.56142n          3.13p         
+    9.56142n          3.18553p      
+   12.5613n           3.17785p      
+   15.5614n           3.18552p      
+   18.5614n           3.18553p      
+   21.5614n           3.1857p       
+   24.5614n           3.18566p      
+   27.5615n           3.13763p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 5e-10) 0 nil 0.85 nil 10 90 t "time") (s)
+
+    1.80529n          3.92243p      
+    4.80536n          3.93238p      
+    7.80539n          3.91198p      
+   10.8053n           3.91445p      
+   13.8054n           3.91416p      
+   16.8054n           3.91198p      
+   19.8054n           3.91191p      
+   22.8053n           3.92316p      
+   25.8053n           3.93224p      
+   28.8053n           3.91789p      
+
+time (s)          riseTime(leafValue(v("OUT_tran" ?resultsDir "/home/inf01185/luiz.enger/Voluntario.WA/Register/TSPCR_lstp/" ?result "tran") "Per" 5e-10) 0.85 nil 0 nil 10 90 t "time") (s)
+
+    3.31111n          3.12746p      
+    6.31111n          3.13833p      
+    9.3111n           3.1276p       
+   12.3112n           3.186p        
+   15.3113n           3.14097p      
+   18.3111n           3.1276p       
+   21.3111n           3.1276p       
+   24.3111n           3.12797p      
+   27.3112n           3.17123p      
