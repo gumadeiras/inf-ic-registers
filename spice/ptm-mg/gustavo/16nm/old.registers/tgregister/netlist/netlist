@@ -1,0 +1,172 @@
+* finfet testbench
+
+simulator lang=spectre
+simulator lang=spice
+
+.lib '../../../../modelfiles/models' ptm16lstp
+.include '../../../../library.sp'
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 databuffer0 data0 vdd! gnd! buf
+
+XTGREG0 data0 rdata0 CLK X0 gnd! tgregister
+
+XBUF02 data0 E1 vdd! gnd! buf
+XBUF03 data0 E1 vdd! gnd! buf
+XBUF04 data0 E1 vdd! gnd! buf
+
+XBUF11 rdata0 E0 vdd! gnd! buf
+XBUF12 rdata0 E0 vdd! gnd! buf
+XBUF13 rdata0 E0 vdd! gnd! buf
+XBUF14 rdata0 E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+vclk CLK gnd PWL
++ 0s          0v 
++ 3.0n        0v
++ 3.05n       'vd'
++ 6.0n        'vd'
++ 6.05n       0v
+
+* initial data value on register out
+.IC v(rdata0) = 0
++   v(rdata1) = 0
+
+* data
+vdata0 databuffer0 gnd PWL
++ 0ns                      0v 
++ '2.0ns+DelayTime'        0v 
++ '2.05ns+DelayTime'       'vd'
++ '5.0ns+DelayTime'        'vd'
++ '5.05ns+DelayTime'       0v
+
+* search parameter, lower and upper limits.
+.Param DelayTime = Opt1 ( 0n, 0n, 5n )
+
+* Transient simulation with Bisection Optimization
+.Tran 10p 8n Sweep Optimize = Opt1
++                 Result = pushout
+* +                Result = MaxVout
++                 Model = OptMod
+
+* max(vout), ~vdd
+.MEASURE Tran MaxVout Max v(rdata0) Goal = 'vd'
+
+* optimistic setup time value
+* .Measure Tran pushout When v(rdata0)='vd/2' rise=1 
+* * Relative pushout time
+* + pushout_per=0.01
+* * Absolute pushout time
+* *+ pushout = 0.01n
+
+* pessimistic setup time value
+.Measure Tran pushout Trig v(CLK)      Val = 'vd/2' cross=1
++                     Targ v(rdata0)   Val = 'vd/2' cross=1
+
+* setup time value
+.Measure Tran SetupTime Trig v(data0)  Val = 'vd/2' cross=1
++                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+* Optimization Model
+.Model OptMod Opt 
++      Method = passfail 
++      relin = 0.0001 
++      relout = 0.001 
+
+
+
+
+.alter case2: hold time data high low
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      'vd'
++ '2.0ns+DelayTime'        'vd'
++ '2.05ns+DelayTime'       0v
++ '5.0ns+DelayTime'        0v
+
+.IC v(rdata0) = 0
+
+
+
+
+.alter case3: setup time rdata HIGH data high low
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      'vd'
++ '2.0ns+DelayTime'        'vd'
++ '2.05ns+DelayTime'       0v
++ '5.0ns+DelayTime'        0v
+
+.IC v(rdata0) = 'vd'
+
+
+
+
+.alter case4: hold time rdata HIGH data low high
+
+vdata0 databuffer0 gnd PWL
++ 0ns                      0v
++ '2.0ns+DelayTime'        0v
++ '2.05ns+DelayTime'       'vd'
++ '5.0ns+DelayTime'        'vd'
+
+.IC v(rdata0) = 'vd'
+
+
+
+
+.alter case5: power energy
+
+.Tran 10p 8n
+
+vclk CLK gnd 0 pulse 0 0.85 0 5p 5p 1n 2n
+vdata0 databuffer0 gnd 0 pulse 0 0.85 0 5p 5p 2n 4n
+
+* initial data value on register out
+.IC v(rdata0) = 0
+
+* .alter case2: hold time: data fixed, clock as variable
+* * clock
+* vclk CLK gnd PWL
+* + 0n                      0v 
+* + '3.0n+DelayTime'        0v
+* + '3.05n+DelayTime'       'vd'
+* + '6.0n+DelayTime'        'vd'
+* + '6.05n+DelayTime'       0v
+
+* * initial data value on register out
+* .IC v(rdata0) = 0
+
+* * data
+* vdata0 databuffer0 gnd PWL
+* + 0n            'vd'
+* + 5.0n          'vd'
+* + 5.05n         0v
+
+* .Measure Tran HoldTime Trig v(CLK)    Val = 'vd/2' cross=1
+* +                      Targ v(data0)  Val = 'vd/2' cross=1
+
+.END
+ 

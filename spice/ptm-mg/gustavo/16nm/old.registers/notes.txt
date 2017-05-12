@@ -1,0 +1,9 @@
+1. S2CFF 
+2. C2MOS DFF 
+3. Basic Nand & Inv DFF
+4. Transmission Gate DFF
+5. MUX-based DFF using Nands & Inv
+6. MUX-based DFF using Xnor Style
+7. PowerPC 603 DFF
+8. Racefree Nand & Inv DFF
+9. Single-Transistor Pass Gate DFF

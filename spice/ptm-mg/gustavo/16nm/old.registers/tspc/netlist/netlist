@@ -1,0 +1,123 @@
+* finfet testbench
+
+simulator lang=spectre
+
+
+simulator lang=spice
+
+.lib '../../../../modelfiles/models' ptm16lstp
+.include '../../../../library.sp'
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 databuffer0 data0 vdd! gnd! buf
+
+
+XBUF02 data0 E1 vdd! gnd! buf
+XBUF03 data0 E1 vdd! gnd! buf
+XBUF04 data0 E1 vdd! gnd! buf
+XTSPC0 data0 rdata0 CLK X0 gnd! tspc
+
+XBUF11 rdata0 E0 vdd! gnd! buf
+XBUF12 rdata0 E0 vdd! gnd! buf
+XBUF13 rdata0 E0 vdd! gnd! buf
+XBUF14 rdata0 E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+vclk CLK gnd PWL
++ 0s          0v 
++ 1.0n        0v
++ 1.05n       'vd'
++ 4.0n        'vd'
++ 4.05n       0v
+
+* initial data value on register out
+.IC v(rdata0) = 0
+
+* data
+vdata0 databuffer0 gnd PWL
++ 0ns                     0v 
++ '0.95ns+DelayTime'      0v 
++ '1ns+DelayTime'        'vd'
+
+
+* search parameter, lower and upper limits.
+
+* Transient simulation with Bisection Optimization
+.Tran 10p 5n
+
+* optimistic setup time value
+* .Measure Tran pushout When v(rdata0)='vd/2' rise=1 
+* * Relative pushout time
+* + pushout_per=0.01
+* * Absolute pushout time
+* *+ pushout = 0.01n
+
+* pessimistic setup time value
+.Measure Tran CtoQ    Trig v(CLK)      Val = 'vd/2' cross=1
++                     Targ v(rdata0)   Val = 'vd/2' cross=1
+
+.Measure Tran DtoQ    Trig v(CLK)      Val = 'vd/2' cross=1
++                     Targ v(rdata0)   Val = 'vd/2' cross=1
+
+* setup time value
+.Measure Tran SetupHold Trig v(data0)  Val = 'vd/2' cross=1
++                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+.alter case2: hold time data high low
+
+vdata0 databuffer0 gnd PWL
++ 0ns                    'vd' 
++ '0.95ns+DelayTime'     'vd'
++ '1ns+DelayTime'         0v
+
+.IC v(rdata0) = 0.85v
+
+.alter case3: power energy
+
+.Tran 10p 10n
+
+vclk CLK gnd 0 pulse 0 0.85 0 5p 5p 1n 2n
+vdata0 databuffer0 gnd 0 pulse 0 0.85 0 5p 5p 2n 4n
+
+.alter case4: bugs
+
+vclk CLK gnd PWL
++ 0s          0v 
++ 1.0n        0v
++ 1.05n       'vd'
++ 4.0n        'vd'
++ 4.05n       0v
+
+* initial data value on register out
+.IC v(rdata0) = 0
+
+* data
+vdata0 databuffer0 gnd PWL
++ 0ns                     0v 
++ '0.95ns+DelayTime'      0v 
++ '1ns+DelayTime'        'vd'
+
+.END
+ 

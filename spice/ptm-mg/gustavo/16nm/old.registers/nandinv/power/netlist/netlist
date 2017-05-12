@@ -1,0 +1,77 @@
+* finfet testbench
+
+simulator lang=spectre
+
+
+simulator lang=spice
+
+.lib '../../../../../../modelfiles/models' ptm16lstp
+.include '../../../../../../library.sp'
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 databuffer0 data0 vdd! gnd! buf
+
+XBUFAA0 CLK0 CLK vdd! gnd! buf
+
+
+XBUF02 data0 E1 vdd! gnd! buf
+XBUF03 data0 E1 vdd! gnd! buf
+XBUF04 data0 E1 vdd! gnd! buf
+XTSPC0 data0 rdata0 CLK X0 gnd! nandinv
+
+XBUF11 rdata0 E0 vdd! gnd! buf
+XBUF12 rdata0 E0 vdd! gnd! buf
+XBUF13 rdata0 E0 vdd! gnd! buf
+XBUF14 rdata0 E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+
+
+* ****************************************************
+* ************** STIMULUS
+* ****************************************************
+* * clock
+* VIN0 CLK 0 0 pulse 0 0.85 0 50p 50p 2n 4n 
+* VIN1 databuffer0 0 0 pulse 0 0.85 3n 50p 50p 4n 8n 
+
+* * .DC VIN 0 1.8 0.01 
+* .tran 10p 24n
+
+
+* .END
+*  
+
+
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+VIN0 CLK0 0 0 pulse 0 0.85 25p 5p 5p 2n 4n 
+VIN1 databuffer0 0 0 pulse 0 0.85 0 5p 5p 3n 6n 
+
+.IC v(rdata0) = 0
+
+* .DC VIN 0 1.8 0.01 
+.tran 10p 8n
+
+
+.END
+ 
