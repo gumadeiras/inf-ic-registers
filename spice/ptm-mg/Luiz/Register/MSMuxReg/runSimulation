@@ -1,2 +1,0 @@
-# runSimulation scripts generated for spectre interactive are not intended to be used for command line.
-spectre  input.scs +escchars +log Per=2e-09/psf/spectre.out +inter=mpsc +mpssession=spectre0_10303_1  -format psfxl -raw Per=2e-09/psf  +lqtimeout 900 -maxw 5 -maxn 5   
