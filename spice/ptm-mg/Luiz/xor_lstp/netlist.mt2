@@ -1,7 +1,0 @@
-$ Simulator: spectre (ver. 14.1.0.988.isr20)
-.title 'XOR com transmission gate'
-iint iavg pavg pint iinta iavga pavga pinta iintb iavgb pavgb pintb temper 
-alter# 
--3.04348e-19 6.83269e-08 5.80779e-08 -5.17391e-12 2.15932e-18 2.81168e-07 
-2.38993e-07 3.67084e-11 -1.61831e-18 7.0919e-08 6.02811e-08 -2.75113e-11 27 3 
-
