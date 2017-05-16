@@ -1,11 +1,11 @@
-*mux based master slave register
 simulator lang=spice
-.lib '../../PTM-MG/modelfiles/models' ptm16lstp
-.lib '../../library_16nmlstp' standardCells 
 
-.param v_supply = 0.85
+.lib '../../../modelfiles/models' ptm16lstp
+.lib '../../../library' standardCells
+
 .option post=2
 .global gnd! vdd!
+.param v_supply = 0.85
 
 **********DEFINE CIRCUIT************
 xinv2 CLK0 CLK1 vdd! gnd! inv
@@ -14,7 +14,7 @@ xinv3 CLK1 CLK vdd! gnd! inv
 xinvS0 DS0 DS1 vdd! gnd! inv
 xinvS1 DS1 DS vdd! gnd! inv
 
-xRegS DS QS CLK vvdd gnd! MSMuxReg
+xRegS DS QS CLK vvdd gnd! tgmuxreg
 
 xinvQS QS notQS vdd! gnd! inv
 cS0 notQS 0 5f
@@ -29,7 +29,7 @@ cS4 notQS4 gnd! 5f
 xinvH0 DH0 DH1 vdd! gnd! inv
 xinvH1 DH1 DH vdd! gnd! inv
 
-xRegH DH QH CLK vvdd gnd! MSMuxReg
+xRegH DH QH CLK vvdd gnd! tgmuxreg
 
 xinvQH QH notQH vdd! gnd! inv
 cH0 notQH 0 5f
