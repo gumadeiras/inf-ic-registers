@@ -1,0 +1,73 @@
+* finfet testbench
+
+simulator lang=spectre
+
+
+simulator lang=spice
+
+.lib '../../../../../modelfiles/models' ptm16lstp
+.lib '../../../../../library' standardCells
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 D0 D vdd! gnd! buf
+XBUF02 D E1 vdd! gnd! buf
+XBUF03 D E1 vdd! gnd! buf
+XBUF04 D E1 vdd! gnd! buf
+XREG0 D Q CLK X0 gnd! ccmos
+
+XBUF11 Q E0 vdd! gnd! buf
+XBUF12 Q E0 vdd! gnd! buf
+XBUF13 Q E0 vdd! gnd! buf
+XBUF14 Q E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd-voltage'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+Vclock CLK0 gnd! DC = 0 pulse 1n 0.85 0 20p 20p 1n 2n
+Vd D0 gnd! PWL 0n 0.0V "2n-delay" 0.0V "2.05n-delay" 0.85V 4n 0.85V
+
+.Tran 1p 4.5n
+
+* .Measure Tran CtoQ0    Trig v(CLK)      Val = 'vd/2' cross=1
+* +                     Targ v(Q)   Val = 'vd/2' cross=1
+
+* .Measure Tran DtoQ0    Trig v(data0)      Val = 'vd/2' cross=1
+* +                     Targ v(Q)   Val = 'vd/2' cross=1
+
+* * setup time value
+* .Measure Tran SetupHold0 Trig v(data0)  Val = 'vd/2' cross=1
+* +                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+
+* .Measure Tran CtoQ1    Trig v(CLK)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
+
+* .Measure Tran DtoQ1    Trig v(data1)      Val = 'vd/2' cross=1
+* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
+
+* * setup time value
+* .Measure Tran SetupHold1 Trig v(data1)  Val = 'vd/2' cross=1
+* +                       Targ v(CLK)    Val = 'vd/2' cross=1
+
+.END
+ 
