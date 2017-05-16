@@ -6,34 +6,59 @@ simulator lang=spice
 
 .option post=2
 .global gnd! vdd!
-
+.param v_supply = 0.85
 *********DEFINE CIRCUIT***********
-xinv0 D0 D1 vdd! gnd! inv
-xinv1 D1 D vdd! gnd! inv
-
 xinv2 CLK0 CLK1 vdd! gnd! inv
 xinv3 CLK1 CLK vdd! gnd! inv
+*-------SETUP----------
+xinvS0 DS0 DS1 vdd! gnd! inv
+xinvS1 DS1 DS vdd! gnd! inv
 
-xNandInvReg D Q CLK vvdd gnd! nandinv
+xNandInvRegS DS QS CLK vvdd gnd! nandinv
 
-xinv4 Q notQ vdd! gnd! inv
+xinvQS QS notQS vdd! gnd! inv
+cS0 notQS 0 5f
+xInvQS2 QS notQS2 vdd! gnd! inv
+cS2 notQS2 gnd! 5f
+xInvQS3 QS notQS3 vdd! gnd! inv
+cS3 notQS3 gnd! 5f
+xinvQS4 QS notQS4 vdd! gnd! inv
+cS4 notQS4 gnd! 5f
 
-c0 notQ 0 5f
+*-------HOLD---------------
+xinvH0 DH0 DH1 vdd! gnd! inv
+xinvH1 DH1 DH vdd! gnd! inv
+
+xNandInvRegH DH QH CLK vvdd gnd! nandinv
+
+xinvQH QH notQH vdd! gnd! inv
+cH0 notQH 0 5f
+
+xInvQH2 QH notQH2 vdd! gnd! inv
+cH2 notQH2 gnd! 5f
+xInvQH3 QH notQH3 vdd! gnd! inv
+cH3 notQH3 gnd! 5f
+xinvQH4 QH notQH4 vdd! gnd! inv
+cH4 notQH4 gnd! 5f
 *************************************
 
 *****DEFINE STIMULI***********
-
-Vdd vvdd 0 0.85V
-Vvdd vdd! 0 0.85V
+Vdd vvdd 0 "v_supply"
+Vvdd vdd! 0 "v_supply"
 Vgnd gnd! 0 0.0V
 
-Vclock CLK0 gnd! DC = 0 pulse 1n 0.85 0 20p 20p 1n 2n
-Vd D0 gnd! PWL 0n 0.0V "2.1n-delay" 0.0V "2.15n-delay" 0.85V 4n 0.85V
-
+Vclock CLK0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n 
+Vds DS0 gnd! PWL 0n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply" $ rise de 20p
+Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
 *****************************************************
 
 ***********DEFINE ANALYSIS**********
+.tran STEP=2p STOP=4.6n START=2.5n
+**********************************
 
-.tran STEP=2p STOP=4n
+***********ALTER STATEMENTS********
+.alter case 2: transicao de 1 para 0
+Vds DS0 gnd! PWL 0n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
+Vdh DH0 gnd! PWL 0n "v_supply" 2.35n "v_supply" 2.4n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply"
 
 .end
