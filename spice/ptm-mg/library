@@ -1,4 +1,5 @@
 .lib standardCells
+
 ****************************************************
 ************ ** INVERTER
 ****************************************************
@@ -6,6 +7,7 @@
 Mn0 vo vi cgnd cgnd nfet
 Mp0 vo vi cvdd cvdd pfet nfin=2
 .ENDS 
+
 **************************************************
 *********** 	INVERTER X2 (Luiz)
 ************************************************
@@ -13,6 +15,23 @@ Mp0 vo vi cvdd cvdd pfet nfin=2
 MP0 vo vi cvdd cvdd pfet nfin = 4
 MN0 vo vi cgnd cgnd nfet nfin = 2
 .ENDS
+
+**************************************************
+***********     INVERTER X3
+************************************************
+.SUBCKT invx3 vi vo cvdd cgnd
+MP0 vo vi cvdd cvdd pfet nfin = 6
+MN0 vo vi cgnd cgnd nfet nfin = 3
+.ENDS
+
+**************************************************
+***********     INVERTER X4
+************************************************
+.SUBCKT invx2 vi vo cvdd cgnd
+MP0 vo vi cvdd cvdd pfet nfin = 8
+MN0 vo vi cgnd cgnd nfet nfin = 4
+.ENDS
+
 ****************************************************
 ************** TRI-STATE INVERTER
 ****************************************************
@@ -38,6 +57,23 @@ XINV1 _vo vo cvdd cgnd inv
 xInv0 vi _vo cvdd cgnd inv
 xInv1 _vo vo cvdd cgnd invx2
 .ENDS
+
+**************************************************
+*************** BUFFER X3
+***********************************************
+.SUBCKT buffx2 vi vo cvdd cgnd
+xInv0 vi _vo cvdd cgnd inv
+xInv1 _vo vo cvdd cgnd invx3
+.ENDS
+
+**************************************************
+*************** BUFFER X2
+***********************************************
+.SUBCKT buffx2 vi vo cvdd cgnd
+xInv0 vi _vo cvdd cgnd invx2
+xInv1 _vo vo cvdd cgnd invx4
+.ENDS
+
 ****************************************************
 ************** TRANSMISSION GATE
 ****************************************************

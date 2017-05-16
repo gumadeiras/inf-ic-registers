@@ -2,14 +2,9 @@
 envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
 
 ; set up simulation environment
-
 setup(?precision 15)
 simulator('spectre)
-option(
-   ?categ 'turboOpts
-   'uniMode "APS"
-)
-design("./voltage/netlist")
+design("./netlist/netlist")
 resultsDir(".")
 /**************************************************************************************************
 *   Script varia delay de subida da entrada D através de uma análise paramétrica,             *
@@ -51,12 +46,9 @@ fp = outfile("./rsetup.txt", "w")
 
 
 desVar( "delay" 120ps )
-desVar( "voltage" 0.45 )
 analysis( 'tran ?start 1n ?stop 4n )
 
-paramAnalysis( "delay" ?start 5ps ?stop 12ps ?step 1ps 
-    paramAnalysis( "voltage" ?start 0.45 ?stop 0 ?step -0.05) 
-    )
+paramAnalysis( "delay" ?start 5ps ?stop 30ps ?step 1ps )
 paramRun()
 
 foreach( delay famGetSweepValues( v("Q" ?result "tran") ) ;famGetSweepValues cria uma lista com os valores parametrizados da familia de ondas Q
