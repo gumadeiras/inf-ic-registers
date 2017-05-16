@@ -18,11 +18,10 @@ simulator lang=spice
 ************** INSTANCES
 ****************************************************
 XBUF0 D0 D vdd! gnd! buf
-
 XBUF02 D E1 vdd! gnd! buf
 XBUF03 D E1 vdd! gnd! buf
 XBUF04 D E1 vdd! gnd! buf
-XNANDINV0 D Q CLK X0 gnd! ccmos
+XREG0 D Q CLK X0 gnd! ccmos
 
 XBUF11 Q E0 vdd! gnd! buf
 XBUF12 Q E0 vdd! gnd! buf
@@ -36,7 +35,7 @@ C1 E1 gnd! 1fF
 ****************************************************
 ************** SUPPLY
 ****************************************************
-Vvdd vdd! 0 'vd'
+Vvdd vdd! 0 'vd-voltage'
 Vgnd gnd! 0 0v
 Vdreg vdd! X0 dc=0v
 
@@ -44,25 +43,8 @@ Vdreg vdd! X0 dc=0v
 ************** STIMULUS
 ****************************************************
 * clock
-vclk CLK gnd PWL
-+ 0s          0v 
-+ 1.0n        0v
-+ 1.005n       'vd'
-+ 4.0n        'vd'
-+ 4.005n       0v
-
-* initial data value on register out
-* .IC v(Q) = 0
-* .IC v(rdata1) = 0.85v
-* .IC v(Q1) = 0.85v
-* .IC v(rdata11) = 0
-
-
-* data
-vdata0 D0 gnd PWL
-+ 0ns                     0v 
-+ '0.95ns+delay'      0v 
-+ '1ns+delay'        'vd'
+Vclock CLK0 gnd! DC = 0 pulse 1n 0.85 0 20p 20p 1n 2n
+Vd D0 gnd! PWL 0n 0.0V "2n-delay" 0.0V "2.05n-delay" 0.85V 4n 0.85V
 
 .Tran 1p 4.5n
 
