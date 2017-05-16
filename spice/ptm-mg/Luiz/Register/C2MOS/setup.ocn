@@ -1,0 +1,104 @@
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?precision 15)
+simulator('spectre)
+design("./netlist")
+resultsDir(".")
+/**************************************************************************************************
+*	Script varia delay de subida da entrada D através de uma análise paramétrica,             *
+*	pega a última onda da saída que subiu acima de 90% do VDD e calcula os tempos relevantes. *
+*	Para analisar entrada descendo, trocar a linha						  *
+*	"if( valY > 0.8075 then" por "if( valY < xxx then"					  *
+*												  *
+*												  *
+*	Para análise de hold time, são necessárias mudanças no netlist				  *
+***************************************************************************************************/
+
+
+
+/***************************************************************
+*                                                              *
+*                        (abLastY wave)                        *
+*                                                              *
+*          Return the last Y value from the waveform           *
+*            Funcao do Andrew                                  *
+***************************************************************/
+(defun abLastY (wave)
+  (cond
+    ((drIsWaveform wave)
+     (let (len vec)
+       (setq vec (drGetWaveformYVec wave))
+       (setq len (drVectorLength vec))
+       (drGetElem vec (sub1 len))
+       )
+     )
+    ((famIsFamily wave)
+     (famMap 'abLastY wave))
+    (t
+      (error "abLastY: can't handle %L\n" wave)
+      )
+    )
+  ) ; defun abLastY
+
+fp = outfile("./Tsetup_TCtQ.txt", "w")
+
+;----------Parametros para simulacao-------------
+desVar( "delay" 120ps )
+analysis( 'tran ?start 1n ?stop 4n )
+paramAnalysis( "delay" ?start 40ps ?stop 18ps ?step -0.5ps )
+paramRun()
+
+
+;---------loop para obter Tsetup----------------
+foreach( delay famGetSweepValues( v("QS" ?result "tran") ) ;famGetSweepValues cria uma lista com os valores parametrizados da familia de ondas Q
+	wave = famValue( v("QS" ?result "tran") delay ) ;famValue pega a onda especifica da familia com o valor do parametro desejado
+	valY = abLastY(wave)
+	if( valY > 0.8075 then 
+		waveS = wave 
+		delayS = delay
+	   )
+)
+;------------------------------------------------
+
+;-----------loop para obter Thold----------------
+aux = 0
+foreach( delay famGetSweepValues( v("QH" ?result "tran") ) ;famGetSweepValues cria uma lista com os valores parametrizados da familia de ondas Q
+	wave = famValue( v("QH" ?result "tran") delay ) ;famValue pega a onda especifica da familia com o valor do parametro desejado
+	valY = abLastY(wave)
+	if( valY > 0.8075 && aux == 0 then 
+		waveH = wave 
+		delayH = delay
+		aux = 1
+	   )
+)
+;plot(waveH)
+
+Tsetup = delay( ?wf1 leafValue( v("DS" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLK" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'rising )
+
+Thold = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("DH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+
+TCtQS = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QS" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'either )
+
+TCtQH = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+
+fprintf(fp "Setup Time last transition\n")
+fprintf(fp "T_setup = %e\n" Tsetup)
+
+fprintf(fp "\nrespective Clock to Q delay\n")
+fprintf(fp "TCtQ = %e\n" TCtQS)
+
+fprintf(fp "\n Delay value for last transition\n")
+fprintf(fp "delay = %e\n\n\n" delayS)
+
+fprintf(fp "Hold Time last transition\n")
+fprintf(fp "T_hold = %e\n" Thold)
+
+fprintf(fp "\nrespective Clock to Q delay\n")
+fprintf(fp "TCtQ = %e\n" TCtQH)
+
+fprintf(fp "\n Delay value for last transition\n")
+fprintf(fp "delay = %e\n" delayH)
+
+close(fp)

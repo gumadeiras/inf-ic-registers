@@ -1,46 +1,64 @@
 *Clocked CMOS register
 simulator lang=spice
-.lib '../../PTM-MG/modelfiles/models' ptm16lstp
-.lib '../../library_16nmlstp' standardCells 
+.lib '../../../modelfiles/models' ptm16lstp
+.lib '../../../library' standardCells 
 
-.param
-*.param Per = 2n
+
+.param v_supply = 0.85
 .option post=2
 .global gnd! vdd!
 
 **********DEFINE CIRCUIT************
+xInv2 CLK0 CLK1 vdd! gnd! inv
+xInv3 CLK1 CLK vdd! gnd! inv
 
-xInv0 notD D vdd! gnd! inv
+*-------SETUP------------
+xInvS0 DS0 DS1 vdd! gnd! inv
+xInvS1 DS1 DS vdd! gnd! inv
 
-xC2MOSReg D CLK OUT_tran vdd gnd! C2MOSReg
+xC2MOSRegS DS CLK QS vvdd gnd! c2mos
 
-xInv1 OUT_tran invOUT vdd! gnd! inv
+xInvQS QS QS1inv vdd! gnd! inv
+cs1 QS1inv gnd! 5f
+xInvQS2 QS QSinv2 vdd! gnd! inv
+cs2 QSinv2 gnd! 5f
+xInvQS3 QS QSinv3 vdd! gnd! inv
+cs3 QSinv3 gnd! 5f
+xInvQS4 QS QSinv4 vdd! gnd! inv
+cs4 QSinv4 gnd! 5f
 
-c0 invOUT gnd! 2f
+*-----HOLD---------------
 
-xInvCLK notCLK CLK vdd! gnd! inv
+xInvH0 DH0 DH1 vdd! gnd! inv
+xInvH1 DH1 DH vdd! gnd! inv
 
-*xC2MOSReg2 D CLK2 Q vdd! gnd! C2MOSReg
+xC2MOSRegH DH CLK QH vvdd gnd! c2mos
 
-*xInv2 Q D vdd! gnd! inv
+xInvQH1 QH QH1inv vdd! gnd! inv
+ch1 QH1inv gnd! 5f
+xInvQH2 QH QHinv2 vdd! gnd! inv
+ch2 QHinv2 gnd! 5f
+xInvQH3 QH QHinv3 vdd! gnd! inv
+ch3 QHinv3 gnd! 5f
+xInvQH4 QH QHinv4 vdd! gnd! inv
+ch4 QHinv4 gnd! 5f
 
 *************************************
 
 *****DEFINE STIMULI***********
 
-Vdd vdd 0 0.85V
-Vvdd vdd! 0 0.85V
+Vdd vvdd 0 "v_supply"
+Vvdd vdd! 0 "v_supply"
 Vgnd gnd! 0 0.0V
 
-Vclock notCLK gnd! DC = 0 pulse 0 0.85 0 10p 10p "Per/2" "Per"
-Vd notD gnd! DC = 0 pulse 0 0.85 0 50p 50p 2n 4n
+Vclock CLK0 gnd! DC = 0 pulse 0 0.85 1n 5p 5p 1n 2n
 
-*Vclk CLK2 gnd! DC = 0 pulse 0 0.85 0 10p 10p "Per/2" "Per"
+Vds DS0 gnd! PWL 0n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply" $ rise de 20p
+Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
 
 *****************************************************
 
 ***********DEFINE ANALYSIS**********
-
-.tran STEP=2p STOP=15n
-
+.tran STEP=2p STOP=4.6n START=2.5n  $tempo para circuito estabilizar e então começar a analise
+************************************
 .end
