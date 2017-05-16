@@ -61,4 +61,9 @@ Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3
 ***********DEFINE ANALYSIS**********
 .tran STEP=2p STOP=4.6n START=2.5n  $tempo para circuito estabilizar e então começar a analise
 ************************************
+
+***********ALTER STATEMENTS********
+.alter case 2: transicao de 1 para 0
+Vds DS0 gnd! PWL 0n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
+Vdh DH0 gnd! PWL 0n "v_supply" 2.35n "v_supply" 2.4n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply"
 .end
