@@ -1,5 +1,4 @@
 .lib standardCells
-
 ****************************************************
 ************ ** INVERTER
 ****************************************************
@@ -7,7 +6,6 @@
 Mn0 vo vi cgnd cgnd nfet
 Mp0 vo vi cvdd cvdd pfet nfin=2
 .ENDS 
-
 **************************************************
 *********** 	INVERTER X2 (Luiz)
 ************************************************
@@ -15,23 +13,6 @@ Mp0 vo vi cvdd cvdd pfet nfin=2
 MP0 vo vi cvdd cvdd pfet nfin = 4
 MN0 vo vi cgnd cgnd nfet nfin = 2
 .ENDS
-
-**************************************************
-***********     INVERTER X3
-************************************************
-.SUBCKT invx3 vi vo cvdd cgnd
-MP0 vo vi cvdd cvdd pfet nfin = 6
-MN0 vo vi cgnd cgnd nfet nfin = 3
-.ENDS
-
-**************************************************
-***********     INVERTER X4
-************************************************
-.SUBCKT invx2 vi vo cvdd cgnd
-MP0 vo vi cvdd cvdd pfet nfin = 8
-MN0 vo vi cgnd cgnd nfet nfin = 4
-.ENDS
-
 ****************************************************
 ************** TRI-STATE INVERTER
 ****************************************************
@@ -57,23 +38,6 @@ XINV1 _vo vo cvdd cgnd inv
 xInv0 vi _vo cvdd cgnd inv
 xInv1 _vo vo cvdd cgnd invx2
 .ENDS
-
-**************************************************
-*************** BUFFER X3
-***********************************************
-.SUBCKT buffx2 vi vo cvdd cgnd
-xInv0 vi _vo cvdd cgnd inv
-xInv1 _vo vo cvdd cgnd invx3
-.ENDS
-
-**************************************************
-*************** BUFFER X2
-***********************************************
-.SUBCKT buffx2 vi vo cvdd cgnd
-xInv0 vi _vo cvdd cgnd invx2
-xInv1 _vo vo cvdd cgnd invx4
-.ENDS
-
 ****************************************************
 ************** TRANSMISSION GATE
 ****************************************************
@@ -170,19 +134,19 @@ XINV out2 out cvdd cgnd inv
 ************** REGISTER - TSPCR  (Luiz)
 ************************************************
 .SUBCKT TSPCR D CLK Q cvdd cgnd
-MP0 1 D cvdd cvdd pfet
-MP1 nodeX CLK 1 cvdd pfet
+MP0 1 D cvdd cvdd pfet nfin=2
+MP1 nodeX CLK 1 cvdd pfet nfin=2
 MN0 nodeX D cgnd cgnd nfet
 
 MP2 nodeY CLK cvdd cvdd pfet
-MN1 nodeY nodeX 2 cgnd nfet $ utilizando duas fins, nodeX cai a VDD/2 na subida do CLK e D=0
-MN2 2 CLK cgnd cgnd nfet
+MN1 nodeY nodeX 2 cgnd nfet nfin=2 $ utilizando duas fins, nodeX cai a VDD/2 na subida do CLK e D=0
+MN2 2 CLK cgnd cgnd nfet nfin=2
 
-MP3 notQ nodeY cvdd cvdd pfet
+MP3 notQ nodeY cvdd cvdd pfet nfin=2
 MN3 notQ CLK 3 cgnd nfet
 MN4 3 nodeY cgnd cgnd nfet
 
-xINV Q notQ cvdd cgnd inv
+xINV notQ Q cvdd cgnd invx2
 .ENDS
 ****************************************************
 ************** REGISTER - CLOCKED CMOS DFF

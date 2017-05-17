@@ -51,7 +51,7 @@ fp = outfile("./Tsetup_TCtQ.txt", "w")
 ;----------Parametros para simulacao-------------
 desVar( "delay" 120ps )
 analysis( 'tran ?start 1n ?stop 4n )
-paramAnalysis( "delay" ?start 40ps ?stop 1ps ?step -0.5ps )
+paramAnalysis( "delay" ?start 25ps ?stop 5ps ?step -0.5ps )
 paramRun()
 
 ;************************ 0 --> 1 ****************************************************
@@ -80,13 +80,13 @@ foreach( delay famGetSweepValues( v("QH" ?result "tran") ) ;famGetSweepValues cr
 )
 
 
-Tsetup = delay( ?wf1 leafValue( v("DS" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLK" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'rising )
+Tsetup = delay( ?wf1 leafValue( v("DS" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLKS" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'rising )
 
-Thold = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("DH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+Thold = delay( ?wf1 leafValue( v("CLKH" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("DH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
 
-TCtQS = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QS" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'either )
+TCtQS = delay( ?wf1 leafValue( v("CLKS" ?result "tran") "delay" delayS ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QS" ?result "tran") "delay" delayS ) ?value2 0.425 ?edge2 'either )
 
-TCtQH = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+TCtQH = delay( ?wf1 leafValue( v("CLKH" ?result "tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QH" ?result "tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
 
 fprintf(fp "\t\t 0 --> 1\n\n")
 fprintf(fp "Setup Time last transition\n")
@@ -134,13 +134,13 @@ foreach( delay famGetSweepValues( v("QH" ?result "timeSweep_cloned_1-tran") ) ;f
 )
 
 
-Tsetup = delay( ?wf1 leafValue( v("DS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLK" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value2 0.425 ?edge2 'rising )
+Tsetup = delay( ?wf1 leafValue( v("DS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLKS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value2 0.425 ?edge2 'rising )
 
-Thold = delay( ?wf1 leafValue( v("CLK" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("DH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+Thold = delay( ?wf1 leafValue( v("CLKH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("DH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
 
-TCtQS = delay( ?wf1 leafValue( v("CLK" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value2 0.425 ?edge2 'either )
+TCtQS = delay( ?wf1 leafValue( v("CLKS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QS" ?result "timeSweep_cloned_1-tran") "delay" delayS ) ?value2 0.425 ?edge2 'either )
 
-TCtQH = delay( ?wf1 leafValue( v("CLK" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
+TCtQH = delay( ?wf1 leafValue( v("CLKH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value1 0.425 ?edge1 'rising ?wf2 leafValue( v("QH" ?result "timeSweep_cloned_1-tran") "delay" delayH ) ?value2 0.425 ?edge2 'either )
 
 fprintf(fp "\t\t 1 --> 0\n\n")
 fprintf(fp "Setup Time last transition\n")

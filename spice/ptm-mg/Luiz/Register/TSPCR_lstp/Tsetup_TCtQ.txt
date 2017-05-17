@@ -1,0 +1,39 @@
+		 0 --> 1
+
+Setup Time last transition
+T_setup = -1.567177e-12
+
+respective Clock to Q delay
+TCtQ = 4.675665e-11
+
+ Delay value for last transition
+delay = 1.400000e-11
+
+Hold Time last transition
+T_hold = -4.314101e-12
+
+respective Clock to Q delay
+TCtQ = 1.528407e-11
+
+ Delay value for last transition
+delay = 1.950000e-11
+
+		 1 --> 0
+
+Setup Time last transition
+T_setup = 4.714317e-12
+
+respective Clock to Q delay
+TCtQ = 1.543828e-10
+
+ Delay value for last transition
+delay = 2.000000e-11
+
+Hold Time last transition
+T_hold = 3.089374e-12
+
+respective Clock to Q delay
+TCtQ = 1.310386e-10
+
+ Delay value for last transition
+delay = 1.250000e-11

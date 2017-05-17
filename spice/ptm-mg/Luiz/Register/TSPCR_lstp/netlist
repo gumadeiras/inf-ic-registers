@@ -1,23 +1,25 @@
-*True Single Phase Clock Register 
 simulator lang=spice
-.lib '../../PTM-MG/modelfiles/models' ptm16lstp
-.lib '../../library_16nmlstp' standardCells 
 
-.param v_supply = 0.85
+.lib '../../../modelfiles/models' ptm16lstp
+.lib '../../../library' standardCells
+
 .option post=2
 .global gnd! vdd!
-
+.param v_supply = 0.85
+.IC QS = 0.0 QH = 0.0
 **********DEFINE CIRCUIT************
-xinv2 CLK0 CLK1 vdd! gnd! inv
-xinv3 CLK1 CLK vdd! gnd! inv
+xInv2S CLKS0 CLKS1 vdd! gnd! inv
+xInv3S CLKS1 CLKS vdd! gnd! inv
+xInv2H CLKH0 CLKH1 vdd! gnd! inv
+xInv3H CLKH1 CLKH vdd! gnd! inv
 *-------SETUP----------
 xinvS0 DS0 DS1 vdd! gnd! inv
 xinvS1 DS1 DS vdd! gnd! inv
 
-xRegS DS QS CLK vvdd gnd! TSPCR
+xRegS DS CLKS QS vvddS gnd! TSPCR
 
 xinvQS QS notQS vdd! gnd! inv
-cS0 notQS 0 5f
+cS1 notQS gnd! 5f
 xInvQS2 QS notQS2 vdd! gnd! inv
 cS2 notQS2 gnd! 5f
 xInvQS3 QS notQS3 vdd! gnd! inv
@@ -29,11 +31,10 @@ cS4 notQS4 gnd! 5f
 xinvH0 DH0 DH1 vdd! gnd! inv
 xinvH1 DH1 DH vdd! gnd! inv
 
-xRegH DH QH CLK vvdd gnd! TSPCR
+xRegH DH CLKH QH vvddH gnd! TSPCR
 
 xinvQH QH notQH vdd! gnd! inv
-cH0 notQH 0 5f
-
+cH1 notQH gnd! 5f
 xInvQH2 QH notQH2 vdd! gnd! inv
 cH2 notQH2 gnd! 5f
 xInvQH3 QH notQH3 vdd! gnd! inv
@@ -43,11 +44,13 @@ cH4 notQH4 gnd! 5f
 *************************************
 
 *****DEFINE STIMULI***********
-Vdd vvdd 0 "v_supply"
+Vdds vvddS 0 "v_supply"
+Vddh vvddh 0 "v_supply"
 Vvdd vdd! 0 "v_supply"
 Vgnd gnd! 0 0.0V
 
-Vclock CLK0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n 
+VclockS CLKS0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n
+VclockH CLKH0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n
 Vds DS0 gnd! PWL 0n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply" $ rise de 20p
 Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
 *****************************************************
@@ -60,5 +63,5 @@ Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3
 .alter case 2: transicao de 1 para 0
 Vds DS0 gnd! PWL 0n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
 Vdh DH0 gnd! PWL 0n "v_supply" 2.35n "v_supply" 2.4n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply"
-
+.IC QS = "v_supply" QH = "v_supply"
 .end
