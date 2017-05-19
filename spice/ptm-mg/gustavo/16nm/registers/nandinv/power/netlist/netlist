@@ -1,0 +1,89 @@
+* finfet testbench
+
+simulator lang=spectre
+
+
+simulator lang=spice
+
+.lib '../../../../../../modelfiles/models' ptm16lstp
+.lib '../../../../../../library' standardCells
+
+.PARAM vd=0.85
+.OPTION POST=2
+* +       OPTLST=1 ; display bisec info
+.GLOBAL gnd! vdd!
+
+****************************************************
+************ ** INVERTER
+****************************************************
+.SUBCKT sinv vi vo cvdd cgnd
+Mn0 vo vi cgnd cgnd nfet NFIN="Wn"
+Mp0 vo vi cvdd cvdd pfet NFIN="2*Wn"
+.ENDS 
+
+****************************************************
+************** NAND2
+****************************************************
+.SUBCKT snand2 in0 in1 out cvdd cgnd
+Mn0 out in0 nnode cgnd nfet NFIN="Wn"
+Mn1 nnode in1 cgnd cgnd nfet NFIN="Wn"
+Mp0 out in0 cvdd cvdd pfet NFIN="2*Wn"
+Mp1 out in1 cvdd cvdd pfet NFIN="2*Wn"
+.ENDS
+
+****************************************************
+************** REGISTER - NAND INV DFF
+****************************************************
+.SUBCKT snandinv data out clk cvdd cgnd
+XNAND1 out4 out2 out1 cvdd cgnd snand2
+XNAND2 out1 clk  out2 cvdd cgnd snand2
+XNAND3 out2 out4 out3 cvdd cgnd snand2
+XNAND4 out6 data out4 cvdd cgnd snand2
+XINV5  out3 out5 cvdd cgnd sinv
+XNAND6 clk  out5 out6 cvdd cgnd snand2
+XNAND7 out2 out8 out cvdd cgnd  snand2
+XNAND8 out  out6 out8 cvdd cgnd snand2
+.ENDS
+
+****************************************************
+************** INSTANCES
+****************************************************
+XBUF0 databuffer0 data0 vdd! gnd! buf
+
+
+XBUF02 data0 E1 vdd! gnd! buf
+XBUF03 data0 E1 vdd! gnd! buf
+XBUF04 data0 E1 vdd! gnd! buf
+XTSPC0 data0 rdata0 CLK X0 gnd! nandinv
+
+XBUF11 rdata0 E0 vdd! gnd! buf
+XBUF12 rdata0 E0 vdd! gnd! buf
+XBUF13 rdata0 E0 vdd! gnd! buf
+XBUF14 rdata0 E0 vdd! gnd! buf
+
+C0 E0 gnd! 1fF
+C1 E1 gnd! 1fF
+
+****************************************************
+************** SUPPLY
+****************************************************
+Vvdd vdd! 0 'vd'
+Vgnd gnd! 0 0v
+Vdreg vdd! X0 dc=0v
+
+
+****************************************************
+************** STIMULUS
+****************************************************
+* clock
+VIN0 CLK 0 0 pulse 0 0.85 25p 5p 5p 2n 4n 
+VIN1 databuffer0 0 0 pulse 0 0.85 0 5p 5p 3n 6n 
+
+.IC v(rdata0) = 0
+
+* .DC VIN 0 1.8 0.01 
+.tran 1p 24n
+
+
+.END
+ 

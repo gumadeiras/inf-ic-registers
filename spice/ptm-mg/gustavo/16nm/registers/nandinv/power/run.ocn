@@ -1,0 +1,34 @@
+; nsc.ocn
+; ocean <<< "load(\"tran.ocn\");exit"
+
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?numberNotation 'engineering ?precision 6)
+simulator('spectre)
+option(
+   ?categ 'turboOpts
+   'uniMode "APS"
+)
+design("./netlist/netlist")
+resultsDir(".")
+; open output port for writing out results to a file
+of = outfile("./rpower.txt" "w")
+desVar( "Wn" 1)
+
+analysis('tran ?stop 24n)
+run()
+
+selectResults('tran)
+; paramAnalysis( "DelayTime" ?center 3.025ns ?span 150ps)
+; paramRun()
+
+regpwr = 0.85*average(abs(i("Vdreg:p" ?result "tran")))
+regeng = 0.85*average(abs(i("Vdreg:p" ?result "tran")))*24n
+fprintf(of "Pwr  = %e\n" regpwr)
+fprintf(of "Engy = %e\n\n" regeng)
+
+close(of)
+
+; end of file

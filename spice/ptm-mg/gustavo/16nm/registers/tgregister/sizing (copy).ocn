@@ -1,0 +1,94 @@
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?precision 15)
+simulator('spectre)
+option(
+   ?categ 'turboOpts
+   'uniMode "APS"
+)
+design("./sizing/netlist")
+resultsDir(".")
+/**************************************************************************************************
+*   Script varia delay de subida da entrada D através de uma análise paramétrica,             *
+*   pega a última onda da saída que subiu acima de 90% do VDD e calcula os tempos relevantes. *
+*   Para analisar entrada descendo, trocar a linha                        *
+*   "if( valY > 0.8075 then" por "if( valY < xxx then"                    *
+*                                                 *
+*                                                 *
+*   Para análise de hold time, são necessárias mudanças no netlist                *
+***************************************************************************************************/
+
+
+
+/***************************************************************
+*                                                              *
+*                        (abLastY wave)                        *
+*                                                              *
+*          Return the last Y value from the waveform           *
+*            Funcao do Andrew                                  *
+***************************************************************/
+(defun abLastY (wave)
+  (cond
+    ((drIsWaveform wave)
+     (let (len vec)
+       (setq vec (drGetWaveformYVec wave))
+       (setq len (drVectorLength vec))
+       (drGetElem vec (sub1 len))
+       )
+     )
+    ((famIsFamily wave)
+     (famMap 'abLastY wave))
+    (t
+      (error "abLastY: can't handle %L\n" wave)
+      )
+    )
+  ) ; defun abLastY
+
+fp = outfile("./rsetup.txt", "w")
+
+
+desVar( "Wn" 1 )
+desVar( "delay" 0ps )
+analysis( 'tran ?start 1n ?stop 4.5n )
+
+paramAnalysis( "delay" ?start 60ps ?stop 25ps ?step -1ps
+    paramAnalysis( "Wn" ?start 1 ?stop 5 ?step 1 )
+    )
+paramRun()
+
+(foreach Wn '(1, 2, 3, 4, 5);, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20)
+    foreach( delay famGetSweepValues( v("Q" ?result "tran")) ;famGetSweepValues cria uma lista com os valores parametrizados da familia de ondas Q
+        auxwave = famValue( v("Q" ?result "tran") delay) ;famValue pega a onda especifica da familia com o valor do parametro desejado
+        wave = famValue(auxwave Wn) ;famValue pega a onda especifica da familia com o valor do parametro desejado
+        valY = abLastY(wave)
+        if( valY > 0.8075 then 
+            wave2 = wave
+            delay2 = delay
+            Wn2 = Wn
+           )
+    )
+
+
+; plot(wave2)
+
+; regpwr = 0.85*average(abs(i("X0:p" ?result "tran")))
+; regeng = 0.85*average(abs(i("X0:p" ?result "tran")))*8n
+Tsetup = delay( ?wf1 leafValue( v("D" ?result "tran") "delay" delay2 "Wn" Wn ) ?value1 0.425 ?edge1 'either ?wf2 leafValue( v("CLK" ?result "tran") "delay" delay2 "Wn" Wn ) ?value2 0.425 ?edge2 'rising ?nth2 2)
+
+TCtQ = delay( ?wf1 leafValue( v("CLK" ?result "tran") "delay" delay2 "Wn" Wn ) ?value1 0.425 ?edge1 'rising ?nth1 2 ?wf2 leafValue( v("Q" ?result "tran") "delay" delay2 "Wn" Wn ) ?value2 0.425 ?edge2 'either)
+
+
+fprintf(fp "\nDelay/Sizing value for last transition\n")
+fprintf(fp "delay = %e\n" delay2)
+fprintf(fp "Wn = %d\n\n" Wn2)
+
+fprintf(fp "Setup Time last transition\n")
+fprintf(fp "T_setup = %e\n\n" Tsetup)
+
+fprintf(fp "Clock to Q delay\n")
+fprintf(fp "TCtQ = %e\n\n" TCtQ)
+)
+
+close(fp)

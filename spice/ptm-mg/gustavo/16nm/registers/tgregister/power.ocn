@@ -1,0 +1,43 @@
+; set correct license for checkout
+envSetVal("license" "ADELicenseCheckoutOrder"  'string "GXL,L,XL") 
+
+; set up simulation environment
+setup(?precision 15)
+simulator('spectre)
+option(
+   ?categ 'turboOpts
+   'uniMode "APS"
+)
+design("./sizing/netlist")
+resultsDir("./power/")
+/**************************************************************************************************
+*   Script varia delay de subida da entrada D através de uma análise paramétrica,             *
+*   pega a última onda da saída que subiu acima de 90% do VDD e calcula os tempos relevantes. *
+*   Para analisar entrada descendo, trocar a linha                        *
+*   "if( valY > 0.8075 then" por "if( valY < xxx then"                    *
+*                                                 *
+*                                                 *
+*   Para análise de hold time, são necessárias mudanças no netlist                *
+***************************************************************************************************/
+
+
+openResults("psf")
+selectResult('tran)
+
+
+fp = outfile("./rpower.txt", "w")
+
+regpwr = 0.85*average(abs(i("Vvdd:p" ?result "tran")))
+regeng = 0.85*average(abs(i("Vvdd:p" ?result "tran")))*3.8n
+
+
+fprintf(fp "\nDelay/Sizing value for last transition\n")
+
+
+fprintf(fp "Setup Time last transition\n")
+fprintf(fp "T_setup = %e\n\n" regpwr)
+
+fprintf(fp "Clock to Q delay\n")
+fprintf(fp "TCtQ = %e\n\n" regeng)
+
+close(fp)

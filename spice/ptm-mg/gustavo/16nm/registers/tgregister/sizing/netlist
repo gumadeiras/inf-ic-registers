@@ -1,17 +1,11 @@
-* finfet testbench
-
-simulator lang=spectre
-
-
 simulator lang=spice
 
 .lib '../../../../../modelfiles/models' ptm16lstp
 .lib '../../../../../library' standardCells
 
-.PARAM vd=0.85
-.OPTION POST=2
-* +       OPTLST=1 ; display bisec info
-.GLOBAL gnd! vdd!
+.option post=2
+.global gnd! vdd!
+.param v_supply = 0.85
 
 
 ****************************************************
@@ -19,106 +13,94 @@ simulator lang=spice
 ****************************************************
 .SUBCKT sinv vi vo cvdd cgnd
 Mn0 vo vi cgnd cgnd nfet nfin="Wn"
-Mp0 vo vi cvdd cvdd pfet nfin="Wn"
+Mp0 vo vi cvdd cvdd pfet nfin="2*Wn"
 .ENDS 
-
-****************************************************
-************** TRI-STATE INVERTER
-****************************************************
-.SUBCKT stsinv vi vo nclk pclk cvdd cgnd
-Mn0 nnode vi cgnd cgnd nfet nfin="Wn"
-Mn1 vo nclk nnode cgnd nfet nfin="Wn"
-Mp0 pnode vi cvdd cvdd pfet nfin="Wn"
-Mp1 vo pclk pnode cvdd pfet nfin="Wn"
-.ENDS 
-
-****************************************************
-************** BUFFER
-****************************************************
-.SUBCKT sbuf vi vo cvdd cgnd
-XINV0 vi _vo cvdd cgnd inv nfin="Wn"
-XINV1 _vo vo cvdd cgnd inv nfin="Wn"
-.ENDS
 
 ****************************************************
 ************** TRANSMISSION GATE
 ****************************************************
 .SUBCKT stgn drain gate ngate source cvdd cgnd
 Mn0 drain gate source cgnd nfet nfin="Wn"
-Mp0 drain ngate source cvdd pfet nfin="Wn"
+Mp0 drain ngate source cvdd pfet nfin="2*Wn"
 .ENDS
 .SUBCKT stgp drain gate ngate source cvdd cgnd
 Mn0 drain ngate source cgnd nfet nfin="Wn"
-Mp0 drain gate source cvdd pfet nfin="Wn"
+Mp0 drain gate source cvdd pfet nfin="2*Wn"
 .ENDS
 
 ****************************************************
-************** REGISTER - POWERPC DFF
+************** REGISTER - TG INV DFF
 ****************************************************
-.SUBCKT spowerpc data out clk cvdd cgnd
+.SUBCKT stgregister data out clk cvdd cgnd
 XINV0 clk nclk cvdd cgnd sinv
 XTG1 out1 clk nclk data cvdd cgnd stgp
-XINV2 out1 out2 cvdd cgnd sinv
-XTSINV3 out2 out3 clk nclk cvdd cgnd stsinv
-XTG4 out2 clk nclk out4 cvdd cgnd stgn
-XINV5 out4 out cvdd cgnd sinv
-XTSINV6 out out4 nclk clk cvdd cgn stsinv
+XTG2 out1 clk nclk out4 cvdd cgnd stgn
+XINV3 out1 out3 cvdd cgnd sinv
+XINV4 out3 out4 cvdd cgnd sinv
+XTG5 out5 clk nclk out3 cvdd cgnd stgn
+XTG6 out6 clk nclk out8 cvdd cgnd stgp
+XINV7 out5 out cvdd cgnd sinv
+XINV8 out out8 cvdd cgnd sinv
 .ENDS
 
-****************************************************
-************** INSTANCES
-****************************************************
-XBUF0 D0 D vdd! gnd! sbuf
-XBUF02 D E1 vdd! gnd! sbuf
-XBUF03 D E1 vdd! gnd! sbuf
-XBUF04 D E1 vdd! gnd! sbuf
-XREG0 D Q CLK X0 gnd! spowerpc
+**********DEFINE CIRCUIT************
+*-------SETUP----------
+xinv2S CLKS0 CLKS1 vdd! gnd! sinv
+xinv3S CLKS1 CLKS vdd! gnd! sinv
 
-XBUF11 Q E0 vdd! gnd! sbuf
-XBUF12 Q E0 vdd! gnd! sbuf
-XBUF13 Q E0 vdd! gnd! sbuf
-XBUF14 Q E0 vdd! gnd! sbuf
+xinvS0 DS0 DS1 vdd! gnd! sinv
+xinvS1 DS1 DS vdd! gnd! sinv
 
-C0 E0 gnd! 1fF
-C1 E1 gnd! 1fF
+xRegS DS QS CLKS X0 gnd! stgregister
 
+xinvQS QS notQS vdd! gnd! sinv
+cS1 notQS 0 5f
+xInvQS2 QS notQS2 vdd! gnd! sinv
+cS2 notQS2 gnd! 5f
+xInvQS3 QS notQS3 vdd! gnd! sinv
+cS3 notQS3 gnd! 5f
+xinvQS4 QS notQS4 vdd! gnd! sinv
+cS4 notQS4 gnd! 5f
 
-****************************************************
-************** SUPPLY
-****************************************************
-Vvdd vdd! 0 'vd'
-Vgnd gnd! 0 0v
-Vdreg vdd! X0 dc=0v
+*-------HOLD---------------
+xinv2H CLKH0 CLKH1 vdd! gnd! sinv
+xinv3H CLKH1 CLKH vdd! gnd! sinv
 
-****************************************************
-************** STIMULUS
-****************************************************
-* clock
-Vclock CLK gnd! DC=0 pulse 1n 0.85 0 20p 20p 1n 2n
-Vd D0 gnd! PWL 0n 0.0V "2n-delay" 0.0V "2.02n-delay" 0.85V 4n 0.85V
+xinvH0 DH0 DH1 vdd! gnd! sinv
+xinvH1 DH1 DH vdd! gnd! sinv
 
-.Tran 1p 4.5n
+xRegH DH QH CLKH X1 gnd! stgregister
 
-* .Measure Tran CtoQ0    Trig v(CLK)      Val = 'vd/2' cross=1
-* +                     Targ v(Q)   Val = 'vd/2' cross=1
+xinvQH QH notQH vdd! gnd! sinv
+cH1 notQH 0 5f
+xInvQH2 QH notQH2 vdd! gnd! sinv
+cH2 notQH2 gnd! 5f
+xInvQH3 QH notQH3 vdd! gnd! sinv
+cH3 notQH3 gnd! 5f
+xinvQH4 QH notQH4 vdd! gnd! sinv
+cH4 notQH4 gnd! 5f
+*************************************
 
-* .Measure Tran DtoQ0    Trig v(data0)      Val = 'vd/2' cross=1
-* +                     Targ v(Q)   Val = 'vd/2' cross=1
+*****DEFINE STIMULI***********
+Vdd vvdd 0 "v_supply"
+Vvdd vdd! 0 "v_supply"
+Vgnd gnd! 0 0.0V
+Vdsetup vdd! X0 DC=0V
+Vdhold vdd! X1 DC=0V
 
-* * setup time value
-* .Measure Tran SetupHold0 Trig v(data0)  Val = 'vd/2' cross=1
-* +                       Targ v(CLK)    Val = 'vd/2' cross=1
+VclockS CLKS0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n
+VclockH CLKH0 gnd! pulse 0 "v_supply" 1n 5p 5p 1n 2n 
+Vds DS0 gnd! PWL 0n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply" $ rise de 20p
+Vdh DH0 gnd! PWL 0n 0.0V 2.35n 0.0V 2.4n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
+*****************************************************
 
+***********DEFINE ANALYSIS**********
+.tran STEP=1p STOP=4.6n START=2.5n
+**********************************
 
-* .Measure Tran CtoQ1    Trig v(CLK)      Val = 'vd/2' cross=1
-* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
+***********ALTER STATEMENTS********
+.alter case 2: transicao de 1 para 0
+Vds DS0 gnd! PWL 0n "v_supply" "3.005n-delay" "v_supply" "3.025n-delay" 0.0V 4n 0.0V
+Vdh DH0 gnd! PWL 0n "v_supply" 2.35n "v_supply" 2.4n 0.0V "3.005n-delay" 0.0V "3.025n-delay" "v_supply" 4n "v_supply"
 
-* .Measure Tran DtoQ1    Trig v(data1)      Val = 'vd/2' cross=1
-* +                     Targ v(rdata1)   Val = 'vd/2' cross=1
-
-* * setup time value
-* .Measure Tran SetupHold1 Trig v(data1)  Val = 'vd/2' cross=1
-* +                       Targ v(CLK)    Val = 'vd/2' cross=1
-
-.END
- 
+.end

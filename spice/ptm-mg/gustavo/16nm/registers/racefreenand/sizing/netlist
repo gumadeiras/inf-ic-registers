@@ -27,38 +27,16 @@ Mp1 out in1 cvdd cvdd pfet nfin="2*Wn"
 .ENDS
 
 ****************************************************
-************** TRANSMISSION GATE
+************** REGISTER - RACEFREE NAND INV DFF
 ****************************************************
-.SUBCKT stgn drain gate ngate source cvdd cgnd
-Mn0 drain gate source cgnd nfet nfin="Wn"
-Mp0 drain ngate source cvdd pfet nfin="2*Wn"
-.ENDS
-.SUBCKT stgp drain gate ngate source cvdd cgnd
-Mn0 drain ngate source cgnd nfet nfin="Wn"
-Mp0 drain gate source cvdd pfet nfin="2*Wn"
-.ENDS
-
-****************************************************
-************** TRI-STATE INVERTER
-****************************************************
-.SUBCKT stsinv vi vo nclk pclk cvdd cgnd
-Mn0 nnode vi cgnd cgnd nfet nfin="Wn"
-Mn1 vo nclk nnode cgnd nfet nfin="Wn"
-Mp0 pnode vi cvdd cvdd pfet nfin="2*Wn"
-Mp1 vo pclk pnode cvdd pfet nfin="2*Wn"
-.ENDS 
-
-****************************************************
-************** REGISTER - POWERPC DFF
-****************************************************
-.SUBCKT spowerpc data out clk cvdd cgnd
-XINV0 clk nclk cvdd cgnd sinv
-XTG1 out1 clk nclk data cvdd cgnd stgp
-XINV2 out1 out2 cvdd cgnd sinv
-XTSINV3 out2 out3 clk nclk cvdd cgnd stsinv
-XTG4 out2 clk nclk out4 cvdd cgnd stgn
-XINV5 out4 out cvdd cgnd sinv
-XTSINV6 out out4 nclk clk cvdd cgn stsinv
+.SUBCKT sracefreenand data out clk cvdd cgnd
+XNAND1 out4  out2  out1 cvdd cgnd nand2
+XNAND2 data  out5  out2 cvdd cgnd nand2
+XINV3  out1  nout1      cvdd cgnd inv
+XNAND4 out1  clk   out4 cvdd cgnd nand2
+XNAND5 nout1 clk   out5 cvdd cgnd nand2
+XNAND6 out4  out7  out  cvdd cgnd nand2
+XNAND7 out   out5  out7 cvdd cgnd nand2
 .ENDS
 
 **********DEFINE CIRCUIT************
@@ -69,7 +47,7 @@ xinv3S CLKS1 CLKS vdd! gnd! sinv
 xinvS0 DS0 DS1 vdd! gnd! sinv
 xinvS1 DS1 DS vdd! gnd! sinv
 
-xRegS DS QS CLKS X0 gnd! spowerpc
+xRegS DS QS CLKS X0 gnd! sracefreenand
 
 xinvQS QS notQS vdd! gnd! sinv
 cS1 notQS 0 5f
@@ -87,7 +65,7 @@ xinv3H CLKH1 CLKH vdd! gnd! sinv
 xinvH0 DH0 DH1 vdd! gnd! sinv
 xinvH1 DH1 DH vdd! gnd! sinv
 
-xRegH DH QH CLKH X1 gnd! spowerpc
+xRegH DH QH CLKH X1 gnd! sracefreenand
 
 xinvQH QH notQH vdd! gnd! sinv
 cH1 notQH 0 5f
